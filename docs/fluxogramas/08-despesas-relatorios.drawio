@@ -1,0 +1,112 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.17">
+  <diagram id="08-despesas-relatorios" name="08-despesas-relatorios">
+    <mxGraphModel dx="0" dy="0" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="577" pageHeight="668" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2Ztd26fEeVVhDIq2-1" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1.01;exitPerimeter=0;entryX=0.5;entryY=-0.019;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-10" target="2Ztd26fEeVVhDIq2-11">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="313.8" y="170.8" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-2" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.39;exitY=0.9;exitPerimeter=0;entryX=0.61;entryY=-0.045;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-11" target="2Ztd26fEeVVhDIq2-12">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="227.2" y="333.9" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-3" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.61;exitY=0.89;exitPerimeter=0;entryX=0.42;entryY=-0.043;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-11" target="2Ztd26fEeVVhDIq2-13">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="407.8" y="334.2" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-4" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.45;exitY=1.01;exitPerimeter=0;entryX=0.55;entryY=-0.03;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-12" target="2Ztd26fEeVVhDIq2-14">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="182.1" y="409.9" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-5" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.52;exitY=1.01;exitPerimeter=0;entryX=0.48;entryY=-0.049;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-14" target="2Ztd26fEeVVhDIq2-15">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="176.7" y="503.4" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-6" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.62;exitY=1.01;exitPerimeter=0;entryX=0.14;entryY=0.12;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-15" target="2Ztd26fEeVVhDIq2-16">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="271.8" y="591.2" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-7" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.51;exitY=1.01;exitPerimeter=0;entryX=0.49;entryY=-0.051;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-13" target="2Ztd26fEeVVhDIq2-17">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="435.5" y="417.4" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-8" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1.01;exitPerimeter=0;entryX=0.5;entryY=-0.051;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-17" target="2Ztd26fEeVVhDIq2-18">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="435.7" y="503.1" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-9" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.38;exitY=1.01;exitPerimeter=0;entryX=0.87;entryY=0.12;entryPerimeter=0;" edge="1" parent="1" source="2Ztd26fEeVVhDIq2-18" target="2Ztd26fEeVVhDIq2-16">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="340.4" y="591.7" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-10" value="Início" style="ellipse;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#15354c;fontColor=white;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="265.1" y="89.6" width="97.3" height="49.9" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-11" value="Registrar despesa ou&#10;consultar?" style="rhombus;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#fff1ce;fontColor=#18384d;strokeColor=#bc923f;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="142.4" y="180.5" width="342.8" height="106.6" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-12" value="Identificar veículo" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="130.9" y="341.5" width="149.7" height="36" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-13" value="Selecionar período e critérios" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="316.7" y="341.5" width="228.1" height="36" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-14" value="Informar data, categoria, descrição e&#10;valor" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="28.8" y="418.5" width="273.9" height="53.3" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-15" value="Conferir e registrar despesa" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="74.4" y="512.7" width="214.7" height="36" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-16" value="Fim" style="ellipse;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#15354c;fontColor=white;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="267.7" y="589.7" width="76.1" height="49.9" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-17" value="Consultar dados do escopo" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="332.1" y="427.1" width="211.4" height="36" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-18" value="Apresentar resultado e limites" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="321.1" y="512.7" width="227.2" height="36" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-19" value="Registrar" style="text;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;strokeColor=none;fillColor=#ffffff;spacing=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="239.3" y="304.7" width="70.2" height="19.2" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-20" value="Consultar" style="text;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;strokeColor=none;fillColor=#ffffff;spacing=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="383.5" y="304.7" width="70.2" height="19.2" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-21" value="Despesas e relatórios" style="text;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="86.6" y="28.4" width="403.9" height="33" />
+        </mxCell>
+        <mxCell id="2Ztd26fEeVVhDIq2-22" value="P08; RF17–RF18; RN32–RN33" style="text;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="86.6" y="54.8" width="403.9" height="33" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
