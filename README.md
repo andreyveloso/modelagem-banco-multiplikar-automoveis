@@ -441,9 +441,43 @@ A decisão de manter um cadastro único para cada pessoa física ou jurídica fo
 
 Cada veículo de entrada pertence ao comprador. Sem veículos aceitos, a venda só prossegue se as demais condições forem acordadas.
 
-### Fluxogramas P05 a P08
+### 10.5. Informações de pagamento e financiamento
 
-Parte do Nicolas
+**Referências:** P05; RF12–RF13; RN19–RN21.
+
+![Informações de pagamento e financiamento](docs/fluxogramas/05-informacoes-pagamento.png)
+
+[Abrir PNG](docs/fluxogramas/05-informacoes-pagamento.png) · [Editar no draw.io](docs/fluxogramas/05-informacoes-pagamento.drawio)
+
+formas_pagamento é somente multivalorado, sem componentes. Os valores são totais escalares em VENDA. Não há controle de parcelas nem detalhamento por recebimento.
+
+### 10.6. Documentação, conclusão e entrega
+
+**Referências:** P06; RF14; RN22–RN25.
+
+![Documentação, conclusão e entrega](docs/fluxogramas/06-conclusao-entrega.png)
+
+[Abrir PNG](docs/fluxogramas/06-conclusao-entrega.png) · [Editar no draw.io](docs/fluxogramas/06-conclusao-entrega.drawio)
+
+As atividades podem ocorrer em outra ordem; o fluxo representa suas condições. Reconhecimento de firma aplica-se aos documentos pertinentes, sem presumir firma em CNH, laudo ou conta de luz.
+
+### 10.7. Garantia e devolução
+
+**Referências:** P07; RF15–RF16; RN25–RN31.
+
+![Garantia e devolução](docs/fluxogramas/07-garantia-devolucao.png)
+
+[Abrir PNG](docs/fluxogramas/07-garantia-devolucao.png) · [Editar no draw.io](docs/fluxogramas/07-garantia-devolucao.drawio)
+
+Troca, consignação e financiamento podem coexistir. Exceções são anotadas, o registro do resultado não significa que todas as pendências estejam resolvidas.
+
+### 10.8. Despesas e relatórios
+
+**Referências:** P08; RF17–RF18; RN32–RN33.
+
+![Despesas e relatórios](docs/fluxogramas/08-despesas-relatorios.png)
+
+[Abrir PNG](docs/fluxogramas/08-despesas-relatorios.png) · [Editar no draw.io](docs/fluxogramas/08-despesas-relatorios.drawio)
 
 <a id="secao-11"></a>
 
