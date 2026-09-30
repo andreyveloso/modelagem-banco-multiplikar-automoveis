@@ -290,15 +290,106 @@ Tabelas e controles estritamente técnicos de infraestrutura (como logs detalhad
 
 <a id="secao-8"></a>
 
-## 8. Regras de negócio
+ 8. Regras de negócio
 
-Parte da Ana
+8.1. Pessoas, veículos e entrada
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN01 | Clientes, proprietários e fornecedores são identificados por CPF ou CNPJ. | Briefing da loja (p. 7) — Atendimento de pessoas físicas e jurídicas |
+| RN02 | Uma pessoa pode exercer vários papéis com um único cadastro. | Decisão de modelagem da equipe — Cadastro unificado para evitar duplicidades |
+| RN03 | Cada atendimento tem um interessado e um funcionário; ambos podem participar de vários atendimentos. | Briefing da loja (p. 4–6) — Rotina comercial de atendimento e histórico de contatos |
+| RN04 | Cada veículo tem identidade própria; placa e chassi podem não estar disponíveis no cadastro inicial. | Briefing da loja (p. 3) — Prospecção preliminar antes da checagem física |
+| RN05 | Cadastro preliminar não significa aceitação no estoque. | Regra prática da equipe — Separação entre consulta inicial e estoque físico |
+| RN06 | Entrada aceita exige avaliação aprovada do mesmo veículo. | Briefing da loja — Política de vistoria técnica e mecânica obrigatória |
+| RN07 | A aceitação também exige interesse comercial da loja. | Esclarecimento da loja — Validação de viabilidade e giro comercial de revenda |
+| RN08 | O laudo cautelar consultado em uma avaliação deve pertencer obrigatoriamente ao mesmo veículo avaliado (AVALIACAO.veiculo == LAUDO.veiculo). Uma avaliação consulta no máximo um laudo (0,1) e o laudo pode subsidiar reavaliações do mesmo veículo (0,N). | Briefing da loja (p. 4) e regra de integridade — Vínculo estrito com o mesmo veículo e suporte a reavaliações |
+| RN09 | A modalidade da entrada é compra própria, consignação ou troca. | Briefing da loja — As três vias operacionais de abastecimento de estoque |
+| RN10 | Cada entrada identifica um veículo e uma contraparte. | Regra contábil e jurídica — Identificação formal do bem e de quem o entregou à loja |
+| RN11 | Na consignação, o veículo fica vinculado ao proprietário até a conclusão da venda. | Briefing da loja (p. 3) — Titularidade legal do bem permanece com o consignante |
+| RN12 | Consignação é formalizada com reconhecimento de firma e normalmente sem prazo; exceções registram o término. | Briefing da loja (p. 7) — Segurança jurídica formal e vigência por prazo indeterminado |
+
+ 8.2. Venda e troca
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN13 | Bloqueio de vendas simultâneas e unicidade de comercialização: cada entrada aceita só pode ser comercializada em no máximo uma venda ativa/concluída (cardinalidade operacional 0,1). O sistema impede vendas simultâneas do mesmo veículo. Caso a venda seja desfeita e o veículo retorne ao pátio, a nova comercialização encerra a entrada anterior ou, se mantida a mesma entrada por acúmulo histórico temporal (0,N), no máximo uma venda pode estar ativa. | Briefing da loja (p. 3, 6) e regra de integridade — Bloqueio de vendas concorrentes para o mesmo veículo no pátio |
+| RN14 | Cada venda tem um comprador, um responsável e um veículo principal. | Briefing da loja (p. 4–5) e decisão da equipe — Identificação obrigatória do comprador, vendedor e veículo vendido |
+| RN15 | Descontos, acréscimos e taxas são discriminados na operação e no contrato. | Briefing da loja (p. 7) — Discriminação transparente de valores, descontos, acréscimos e taxas no contrato |
+| RN16 | Uma venda recebe zero, um ou vários veículos como entrada. | Esclarecimento prático da loja (p. 5–7) — Permissão comercial para receber múltiplos veículos como parte do pagamento |
+| RN17 | Cada veículo oferecido passa por nova avaliação e depende de aprovação e interesse da loja. | Briefing da loja e esclarecimento operacional — Avaliação técnica individual e aprovação comercial para cada carro de troca |
+| RN18 | A troca pertence ao mesmo contrato; cada veículo tem valor discriminado e pertence ao comprador, sem terceiros. | Briefing da loja e esclarecimento operacional — Todos os carros de troca constam no mesmo contrato e pertencem ao comprador |
+ 
+ 8.3. Pagamento, documentação e entrega
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN19 | Pagamento não é entidade; formas_pagamento é somente multivalorado, com valores simples e sem componentes. | Diretriz do projeto e delimitação de escopo — Formas de pagamento registradas como atributo multivalorado simples, sem tabela financeira complexa |
+| RN20 | Formas podem ser combinadas; total recebido, data mais recente e situação financeira são atributos separados de VENDA. | Briefing da loja e decisão de modelagem — Registro direto em VENDA do total recebido, data mais recente e situação financeira |
+| RN21 | Há no máximo um financiamento por venda; aprovação difere de recebimento pela loja; não se acompanham parcelas pagas pelo cliente. | Briefing da loja e esclarecimento operacional — No máximo um financiamento por venda, diferenciando aprovação de crédito e repasse à loja |
+| RN22 | Conclusão exige cumprimento do pagamento acordado, financiamento recebido quando houver, documentos necessários e reconhecimento aplicável, além de laudo cautelar realizado. | Esclarecimento da rotina da loja — Conclusão da venda exige quitação, crédito do financiamento, documentos conferidos e laudo cautelar |
+| RN23 | Scanner antecede a entrega. | Briefing da loja (p. 7) — Rastreamento eletrônico por scanner veicular obrigatoriamente realizado antes da entrega |
+| RN24 | Recebimento, conclusão comercial e entrega são registrados separadamente. | Decisão de modelagem apoiada na rotina da loja — Registro em momentos distintos para pagamento, conclusão documental e entrega física |
+
+Documentos exigidos para formalização da venda: **CNH, laudo cautelar, CRLV, ATPV e comprovante de residência com nome e endereço** (por exemplo, conta de consumo). O reconhecimento de firma aplica-se aos instrumentos cabíveis de transferência e contrato.
+
+O valor aceito dos veículos de troca compõe o cumprimento econômico da venda, mas não é somado ao total de dinheiro recebido.
+
+8.4. Garantia e desfazimento
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN25 | A garantia concedida tem prazo informado de dois meses e começa na entrega ao cliente. | Briefing da loja e esclarecimento operacional — Prazo de garantia de 2 meses iniciado exatamente na data de entrega ao cliente |
+| RN26 | A política declarada exige atendimento pela loja; a empresa informa considerar a garantia sem efeito se o cliente encaminhar o veículo a mecânico externo. | Esclarecimento da gerência da loja — Manutenção de garantia condicionada ao reparo exclusivo na oficina parceira da loja |
+| RN27 | A ocorrência registra diagnóstico e análise de responsabilidade ou mau uso. | Briefing da loja (p. 4) e proposta técnica — Registro de diagnóstico mecânico e apuração de mau uso na ocorrência de garantia |
+| RN28 | Cancelamento preserva a negociação e registra motivo, devoluções e resultado. | Decisão da equipe para auditoria — Registro histórico do cancelamento preservando o contrato original da venda e os motivos do distrato |
+| RN29 | No desfazimento com troca, a loja recebe o veículo vendido e devolve os recebidos. | Esclarecimento operacional da loja — Devolução recíproca dos bens: o comprador devolve o carro comprado e a loja devolve os veículos recebidos na troca |
+| RN30 | Na consignação, a loja devolve sua parte e avisa o proprietário para devolver o restante ao cliente. | Esclarecimento operacional da loja — No cancelamento de consignado, a loja restitui sua comissão e notifica o proprietário para estorno do saldo |
+| RN31 | No financiamento, a loja trata com o banco e registra a orientação/solução; não se define procedimento bancário adicional. | Esclarecimento da loja e delimitação de escopo — Cancelamento de financiamento tratado como orientação administrativa registrada, sem módulo bancário complexo |
+
+A regra RN26 documenta a política da empresa de que qualquer reparo de garantia deve ser avaliado e feito na própria oficina da loja.
+
+Troca, consignação e financiamento podem coexistir em uma mesma negociação. O registro de cancelamento documenta o histórico do desfazimento e as etapas de restituição executadas.
+
+ 8.5. Despesas e integridade
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN32 | Cada despesa do escopo pertence a um veículo. | Decisão de modelagem da equipe (p. 7, item 13) — Associação direta de despesas ao veículo para apuração do custo real por unidade |
+| RN33 | Relatórios ficam limitados aos dados representados. | Delimitação de escopo da equipe — Relatórios gerenciais consolidados a partir dos dados conceituais de veículos, entradas, vendas e despesas |
+
+Restrições complementares:
+
+- ENTRADA por troca tem exatamente uma VENDA de origem; compra própria e consignação não têm esse vínculo.
+- O veículo principal não pode ser um dos veículos recebidos na mesma venda.
+- Avaliação, entrada e laudo vinculados referem-se ao veículo correto.
+- A contraparte de cada entrada por troca é o comprador da venda de origem.
+- Valor aceito da troca fica na ENTRADA, sem cópia independente em VENDA.
+- No máximo uma entrada operacional vigente por veículo nesta proposta; entradas históricas não autorizam venda simultânea duplicada.
+- Retorno físico não significa automaticamente disponibilidade: a situação deve refletir a regularização do desfazimento.
+- Aprovação de crédito não altera automaticamente o total recebido.
 
 <a id="secao-9"></a>
 
-## 9. Restrições e políticas organizacionais
+9. Restrições e políticas organizacionais
 
-Parte da Ana
+| ID | Restrição/política | Situação e Fundamentação |
+|---|---|---|
+| RO01 | Operação comercial apoiada no sistema RevendaMais com controles complementares; modelagem acadêmica de um banco integrado próprio. | Fato do Briefing (p. 7, item 12) e premissa acadêmica do projeto. |
+| RO02 | Coleta de nome, CPF/CNPJ, telefone, e-mail, endereço, cidade e estado nos contratos. | Fato confirmado no Briefing da loja (p. 7). |
+| RO03 | Consignação com reconhecimento de firma e prazo normalmente indeterminado. | Fato confirmado no Briefing da loja (p. 7). |
+| RO04 | Documentos: CNH, laudo, CRLV, ATPV e comprovante de residência com nome/endereço. | Esclarecimento operacional obtido no levantamento com a loja. |
+| RO05 | Conclusão condicionada a pagamento, documentação reconhecida quando aplicável e laudo. | Esclarecimento operacional obtido no levantamento com a loja. |
+| RO06 | Scanner antes da entrega; repasse registrado no contrato. | Fato confirmado no Briefing da loja (p. 7). |
+| RO07 | Garantia a partir da entrega, com condições declaradas pela empresa. | Fato do Briefing confirmado por esclarecimento operacional da loja. |
+| RO08 | Um financiamento por venda e ausência de controle de parcelas. | Fato do Briefing e esclarecimento operacional da loja. |
+| RO09 | Veículos de entrada pertencem ao comprador, sem terceiros. | Esclarecimento operacional obtido no levantamento com a loja. |
+| RO10 | Aprovação de aquisição, descontos, entrega e cancelamento depende dos responsáveis definidos pela empresa. | Política operacional da loja a detalhar nas próximas etapas. |
+| RO11 | Perfis de acesso e permissões de alteração são propostas a validar. | Hipótese de trabalho da equipe a ser validada na implementação. |
+| RO12 | Pagamento como informação de VENDA, com atributo de formas somente multivalorado. | Delimitação de escopo e diretriz do projeto. |
+| RO13 | Reserva, indicação e comissão excluídas. | Delimitação de escopo da equipe para esta primeira etapa. |
+
+Instituições citadas: Itaú, BV, Bradesco Financiamentos, Daycoval, Santander Financiamentos, Banco PAN, C6 Bank, Banco Safra e Banco Volkswagen. A lista não foi declarada exclusiva ou permanente. *(Briefing da loja, p. 7)*
 
 <a id="secao-10"></a>
 
