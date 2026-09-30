@@ -77,18 +77,6 @@ O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conc
 
 [Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
 
-### 16.1. Convenções de Notação Adotadas
-
-- *Entidades:* representadas por retângulos (ex.: PESSOA, VEICULO, VENDA).
-- *Relacionamentos:* representados por losangos com os nomes dos verbos que descrevem as interações reais (ex.: compra em, passa por).
-- *Atributos:* representados por elipses ligadas às suas respectivas entidades.
-  - Atributos *identificadores* aparecem com o nome sublinhado (ex.: <u>identificador</u>).
-  - Atributos *multivalorados* possuem contorno duplo (como formas_pagamento e documentos_conferidos).
-  - Atributos *derivados* possuem traço pontilhado/tracejado (como valor_total e situacao_atual).
-  - Atributos *compostos* possuem seus sub-atributos atômicos detalhados no dicionário de dados (Seção 15.6) para manter o diagrama visualmente limpo e legível.
-- *Cardinalidades:* cada conexão indica a participação mínima e máxima da entidade no relacionamento (min, max), conforme detalhado na análise Vá e Volte da Seção 14.
-- As relações R13 e R14 distinguem com exatidão o carro principal vendido (é comercializada em) dos carros recebidos como entrada em trocas (recebe em troca).
-
 <a id="secao-2"></a>
 
 ## 2. Caracterização da empresa
@@ -762,7 +750,17 @@ Parte do David
 
 ## 16. DER
 
-Parte do Brenno
+### 16.1. Convenções de Notação Adotadas
+
+- *Entidades:* representadas por retângulos (ex.: PESSOA, VEICULO, VENDA).
+- *Relacionamentos:* representados por losangos com os nomes dos verbos que descrevem as interações reais (ex.: compra em, passa por).
+- *Atributos:* representados por elipses ligadas às suas respectivas entidades.
+  - Atributos *identificadores* aparecem com o nome sublinhado (ex.: <u>identificador</u>).
+  - Atributos *multivalorados* possuem contorno duplo (como formas_pagamento e documentos_conferidos).
+  - Atributos *derivados* possuem traço pontilhado/tracejado (como valor_total e situacao_atual).
+  - Atributos *compostos* possuem seus sub-atributos atômicos detalhados no dicionário de dados (Seção 15.6) para manter o diagrama visualmente limpo e legível.
+- *Cardinalidades:* cada conexão indica a participação mínima e máxima da entidade no relacionamento (min, max), conforme detalhado na análise Vá e Volte da Seção 14.
+- As relações R13 e R14 distinguem com exatidão o carro principal vendido (é comercializada em) dos carros recebidos como entrada em trocas (recebe em troca).
 
 <a id="secao-17"></a>
 
