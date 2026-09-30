@@ -629,9 +629,80 @@ As regras da seção 8 complementam o DER, incluindo avaliação aprovada, inter
 
 ## 15. Dicionário de dados conceitual
 
-### Entidades E01 a E05
+### Convenções
 
-Parte do Caique
+As colunas do dicionário especificam: *Obrigatório* (dado mandatório para a existência da entidade no modelo conceitual); *Condicional* (obrigatório mediante determinada condição ou etapa negocial); *Opcional* (dado complementar cuja ausência não invalida a transação). Identificadores e classificações são conceituais (sem tipos de dados físicos do SQL). Componentes de atributos compostos estão descritos de forma atômica na Seção 15.6.
+
+### E01 — PESSOA
+
+Identifica participantes em diferentes papéis, evitando duplicação cadastral.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identificação conceitual da pessoa. | Identificador | Obrigatório | RN01–RN02 |
+| nome | Nome completo ou denominação da pessoa jurídica. | Descritivo | Obrigatório (contratos e cadastro) | RO02 |
+| documento | Espécie (CPF ou CNPJ) e número do documento. | Composto | Obrigatório (identificação) | RN01; não duplicar documento confirmado |
+| telefone | Contato telefônico. | Descritivo | Obrigatório (coleta informada) | Dado pessoal |
+| email | Endereço eletrônico. | Descritivo | Obrigatório (contratos) | RO02 |
+| endereco | Logradouro, número, complemento quando houver, cidade e estado. | Composto | Obrigatório (contratos) | RO02; dados pessoais |
+| possui_cnh | Informação declarada sobre possuir CNH. | Descritivo | Condicional (atendimento de compra) | Não é número ou cópia da CNH |
+
+### E02 — FUNCIONARIO
+
+Registra dados próprios do vínculo de trabalho; nome e contato permanecem em PESSOA.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identificação conceitual do vínculo. | Identificador | Obrigatório | Uma PESSOA por vínculo |
+| cargo | Função exercida na empresa. | Descritivo | Obrigatório | Não equivale a perfil de acesso |
+| data_admissao | Início do vínculo. | Temporal | Obrigatório | Briefing da loja (campo sugerido) |
+| situacao | Situação do vínculo funcional. | Estado | Obrigatório | Domínio a validar |
+
+### E03 — VEICULO
+
+Identifica o automóvel ao longo de avaliações, entradas, vendas e despesas.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identificação conceitual do automóvel. | Identificador | Obrigatório | RN04 |
+| marca | Marca do veículo. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| modelo | Modelo comercial. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| ano_modelo | Um ano de referência, por exemplo 2024. | Descritivo | Obrigatório | Não utilizar intervalo de anos |
+| cor | Cor informada. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| placa | Placa do veículo, quando disponível. | Descritivo | Opcional inicialmente | RN04 |
+| chassi | Identificação do chassi, quando disponível. | Descritivo | Opcional inicialmente | RN04; exigência na formalização a validar |
+| combustivel | Tipo de combustível. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| cambio | Tipo de câmbio. | Descritivo | Obrigatório | Manual ou automático, conforme briefing |
+| categoria_comercial | Novo, seminovo ou usado. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| situacao_atual | Posição operacional obtida das entradas e vendas vigentes. | Derivado / estado | Obrigatório | Fora do estoque, disponível, em formalização, vendido ou aguardando regularização; proposta |
+
+### E04 — ATENDIMENTO
+
+Preserva contatos e interesses, inclusive quando não resultam em venda.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica o contato. | Identificador | Obrigatório | RF03 |
+| data | Momento do atendimento. | Temporal | Obrigatório | Histórico de leads |
+| interesse | Natureza (compra, venda ou troca) e descrição da necessidade. | Composto | Obrigatório | P01 |
+| situacao | Andamento do atendimento. | Estado | Obrigatório | Etapas a validar |
+| observacoes | Informações complementares pertinentes ao contato. | Descritivo | Opcional | Não substitui os dados da venda |
+
+### E05 — AVALIACAO
+
+Registra análise técnica e interesse comercial para fundamentar a aceitação.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica a análise. | Identificador | Obrigatório | RF05 |
+| data | Momento da avaliação. | Temporal | Obrigatório | Distingue reavaliações |
+| finalidade | Compra própria, consignação ou troca. | Descritivo | Obrigatório | RN06, RN17 |
+| quilometragem | Quilometragem observada nessa análise. | Medida | Obrigatório | Preserva o momento da observação |
+| quantidade_proprietarios | Quantidade de proprietários informada na análise. | Medida | Opcional (se desconhecida) | Convenção de contagem a validar |
+| condicoes | Condições externas, internas, mecânicas, estruturais e documentais. | Composto | Obrigatório ao concluir | Cada dimensão deve ser identificável |
+| decisao_tecnica | Aprovada, reprovada ou pendente. | Estado | Obrigatório | RN06 |
+| interesse_comercial | Sim, não ou em análise quanto ao interesse da loja. | Estado | Obrigatório | RN07 |
+| justificativa | Fundamentação da decisão e dos apontamentos. | Descritivo | Obrigatório ao concluir | PROB02
 
 ### Entidades E06 a E10 e Detalhamento de Componentes
 
