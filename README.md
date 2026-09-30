@@ -290,7 +290,7 @@ Tabelas e controles estritamente técnicos de infraestrutura (como logs detalhad
 
 <a id="secao-8"></a>
 
- 8. Regras de negócio
+## 8. Regras de negócio
 
 8.1. Pessoas, veículos e entrada
 
@@ -371,7 +371,7 @@ Restrições complementares:
 
 <a id="secao-9"></a>
 
-9. Restrições e políticas organizacionais
+## 9. Restrições e políticas organizacionais
 
 | ID | Restrição/política | Situação e Fundamentação |
 |---|---|---|
