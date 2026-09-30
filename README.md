@@ -1,4 +1,4 @@
-# Projeto ERP — Multiplikar Automóveis
+<img width="1675" height="562" alt="image" src="https://github.com/user-attachments/assets/1824f201-08b2-49a4-ad6b-3369ec10d225" /># Projeto ERP — Multiplikar Automóveis
 
 **Projeto Integrador — Modelagem de Dados - Primeira Entrega**  
 **Primeira entrega: modelo conceitual**
@@ -71,7 +71,23 @@ As responsabilidades foram divididas entre os integrantes para cobrir todas as e
 
 ### 1.3. Diário de bordo
 
-Parte do Brenno
+O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 18 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
+
+![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
+
+[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
+
+### 16.1. Convenções de Notação Adotadas
+
+- *Entidades:* representadas por retângulos (ex.: PESSOA, VEICULO, VENDA).
+- *Relacionamentos:* representados por losangos com os nomes dos verbos que descrevem as interações reais (ex.: compra em, passa por).
+- *Atributos:* representados por elipses ligadas às suas respectivas entidades.
+  - Atributos *identificadores* aparecem com o nome sublinhado (ex.: <u>identificador</u>).
+  - Atributos *multivalorados* possuem contorno duplo (como formas_pagamento e documentos_conferidos).
+  - Atributos *derivados* possuem traço pontilhado/tracejado (como valor_total e situacao_atual).
+  - Atributos *compostos* possuem seus sub-atributos atômicos detalhados no dicionário de dados (Seção 15.6) para manter o diagrama visualmente limpo e legível.
+- *Cardinalidades:* cada conexão indica a participação mínima e máxima da entidade no relacionamento (min, max), conforme detalhado na análise Vá e Volte da Seção 14.
+- As relações R13 e R14 distinguem com exatidão o carro principal vendido (é comercializada em) dos carros recebidos como entrada em trocas (recebe em troca).
 
 <a id="secao-2"></a>
 
