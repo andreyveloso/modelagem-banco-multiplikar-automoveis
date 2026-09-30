@@ -49,7 +49,7 @@
 | Professor(a) | Clóvis Ferraro |
 | Instituição | UNICID |
 | Data de submissão |2° Semestre - Eng. Software |
-| Repositório GitHub | Inserir endereço após publicação |
+| Repositório GitHub | (https://github.com/andreyveloso/modelagem-banco-multiplikar-automoveis) |
 
 Observação: As informações acadêmicas e a estrutura do repositório foram revisadas pelo grupo para a submissão desta primeira entrega.
 
