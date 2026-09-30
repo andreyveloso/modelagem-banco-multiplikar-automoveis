@@ -1,4 +1,4 @@
-<img width="1675" height="562" alt="image" src="https://github.com/user-attachments/assets/1824f201-08b2-49a4-ad6b-3369ec10d225" /># Projeto ERP — Multiplikar Automóveis
+# Projeto ERP — Multiplikar Automóveis
 
 **Projeto Integrador — Modelagem de Dados - Primeira Entrega**  
 **Primeira entrega: modelo conceitual**
