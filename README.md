@@ -193,9 +193,52 @@ O uso de planilhas sem integração pode levar a retrabalho, divergências entre
 - **Resultado:** uma venda, um contrato e zero ou várias entradas vinculadas.
 - **Origem:** Briefing da loja (p. 4 e 7–8) e esclarecimentos operacionais do levantamento.
 
-### Processos P05 a P08
+### P05 — Informações de pagamento e financiamento
 
-Parte do Nicolas
+- **Objetivo:** identificar formas utilizadas e cumprimento financeiro da venda.
+- **Participantes:** comprador, funcionário e banco quando houver financiamento.
+- **Gatilho:** definição das condições comerciais.
+- **Etapas:** registrar formas em VENDA; atualizar total recebido e data; registrar único financiamento quando houver; diferenciar aprovação de recebimento pela loja.
+- **Decisões/exceções:** aprovado mas não recebido mantém pendência; não se acompanha parcela do cliente.
+- **Informações:** conjunto de formas, total monetário recebido, data mais recente, situação financeira, banco, valor e situação do financiamento.
+- **Resultado:** posição financeira resumida, associada à venda.
+- **Limite:** não há histórico individual de recebimentos nem valores por forma.
+- **Origem:** Briefing da loja (p. 4 e 7) e orientações práticas para a modelagem da primeira entrega.
+
+### P06 — Documentação, conclusão e entrega
+
+- **Objetivo:** cumprir condições financeiras, documentais e técnicas e registrar a entrega.
+- **Participantes:** comprador, funcionário e responsáveis técnicos.
+- **Gatilho:** venda em formalização.
+- **Etapas:** conferir pagamento; conferir CNH, laudo, CRLV, ATPV e comprovante de residência; reconhecer firmas aplicáveis; analisar laudo; registrar conclusão; realizar scanner/preparação; registrar entrega.
+- **Decisões/exceções:** pendências impedem o marco correspondente. Os critérios de autorização diante de apontamentos técnicos permanecem a validar.
+- **Informações:** documentos conferidos, situação documental, reconhecimento, laudo, scanner, conclusão, entrega e garantia.
+- **Resultado:** venda concluída e entrega registrada, iniciando a garantia concedida.
+- **Observação:** o reconhecimento de firma é exigido apenas nos documentos pertinentes de transferência (como ATPV e contratos de compra/consignação), dispensando-se tal formalidade para documentos comprobatórios simples (como comprovante de residência e CNH).
+- **Origem:** Briefing da loja (p. 7) e esclarecimentos operacionais do levantamento.
+
+### P07 — Garantia e devolução
+
+- **Objetivo:** registrar problema, análise e solução, inclusive eventual desfazimento.
+- **Participantes:** cliente, funcionário, mecânico e, quando aplicável, consignante ou banco.
+- **Gatilho:** comunicação de problema ou acordo de desfazimento.
+- **Etapas:** localizar venda; abrir ocorrência; verificar garantia e atendimento externo; diagnosticar; analisar responsabilidade; negociar solução.
+- **Decisões/exceções:** quando houver desfazimento, registrar o retorno do veículo vendido e as restituições. Na troca, devolver os veículos recebidos. Na consignação, devolver a parte da loja e avisar o proprietário. Com financiamento, tratar com banco e registrar orientação.
+- **Informações:** problema, diagnóstico, mecânico, solução, cancelamento, devoluções e observações.
+- **Resultado:** solução registrada ou desfazimento em acompanhamento.
+- **Limite:** exceções não descritas são registradas nas observações; não são criados procedimentos bancários ou módulos adicionais.
+- **Origem:** Briefing da loja (p. 4 e 7) e esclarecimentos operacionais do levantamento.
+
+### P08 — Despesas e relatórios
+
+- **Objetivo:** organizar custos por veículo e consultas gerenciais do escopo.
+- **Participantes:** funcionários e responsáveis administrativos.
+- **Gatilho:** ocorrência de despesa ou solicitação de consulta.
+- **Etapas:** identificar veículo; registrar despesa; consultar atendimentos, entradas, vendas, posições financeiras e custos.
+- **Decisões/exceções:** despesas gerais, rateios e folha salarial ficam fora do modelo.
+- **Informações:** data, categoria, descrição e valor por veículo.
+- **Resultado:** relatórios sustentados pelos dados modelados.
+- **Origem:** Briefing da loja (p. 7).
 
 <a id="secao-6"></a>
 
