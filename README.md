@@ -71,12 +71,6 @@ As responsabilidades foram divididas entre os integrantes para cobrir todas as e
 
 ### 1.3. Diário de bordo
 
-O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 18 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
-
-![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
-
-[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
-
 <a id="secao-2"></a>
 
 ## 2. Caracterização da empresa
@@ -910,6 +904,12 @@ Em conformidade com as diretrizes do Manual da Primeira Entrega (Etapa 17) e a n
 <a id="secao-16"></a>
 
 ## 16. DER
+
+O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 18 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
+
+![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
+
+[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
 
 ### 16.1. Convenções de Notação Adotadas
 
