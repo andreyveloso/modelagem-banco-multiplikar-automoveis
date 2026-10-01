@@ -1,6 +1,6 @@
 # Projeto ERP — Multiplikar Automóveis
 
-**Projeto Integrador — Modelagem de Dados - Primeira Entrega**  
+**Projeto Integrador - Modelagem de Dados - Primeira Entrega**  
 **Primeira entrega: modelo conceitual**
 
 ## Sumário
