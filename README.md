@@ -981,7 +981,7 @@ Modelo lógico, normalização, tipos, chaves físicas, SQL, segurança técnica
 
 ### 17.14. Resumo das Decisões de Modelagem e Premissas do Projeto
 
-Para auxiliar na apresentação e na defesa técnica do trabalho perante o professor, organizamos a síntese das principais escolhas de modelagem e sua relação direta com os fatos observados no briefing:
+Apresentamos a seguir o resumo executivo das principais decisões conceituais adotadas pelo grupo:
 
 | Classificação | Tema / Questão de Modelagem | Decisão Tomada pelo Grupo e Justificativa Técnica | Referência no Briefing |
 |---|---|---|---|
