@@ -70,6 +70,8 @@ Observação: As informações acadêmicas e a estrutura do repositório foram r
 As responsabilidades foram divididas entre os integrantes para cobrir todas as etapas solicitadas no manual, e realizamos reuniões conjuntas para alinhar o DER e validar a coerência geral do modelo.
 
 ### 1.3. Diário de bordo
+O registro contínuo das atividades, evolução do modelo e acompanhamento das tarefas do grupo foi documentado aula a aula diretamente no modelo oficial de Diário de Bordo disponibilizado pelo
+professor Clóvis Ferraro, consolidando as discussões presenciais e a participação de cada integrante ao longo do semestre.
 
 <a id="secao-2"></a>
 
