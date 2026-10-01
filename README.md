@@ -744,7 +744,168 @@ Registra análise técnica e interesse comercial para fundamentar a aceitação.
 
 ### Entidades E06 a E10 e Detalhamento de Componentes
 
-Parte do David
+### E06 — LAUDO
+
+Preserva o documento cautelar, sua emissão e seu resultado.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica o laudo. | Identificador | Obrigatório | RF06 |
+| referencia_documental | Referência para localizar o laudo. | Descritivo | Obrigatório | Sem definir formato físico |
+| data_emissao | Data de emissão. | Temporal | Obrigatório | Briefing da loja (p. 4) |
+| situacao | Situação documental do laudo. | Estado | Obrigatório | Vocabulário a validar |
+| resultado | Conclusões e apontamentos cautelares. | Descritivo | Obrigatório | Não substitui a decisão da avaliação |
+
+### E07 — ENTRADA
+
+Registra cada disponibilização aceita: compra própria, consignação ou troca.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica a entrada aceita. | Identificador | Obrigatório | Unificação das modalidades de entrada (compra, consignação e troca) |
+| modalidade | Compra própria, consignação ou troca. | Descritivo | Obrigatório | RN09 |
+| data_entrada | Data da incorporação operacional aceita. | Temporal | Obrigatório | Não é o cadastro preliminar |
+| situacao | Ativa, comercializada, em regularização, retirada ou devolvida. | Estado | Obrigatório | Domínio proposto |
+| encerramento | Data e motivo do encerramento, quando houver. | Composto | Condicional | Preserva retirada e desfazimento |
+| valor_acordado | Aquisição: preço de compra; consignação: preço combinado; troca: valor aceito. | Valor | Obrigatório | Significado depende da modalidade |
+| preco_anunciado | Preço pedido para a comercialização nessa entrada. | Valor | Condicional (ao disponibilizar) | Distinto do valor final da venda |
+| contrato_entrada | Referência, data, condições e ajustes da compra própria ou consignação. | Composto | Condicional (compra/consignação) | Ausente na troca, que utiliza o contrato de VENDA |
+| reconhecimento_firma | Situação do reconhecimento do contrato de entrada. | Estado | Condicional | Obrigatório na consignação, RN12 |
+| prazo_consignacao | Prazo de término, quando excepcionalmente definido. | Temporal | Opcional (para consignação) | Ausência representa prazo indeterminado |
+| condicoes_repasse | Critério, valor definido e condições de repasse ao consignante. | Composto | Condicional (para consignação) | Não representa recebimentos individuais |
+| data_devolucao | Data da devolução do veículo recebido em troca, se a venda for desfeita. | Temporal | Condicional (no desfazimento) | RN29; situação fica em situacao |
+
+### E08 — VENDA
+
+Representa negociação, contrato, valores, condições de conclusão, entrega e desfazimento.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica a negociação. | Identificador | Obrigatório | RN14 |
+| data_registro | Registro da proposta aceita. | Temporal | Obrigatório | Data em que a proposta foi formalmente aceita |
+| situacao_comercial | Em formalização, concluída, em desfazimento ou cancelada. | Estado | Obrigatório | Domínio proposto |
+| data_conclusao | Momento da conclusão comercial. | Temporal | Condicional (quando concluída) | RN22 |
+| valor_base | Valor negociado antes dos ajustes. | Valor | Obrigatório | Convenção proposta |
+| desconto | Redução comercial aplicada. | Valor | Obrigatório (pode ser zero) | RN15 |
+| acrescimo | Acréscimo comercial aplicado. | Valor | Obrigatório (pode ser zero) | RN15 |
+| taxas | Total dos encargos da venda, discriminados no contrato. | Valor | Obrigatório (pode ser zero) | RN15 |
+| valor_total | Valor base menos desconto, mais acréscimo e taxas. | Derivado / valor | Obrigatório | Não subtrai a troca do preço total |
+| contrato_venda | Referência, data e condições do contrato principal. | Composto | Condicional (na formalização) | Discrimina todos os veículos recebidos e seus valores |
+| documentos_conferidos | Conjunto dos documentos apresentados e conferidos. | Multivalorado | Condicional (para formalização) | Valores simples: CNH, laudo cautelar, CRLV, ATPV e comprovante de residência |
+| situacao_documental | Situação global da documentação necessária. | Estado | Obrigatório | Pendente ou completa; domínio proposto |
+| reconhecimento_documental | Situação e data do reconhecimento de firma dos documentos aos quais ele se aplica. | Composto | Condicional (antes de concluir) | Não pressupõe firma reconhecida em CNH, laudo ou conta de luz |
+| condicao_repasse | Indica comercialização na condição de repasse. | Estado | Obrigatório | Deve constar no contrato quando aplicável |
+| formas_pagamento | Conjunto simples das formas utilizadas na venda. | Multivalorado | Condicional (conforme negociação) | Dinheiro, Pix, cartão, financiamento; SEM componentes |
+| valor_recebido | Total monetário efetivamente recebido pela loja na venda. | Valor | Obrigatório (inicia em zero) | Inclui financiamento efetivamente recebido; exclui valor dos veículos de troca |
+| data_ultimo_recebimento | Data da confirmação monetária mais recente. | Temporal | Condicional (ao receber) | Não é histórico individual de transações |
+| situacao_financeira | Pendente, parcial ou integral quanto ao cumprimento econômico acordado. | Estado | Obrigatório | Considera dinheiro recebido e valores aceitos dos veículos da troca |
+| instituicao_financeira | Banco do único financiamento, quando houver. | Descritivo | Condicional (se houver financiamento) | RN21; sem entidade própria |
+| valor_financiado | Valor contratado para cobrir parte da venda. | Valor | Condicional (se houver financiamento) | Não é somado novamente ao valor_recebido |
+| situacao_financiamento | Em análise, não aprovado, aprovado a receber ou recebido. | Estado | Condicional (se houver financiamento) | Distingue aprovação e recebimento pela loja |
+| data_aprovacao_financiamento | Data da aprovação bancária. | Temporal | Condicional (quando aprovado) | Não conclui a venda sozinha |
+| data_recebimento_financiamento | Data do efetivo recebimento do financiamento pela loja. | Temporal | Condicional (quando recebido) | Sem acompanhamento de parcelas do cliente |
+| verificacao_scanner | Data, resultado e providências do scanner. | Composto | Condicional (antes da entrega) | RN23 |
+| preparacao | Providências executadas para preparar o veículo. | Descritivo | Opcional (conforme necessidade) | Custos individualizados ficam em DESPESA |
+| data_entrega | Data da entrega efetiva ao comprador. | Temporal | Condicional (quando entregue) | Início da garantia |
+| garantia | Concessão, início, fim e condições informadas ao cliente. | Composto | Obrigatório (concessão) | Dois meses a partir da entrega, quando concedida |
+| cancelamento | Data, motivo, retorno do veículo, restituição da loja, comunicação ao consignante e observações da solução. | Composto | Condicional (no desfazimento) | Procedimento simples; banco tratado nas observações, sem módulo adicional |
+
+### E09 — OCORRENCIA_GARANTIA
+
+Registra cada reclamação, diagnóstico, serviço e solução vinculados à venda.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica a ocorrência. | Identificador | Obrigatório | RF15 |
+| data_abertura | Data de abertura do atendimento. | Temporal | Obrigatório | P07 |
+| problema_relatado | Descrição apresentada pelo cliente. | Descritivo | Obrigatório | Não equivale ao diagnóstico |
+| atendimento_externo_informado | Informa ida a mecânico externo: sim, não ou não informado. | Estado | Obrigatório | Política declarada, RN26 |
+| diagnostico | Resultado da análise técnica. | Descritivo | Condicional (após análise) | RN27 |
+| responsabilidade_apurada | Conclusão sobre responsabilidade da loja, mau uso ou análise inconclusiva. | Estado | Condicional (após análise) | Não antecipar conclusão |
+| servico_realizado | Reparo ou providência executada. | Descritivo | Condicional (se houver serviço) | P07 |
+| solucao | Desfecho acordado ou encaminhamento ao cancelamento. | Descritivo | Condicional (ao encerrar) | RN28–RN31 |
+| situacao | Andamento da ocorrência. | Estado | Obrigatório | Vocabulário a validar |
+| data_encerramento | Data de encerramento do atendimento. | Temporal | Condicional (ao encerrar) | Histórico de pós-venda |
+
+### E10 — DESPESA
+
+Registra custos individualizados associados a cada veículo.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica a despesa. | Identificador | Obrigatório | RF17 |
+| data | Data da ocorrência da despesa. | Temporal | Obrigatório | Não significa data de quitação |
+| categoria | Classificação gerencial. | Descritivo | Obrigatório | Categorias a definir |
+| descricao | Objeto da despesa, como bateria, pneus ou serviço. | Descritivo | Obrigatório | Briefing da loja (p. 7) |
+| valor | Valor atribuído ao veículo. | Valor | Obrigatório | RN32 |
+
+
+### 15.1. Formas de pagamento: somente multivalorado
+
+`formas_pagamento` guarda um conjunto de valores simples. Exemplo de aplicação prática:
+
+```text
+formas_pagamento = {Pix, financiamento}
+valor_total = R$ 80.000,00
+valor_recebido = R$ 80.000,00
+valor_financiado = R$ 60.000,00
+situacao_financiamento = recebido
+```
+
+O exemplo não transforma cada forma em uma estrutura com valor/data. **Não há componentes, identificador por recebimento nem registros financeiros individuais.** O valor financiado já integra o total recebido quando efetivamente repassado à loja; não é somado novamente.
+
+Essa modelagem atende à diretriz do projeto conceitual de manter as formas de pagamento como atributo multivalorado simples, associando à entidade VENDA os atributos de controle financeiro global (valor recebido, data do último recebimento e situação financeira). O controle detalhado de parcelas e conciliação bancária será desenvolvido nas etapas seguintes de modelo lógico e físico.
+
+### 15.2. Valores, trocas e situação financeira
+
+Convenção proposta:
+
+**valor_total = valor_base − desconto + acrescimo + taxas.**
+
+O total aceito em troca é a soma de `ENTRADA.valor_acordado` das entradas recebidas pela venda. Não é armazenado novamente como atributo independente. O valor do veículo é contrapartida econômica, não dinheiro recebido.
+
+Para uma venda não cancelada, a posição financeira é avaliada a partir de:
+
+**valor_total − valores aceitos das trocas efetivamente incorporadas − valor_recebido.**
+
+Essa consistência garante que o saldo de quitação da venda seja verificado com exatidão considerando valores monetários recebidos e valores aceitos dos veículos de troca. No cancelamento, as restituições são registradas separadamente, preservando os valores históricos da negociação.
+
+### 15.3. Documentos
+
+`documentos_conferidos` é outro conjunto simples, cujos valores são CNH, laudo cautelar, CRLV, ATPV e comprovante de residência. O comprovante contém nome e endereço; uma conta de luz é exemplo informado, não único formato aceito.
+
+O checklist não substitui o LAUDO: este possui resultado, emissão e veículo próprios. Marcar laudo conferido exige vínculo ao laudo do veículo principal. O modelo registra conferência, sem exigir armazenamento de imagens dos documentos ou criar entidades para cada espécie documental.
+
+O reconhecimento de firma é formalidade aplicada especificamente aos documentos cabíveis de transferência e contratos.
+
+### 15.4. Devolução simples
+
+`cancelamento` concentra data, motivo, data de retorno do veículo vendido, valor devolvido pela loja, data de comunicação ao consignante quando houver e observações do resultado. A situação geral é `situacao_comercial`.
+
+Na troca, `ENTRADA.data_devolucao` e `ENTRADA.situacao` identificam a devolução de cada veículo recebido. Na consignação, as observações registram a parte restante atribuída ao proprietário e a respectiva comunicação. No financiamento, registram-se as instruções recebidas da instituição financeira para formalizar a regularização do cancelamento.
+
+### 15.5. Dados pessoais e duplicidades
+
+Para evitar cadastros repetidos de uma mesma pessoa no sistema, os dados de contato e documento ficam centralizados em PESSOA. Da mesma forma, cliente e veículo da ocorrência de garantia derivam diretamente da venda, mantendo os vínculos diretos e organizados no modelo conceitual.
+
+### 15.6. Detalhamento dos Componentes dos Atributos Compostos
+
+Em conformidade com as diretrizes do Manual da Primeira Entrega (Etapa 17) e a notação conceitual clássica, todo atributo classificado como **composto** é formado por um conjunto de sub-atributos componentes simples (atômicos), descritos a seguir:
+
+| Entidade | Atributo Composto | Sub-atributos Componentes | Descrição de Cada Componente |
+|---|---|---|---|
+| **PESSOA** | `documento` | `tipo_documento`<br>`numero_documento` | Tipo da identificação civil/fiscal (CPF ou CNPJ).<br>Número do registro cadastral oficial. |
+| **PESSOA** | `endereco` | `logradouro`<br>`numero`<br>`complemento`<br>`bairro`<br>`cidade`<br>`estado_uf` | Nome da via pública (rua, avenida).<br>Número predial do imóvel.<br>Complemento residencial (apto, bloco), opcional.<br>Bairro de localização.<br>Município do domicílio.<br>Sigla da Unidade Federativa (UF). |
+| **ATENDIMENTO** | `interesse` | `tipo_interesse`<br>`descricao_interesse` | Natureza do contato inicial: compra, venda ou troca.<br>Descrição detalhada da necessidade ou modelo desejado. |
+| **AVALIACAO** | `condicoes` | `condicao_externa`<br>`condicao_interna`<br>`condicao_mecanica`<br>`condicao_estrutural`<br>`condicao_documental` | Estado de lataria, pintura e vidros.<br>Estado de estofamento, painel e acabamentos.<br>Condição de motor, câmbio e suspensão.<br>Integridade de chassi, monobloco e colunas.<br>Situação de débitos, multas e restrições legais. |
+| **ENTRADA** | `encerramento` | `data_encerramento`<br>`motivo_encerramento` | Data em que a entrada foi finalizada.<br>Causa do término: venda concluída, desfazimento ou retirada. |
+| **ENTRADA** | `contrato_entrada` | `numero_contrato`<br>`data_emissao`<br>`termos_ajustes` | Identificador do contrato de compra própria ou consignação.<br>Data de assinatura do instrumento formal.<br>Cláusulas e acordos específicos pactuados. |
+| **ENTRADA** | `condicoes_repasse` | `valor_repasse_acordado`<br>`prazo_repasse`<br>`criterio_repasse` | Valor combinado a ser repassado ao proprietário consignante.<br>Prazo estipulado para liquidação após a venda.<br>Condições e formas acordadas para o pagamento. |
+| **VENDA** | `contrato_venda` | `numero_contrato`<br>`data_emissao`<br>`termos_condicoes` | Identificador do instrumento formal de compra e venda.<br>Data de celebração do negócio jurídico.<br>Condições comerciais, encargos e veículos de troca aceitos. |
+| **VENDA** | `reconhecimento_documental` | `documento_alvo`<br>`situacao_reconhecimento`<br>`data_reconhecimento` | Documento que exige firma (ex: ATPV / contrato).<br>Estado do reconhecimento em cartório (pendente ou realizado).<br>Data da efetivação do reconhecimento de firma. |
+| **VENDA** | `verificacao_scanner` | `data_scanner`<br>`resultado_scanner`<br>`providencias_scanner` | Data da passagem do scanner automotivo pré-entrega.<br>Resultado da leitura eletrônica (sem falhas ou códigos de erro).<br>Ajustes técnicos executados antes da entrega. |
+| **VENDA** | `garantia` | `concessao_garantia`<br>`data_inicio_garantia`<br>`data_fim_garantia`<br>`termos_politica` | Indicador de concessão da garantia contratual.<br>Data inicial da garantia (marco idêntico à data de entrega).<br>Data limite da vigência (dois meses após a entrega).<br>Condições e política declarada de exclusividade de reparo na loja. |
+| **VENDA** | `cancelamento` | `data_cancelamento`<br>`motivo_cancelamento`<br>`data_retorno_veiculo`<br>`valor_restituido_loja`<br>`data_aviso_consignante`<br>`orientacao_bancaria` | Data de formalização do desfazimento do negócio.<br>Motivo declarado para o distrato.<br>Data em que o veículo vendido retornou fisicamente à loja.<br>Quantia financeira devolvida pela loja ao comprador.<br>Data da notificação ao consignante (se veículo consignado).<br>Registro da orientação e tratativa com o banco financiador. |
 
 <a id="secao-16"></a>
 
