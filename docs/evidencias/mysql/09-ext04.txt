@@ -1,0 +1,47 @@
+resultado
+PASS CRM: quatro classificacoes e referencia 2026-02-10 conferidas
+resultado
+PASS CRM: atendimento 7 MORNO sugerido e QUENTE revisado
+resultado
+PASS CRM: atendimento 8 encerrado com desfecho de perda
+Note (Code 1305): PROCEDURE multiplikar.teste_regra_crm does not exist
+resultado
+PASS CRM interacao somente insercao update: somente insercao
+resultado
+PASS CRM interacao somente insercao delete: somente insercao
+resultado
+PASS CRM desfecho somente insercao update: somente insercao
+resultado
+PASS CRM desfecho somente insercao delete: somente insercao
+resultado
+PASS CRM fator somente insercao update: somente insercao
+resultado
+PASS CRM fator somente insercao delete: somente insercao
+resultado
+PASS CRM classificacao revisada imutavel: Apenas revisao humana ausente
+resultado
+PASS CRM classificacao historica nao apaga: historico; nunca e apagada
+resultado
+PASS CRM temperatura fora do dominio: ck_parametro_temperatura
+resultado
+PASS CRM probabilidade fora do intervalo: ck_parametro_probabilidade
+resultado
+PASS CRM fator fora do dominio: ck_fator_codigo
+resultado
+PASS CRM classificacao sem atendimento: fk_classificacao_lead_id_atendimento
+resultado
+PASS CRM desfecho duplicado: Duplicate entry
+resultado
+PASS CRM tipo de desfecho fora do dominio: ck_desfecho_tipo
+resultado
+PASS CRM interacao com atendimento inexistente: fk_interacao_id_atendimento
+resultado
+PASS CRM proximo passo antes da interacao: ck_interacao_proximo_passo
+resultado
+PASS CRM interacao sem resumo: ck_interacao_resumo
+resultado
+PASS CRM parametro temperatura duplicado: Duplicate entry
+resultado
+PASS CRM revisao divergente exige justificativa: ck_classificacao_justificativa
+resultado
+PASS CRM procedure limpa marca da sessao apos INSERT falho: data_hora

@@ -1,0 +1,27 @@
+TABLE_TYPE	total
+BASE TABLE	28
+VIEW	11
+TABLE_NAME
+vw_caixa_realizado_referencia
+vw_cliente_cpf
+vw_fila_acoes
+vw_fluxos_previsao
+vw_lead_atual
+vw_previsao_caixa
+vw_proposta_comparativo
+vw_simulacao_parcela
+vw_veiculo_situacao
+vw_venda_resumo
+vw_venda_validacao
+DATA_TYPE	colunas
+bigint	85
+char	1
+date	21
+datetime	47
+decimal	75
+int	20
+mediumtext	2
+smallint	4
+text	37
+tinyint	9
+varchar	128

@@ -1,0 +1,9 @@
+Note (Code 1051): Unknown table 'multiplikar.vw_previsao_caixa'
+Note (Code 1051): Unknown table 'multiplikar.vw_fluxos_previsao'
+Note (Code 1051): Unknown table 'multiplikar.vw_caixa_realizado_referencia'
+Note (Code 1305): PROCEDURE multiplikar.fn_previsao_caixa_cenario does not exist
+Note (Code 1305): PROCEDURE multiplikar.verificar_previsao_caixa does not exist
+resultado
+PASS previsao: semanas e realizado ate a referencia
+resultado
+PASS previsao: funil limitado a alternativas e liquido de repasse

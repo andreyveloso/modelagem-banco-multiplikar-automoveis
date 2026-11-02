@@ -1,0 +1,2 @@
+Note (Code 1305): PROCEDURE multiplikar.concluir_venda does not exist
+Note (Code 1305): PROCEDURE multiplikar.cancelar_venda does not exist

@@ -1,0 +1,69 @@
+resultado
+PASS demonstracao: alternativas A/B/C e trade-off R0/R4 conferidos
+resultado
+PASS massa proposta: condicoes, troca e simulacoes conferidas
+Note (Code 1305): PROCEDURE multiplikar.teste_regra_ext02 does not exist
+resultado
+PASS ext02 condicao duplicada na proposta: Duplicate entry
+resultado
+PASS ext02 valor da condicao deve ser positivo: ck_proposta_condicao_valor
+resultado
+PASS ext02 apresentada imutavel: Proposta apresentada e imutavel
+resultado
+PASS ext02 condicao de proposta apresentada imutavel: Proposta apresentada e imutavel
+resultado
+PASS ext02 ACEITA exige funcao atomica: Use aceitar_proposta
+resultado
+PASS ext02 consentimento de renda obrigatorio: ck_simulacao_consentimento_renda
+resultado
+PASS ext02 retorno sem vigencia: Parametro_retorno vigente
+resultado
+PASS ext02 simulacao nao pode ser apagada: nao pode ser removida
+resultado
+PASS ext02 simulacao em analise nao altera dados-base: so permite alterar situacao
+resultado
+PASS ext02 obrigacao nao pode ser apagada: nao pode ser removida
+resultado
+PASS ext02 vencimento original e imutavel: so permite alterar vencimento_atual
+resultado
+PASS ext02 arco administrativo sem FK: ck_obrigacao_arco
+resultado
+PASS ext02 troca ja consumida: Troca exige avaliacao aprovada
+resultado
+PASS ext02 troca ligada a proposta apresentada: Troca exige avaliacao aprovada
+resultado
+PASS ext02 percentual de retorno limitado: ck_parametro_retorno_pct
+resultado
+PASS ext02 instituicao e tabela unicas por vigencia: Duplicate entry
+resultado
+PASS ext02 obrigacao so permite campos de previsao: so permite alterar vencimento_atual
+resultado
+PASS ext02 simulacao sem taxa tabela valida: Parametro_retorno vigente
+resultado
+PASS ext02 venda referencia proposta nao aceita: Venda exige proposta aceita
+resultado
+PASS ext02 datas da obrigacao em ordem: ck_obrigacao_datas
+resultado
+PASS ext02 raiz exige versao 1: Proposta raiz deve iniciar
+resultado
+PASS ext02 alternativa raiz rotulo e versao unicos: Duplicate entry
+resultado
+PASS ext02 sucessora exige predecessora substituida: Contraproposta deve suceder
+resultado
+PASS ext02 decisao nula antes da decisao: ck_proposta_data_decisao
+resultado
+PASS ext02 ACEITA depois da validade: Proposta aceita exige entrada ativa
+resultado
+PASS ext02 situacao terminal da obrigacao: Situacao terminal da obrigacao financeira
+resultado
+PASS ext02 transicao atrasada para aberta proibida: Situacao terminal da obrigacao financeira
+resultado
+PASS ext02 segunda simulacao aprovada para proposta: Duplicate entry
+resultado
+PASS ext02 data resposta anterior a simulacao: ck_simulacao_datas
+resultado
+PASS ext02 simulacao R4 em analise nao altera tabela: so permite alterar situacao
+resultado
+PASS ext02 substituicao positiva: alternativa A sucede para versao 2 e aplica desconto
+resultado
+PASS ext02 sucessora herda rotulo: Contraproposta deve suceder a mesma alternativa

@@ -1,0 +1,960 @@
+Note (Code 1305): PROCEDURE multiplikar.concluir_venda does not exist
+Note (Code 1305): PROCEDURE multiplikar.cancelar_venda does not exist
+Note (Code 1305): FUNCTION multiplikar.pessoa_dados_contrato does not exist
+resultado
+PASS massa: 6 vendas, 10 entradas e 2 ocorrencias
+resultado
+PASS RN22: vendas concluidas atendem aos requisitos
+resultado
+PASS composicao: troca, saldo quitado e financiamento pendente
+resultado
+PASS RN13: distrato e novo ciclo do HB20 preservados
+Note (Code 1305): PROCEDURE multiplikar.massa_rejeitar does not exist
+resultado
+PASS massa vinculo avaliacao-laudo de outro veiculo: RN08
+resultado
+PASS massa laudo usado nao muda de veiculo: RN08
+resultado
+PASS massa avaliacao de entrada nao pode reprovar: RN06/RN07
+resultado
+PASS massa identidade de entrada imutavel: Identidade e origem
+resultado
+PASS massa entrada historica nao apaga: nunca apagado
+resultado
+PASS massa venda historica nao apaga: nunca apagado
+resultado
+PASS massa recebimento da venda concluida e imutavel: RN22
+resultado
+PASS massa documento concluido nao apaga: RN22
+resultado
+PASS massa documento concluido nao altera: RN22
+resultado
+PASS massa despesa sem veiculo: fk_despesa
+resultado
+PASS massa despesa negativa: ck_despesa_valor
+resultado
+PASS massa pessoa sem nome: nome
+resultado
+PASS massa data de recebimento posterior a conclusao: RN22
+resultado
+PASS massa tipo de documento desconhecido: ck_documento_tipo
+resultado
+PASS massa categoria de despesa desconhecida: ck_despesa_categoria
+resultado
+PASS massa status de atendimento desconhecido: ck_atendimento_situacao
+resultado
+PASS massa entrada duplica ciclo ativo do veiculo: Duplicate entry
+resultado
+PASS massa concluir venda com financiamento pendente: RN22
+resultado
+PASS massa cancelar venda sem ciclo de retorno: RN13/RN28-RN31
+resultado
+PASS massa forma de venda duplicada: Duplicate entry
+resultado
+PASS massa estado final irregular de venda: Use concluir_venda
+resultado
+PASS massa forma de pagamento de venda concluida nao apaga: RN22
+resultado
+PASS massa financiamento de venda concluida nao apaga: RN22
+resultado
+PASS massa garantia historica da venda concluida: RN22
+resultado
+PASS massa garantia historica da venda 5: RN22
+resultado
+PASS massa recebimento de venda 5 concluida e imutavel: RN22
+resultado
+PASS massa situacao de funcionario fora do dominio: ck_funcionario_situacao
+resultado
+PASS massa situacao de laudo fora do dominio: ck_laudo_situacao
+resultado
+PASS massa situacao de ocorrencia fora do dominio: ck_ocorrencia_situacao
+resultado
+PASS massa responsabilidade de ocorrencia fora do dominio: ck_ocorrencia_responsabilidade
+resultado
+PASS massa ano de veiculo abaixo do limite: ck_veiculo_ano
+resultado
+PASS massa ano de veiculo acima do limite: ck_veiculo_ano
+marca	modelo	qtd_vendas	valor_total_vendido	ticket_medio
+Toyota	Corolla	1	100000.00	100000.000000
+Honda	City	1	80000.00	80000.000000
+Hyundai	HB20	1	68000.00	68000.000000
+Fiat	Argo	1	60000.00	60000.000000
+nome	documento_mascarado	telefone_mascarado	email_mascarado	qtd_compras	valor_total_comprado	ultima_compra	classificacao_cliente
+Gabi Compradora	CPF ***.***.000-07	(**) ****0007	****@example.invalid	1	100000.00	2026-01-11 10:00:00	CLIENTE OCASIONAL
+Iara Compradora	CPF ***.***.000-09	(**) ****0009	****@example.invalid	1	80000.00	2026-01-11 10:00:00	CLIENTE OCASIONAL
+Lia Compradora	CPF ***.***.000-11	(**) ****0011	****@example.invalid	1	68000.00	2026-01-24 10:00:00	CLIENTE OCASIONAL
+Fabio Comprador	CPF ***.***.000-06	(**) ****0006	****@example.invalid	1	60000.00	2026-01-11 10:00:00	CLIENTE OCASIONAL
+ano	mes	qtd_vendas	faturamento_bruto	valor_financiado	total_recebido_loja	ticket_medio_mes
+2026	1	4	308000.00	60000.00	268000.00	77000.000000
+id_veiculo	marca	modelo	ano_modelo	cor	modalidade	data_entrada_estoque	dias_no_estoque	custo_aquisicao	preco_anunciado	consignante_nome	consignante_telefone
+9	Renault	Kwid	2024	Branco	CONSIGNACAO	2026-01-04 11:00:00	302	55000.00	55000.00	Hugo Consignante	11900000008
+6	Fiat	Uno	2015	Branco	TROCA	2026-01-06 11:00:00	300	25000.00	30000.00	Gabi Compradora	11900000007
+7	Ford	Ka	2013	Vermelho	TROCA	2026-01-06 11:00:00	300	15000.00	20000.00	Gabi Compradora	11900000007
+id_veiculo	marca	modelo	ano_modelo	data_entrada	prazo_consignacao	dias_para_vencer	proprietario_nome	proprietario_telefone	valor_repasse_acordado
+9	Renault	Kwid	2024	2026-01-04 11:00:00	2026-11-15	13	Hugo Consignante	11900000008	50000.00
+id_venda	data_venda	comprador	veiculo_vendido	valor_venda_principal	qtd_veiculos_troca	valor_total_trocas	veiculos_troca_detalhe
+4	2026-01-08 10:00:00	Joao Comprador	Hyundai HB20	70000.00	1	30000.00	Volkswagen Gol (30000.00)
+2	2026-01-06 10:00:00	Gabi Compradora	Toyota Corolla	100000.00	2	40000.00	Fiat Uno (25000.00), Ford Ka (15000.00)
+id_venda	data_venda	comprador	veiculo	valor_total	valor_recebido	saldo_pendente	situacao_financeira	tem_financiamento	situacao_financiamento	valor_financiado	data_ultimo_recebimento
+6	2026-01-09 10:00:00	Mario Comprador	Chevrolet Tracker	90000.00	10000.00	80000.00	PARCIAL	SIM	APROVADO_A_RECEBER	80000.00	2026-01-09 11:00:00
+id_veiculo	marca	modelo	ano_modelo	modalidade	custo_aquisicao	valor_repasse_acordado	despesas_preparacao	despesas_garantia	total_despesas_ciclo	valor_venda	margem_liquida_estimada
+3	Honda	City	2023	CONSIGNACAO	80000.00	74000.00	0.00	150.00	150.00	80000.00	5850.00
+1	Fiat	Argo	2022	COMPRA_PROPRIA	50000.00	NULL	0.00	650.00	650.00	60000.00	9350.00
+4	Hyundai	HB20	2022	COMPRA_PROPRIA	58000.00	NULL	400.00	0.00	400.00	68000.00	9600.00
+2	Toyota	Corolla	2021	COMPRA_PROPRIA	85000.00	NULL	250.00	0.00	250.00	100000.00	14750.00
+id_funcionario	vendedor	total_atendimentos	total_vendas_concluidas	taxa_conversao_pct
+1	Ana Comercial	4	2	50.00
+2	Bruno Administrativo	2	1	50.00
+id_veiculo	marca	modelo	ano_modelo	qtd_vendas_com_ocorrencia	qtd_ocorrencias	tipos_problema	solucoes_aplicadas
+1	Fiat	Argo	2022	1	1	Falha de partida	Problema resolvido
+3	Honda	City	2023	1	1	Ruido na suspensao	NULL
+id_venda	data_venda	comprador	veiculo	valor_total	valor_recebido	situacao_financeira	situacao_financiamento	documentos_ok	reconhecimento_ok	laudo_ok	scanner_realizado	apta_para_conclusao_rn22	apta_para_entrega	data_conclusao	data_entrega	status_conclusao_rn22	status_entrega
+6	2026-01-09 10:00:00	Mario Comprador	Chevrolet Tracker	90000.00	10000.00	PARCIAL	APROVADO_A_RECEBER	1	1	1	0	0	0	NULL	NULL	PENDENTE RN22	PENDENTE RN22
+modalidade	situacao_atual	qtd_veiculos	valor_total_estoque	media_dias_estoque
+COMPRA_PROPRIA	EM_FORMALIZACAO	1	78000.00	302.0000
+CONSIGNACAO	DISPONIVEL	1	55000.00	302.0000
+TROCA	DISPONIVEL	2	40000.00	300.0000
+id_avaliacao	data_avaliacao	finalidade	quilometragem	condicao_externa	condicao_interna	condicao_mecanica	condicao_estrutural	condicao_documental	decisao_tecnica	interesse_comercial	avaliador	id_laudo	data_laudo	situacao_laudo	resultado_laudo
+9	2026-01-20 13:00:00	COMPRA_PROPRIA	45300	Conservada	Conservada	Reavaliada apos retorno	Verificada	Em regularizacao administrativa	APROVADA	SIM	Caio Avaliador	4	2026-01-02	EMITIDO	Documento cautelar realizado; resultado registrado para analise.
+4	2026-01-03 10:00:00	COMPRA_PROPRIA	45000	Conservada	Conservada	Vistoriada	Verificada	Conferida	APROVADA	SIM	Caio Avaliador	4	2026-01-02	EMITIDO	Documento cautelar realizado; resultado registrado para analise.
+id_venda	data_venda	data_cancelamento	motivo_cancelamento	valor_restituido_loja	data_retorno_veiculo	data_aviso_consignante	orientacao_bancaria	comprador	veiculo_vendido	valor_venda_original	valor_ja_recebido	tinha_financiamento	observacoes_cancelamento	veiculos_troca_situacao
+4	2026-01-08 10:00:00	2026-01-20 15:00:00	Desfazimento acordado entre as partes.	40000.00	2026-01-20 10:00:00	NULL	NULL	Joao Comprador	Hyundai HB20	70000.00	40000.00	NAO	HB20 recebido; Gol devolvido; 40000 restituidos; novo ciclo 9 em regularizacao.	Volkswagen Gol (DEVOLVIDA)
+tipo_registro	id_registro	data_evento	modalidade	situacao_entrada	valor_acordado	preco_anunciado	contraparte	doc_contraparte	prazo_consignacao	motivo_encerramento	data_encerramento
+ENTRADA	4	2026-01-04 10:00:00	COMPRA_PROPRIA	ENCERRADA	58000.00	70000.00	Eva Fornecedora	CPF 00000000005	NULL	DESFAZIMENTO	2026-01-11 10:00:00
+VENDA_PRINCIPAL	4	2026-01-08 10:00:00	VENDA	CANCELADA	70000.00	NULL	Joao Comprador	CPF 00000000010	NULL	Desfazimento acordado entre as partes.	2026-01-20 15:00:00
+ENTRADA	9	2026-01-20 14:00:00	COMPRA_PROPRIA	COMERCIALIZADA	58000.00	68000.00	Joao Comprador	CPF 00000000010	NULL	VENDA_CONCLUIDA	2026-01-24 10:00:00
+VENDA_PRINCIPAL	5	2026-01-23 10:00:00	VENDA	CONCLUIDA	68000.00	NULL	Lia Compradora	CPF 00000000011	NULL	NULL	NULL
+id_veiculo	total_entradas	total_vezes_vendido_como_principal	total_vezes_recebido_como_troca	total_vendas_canceladas_como_principal	total_vendas_canceladas_onde_era_troca
+4	2	2	0	1	0
+id_venda	data_registro	dias_em_formalizacao	comprador	veiculo	valor_total	instituicao_financeira	situacao_financiamento	documentos_ok	reconhecimento_ok	laudo_ok	detalhe
+6	2026-01-09 10:00:00	297	Mario Comprador	Chevrolet Tracker	90000.00	Banco Demonstracao	APROVADO_A_RECEBER	1	1	1	ALERTA: Venda em formalização há 297 dias sem conclusão/cancelamento
+id_venda	data_registro	data_aprovacao_financiamento	dias_aprovado_sem_receber	instituicao_financeira	valor_financiado	valor_recebido	comprador	veiculo	detalhe
+6	2026-01-09 10:00:00	2026-01-10 10:00:00	296	Banco Demonstracao	80000.00	10000.00	Mario Comprador	Chevrolet Tracker	ALERTA: Financiamento aprovado há 296 dias sem recebimento confirmado
+id_ocorrencia	data_abertura	dias_aberta	id_venda	cliente	veiculo	problema_relatado	situacao	atendimento_externo_informado	detalhe
+2	2026-02-03 09:00:00	272	3	Iara Compradora	Honda City	Ruido na suspensao	EM_ANALISE	NAO	ALERTA: Ocorrência aberta há 272 dias sem encerramento
+Note (Code 1305): PROCEDURE multiplikar.teste_rejeicao does not exist
+Note (Code 1305): PROCEDURE multiplikar.teste_aceita does not exist
+resultado
+PASS rejeicao PK forma: forma_pagamento
+resultado
+PASS rejeicao UNIQUE documento: uq_pessoa_documento
+resultado
+PASS rejeicao FK pessoa: fk_atendimento_id_pessoa
+resultado
+PASS rejeicao FK funcionario: fk_atendimento_id_funcionario
+resultado
+PASS rejeicao CHECK CPF: ck_pessoa_documento
+resultado
+PASS rejeicao CHECK atendimento: ck_atendimento_situacao
+resultado
+PASS rejeicao NOT NULL pessoa.nome: nome
+resultado
+PASS rejeicao UNIQUE pessoa-funcionario: Duplicate entry
+resultado
+PASS rejeicao PK associativa: Duplicate entry
+resultado
+PASS rejeicao FK associativa: fk_venda_forma_pagamento_id_venda
+resultado
+PASS rejeicao DELETE pessoa referenciada: fk_
+resultado
+PASS rejeicao ocorrencia ENCERRADA sem data: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia encerrada antes da abertura: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia ENCERRADA sem solucao: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia ENCERRADA com solucao so de espacos: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia em andamento com data de encerramento: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia encerrada sem data ao mudar situacao: ck_ocorrencia_encerramento
+resultado
+PASS aceita ocorrencia encerrada no mesmo instante da abertura
+resultado
+PASS rejeicao possui_cnh = 2: ck_pessoa_cnh
+resultado
+PASS rejeicao possui_cnh = -1: ck_pessoa_cnh
+resultado
+PASS rejeicao condicao_repasse = 2: ck_venda_booleanos
+resultado
+PASS rejeicao concessao_garantia = 5: ck_venda_booleanos
+resultado
+PASS rejeicao reconhecimento_aplicavel = 3: ck_documento_aplicavel
+resultado
+PASS aceita possui_cnh NULL (nao informado)
+resultado
+PASS rejeicao UF inexistente XX: ck_pessoa_uf
+resultado
+PASS rejeicao UF em minusculas: ck_pessoa_uf
+resultado
+PASS rejeicao UF com espaco: ck_pessoa_uf
+resultado
+PASS aceita UF valida DF
+resultado
+PASS rejeicao telefone so de espacos: ck_pessoa_textos
+resultado
+PASS rejeicao e-mail vazio: ck_pessoa_email
+resultado
+PASS rejeicao e-mail sem arroba: ck_pessoa_email
+resultado
+PASS rejeicao e-mail sem dominio: ck_pessoa_email
+resultado
+PASS rejeicao e-mail com espaco: ck_pessoa_email
+resultado
+PASS aceita e-mail valido
+resultado
+PASS rejeicao cidade so de espacos: ck_pessoa_textos
+resultado
+PASS rejeicao cargo vazio: ck_funcionario_cargo
+resultado
+PASS rejeicao marca vazia: ck_veiculo_textos
+resultado
+PASS rejeicao descricao de interesse vazia: ck_atendimento_descricao
+resultado
+PASS rejeicao descricao de despesa vazia: ck_despesa_descricao
+resultado
+PASS rejeicao problema relatado vazio: ck_ocorrencia_problema
+resultado
+PASS rejeicao NOT NULL telefone: telefone
+resultado
+PASS aceita pessoa no primeiro contato sem e-mail e endereco
+resultado
+PASS rejeicao endereco parcial: ck_pessoa_endereco
+resultado
+PASS aceita endereco completo sem complemento
+resultado
+PASS rejeicao apagar e-mail de pessoa com contrato: RO02
+resultado
+PASS aceita veiculo para entrada com contrato
+resultado
+PASS aceita placa e chassi ainda nulos em segundo veiculo (UNIQUE admite varios NULL)
+resultado
+PASS aceita avaliacao aprovada do veiculo 9901
+resultado
+PASS rejeicao contrato de entrada com contraparte sem e-mail e endereco: RO02
+resultado
+PASS aceita cadastro completado antes do contrato
+resultado
+PASS aceita contrato de entrada apos completar o cadastro
+resultado
+PASS aceita nova avaliacao aprovada do veiculo 9901
+resultado
+PASS rejeicao segundo ciclo vigente do mesmo veiculo: uq_entrada_veiculo_vigente
+resultado
+PASS aceita laudo PENDENTE sem data e resultado
+resultado
+PASS rejeicao laudo PENDENTE nao vincula avaliacao: RN08
+resultado
+PASS rejeicao laudo EMITIDO sem data: ck_laudo_emissao
+resultado
+PASS rejeicao laudo EMITIDO com resultado so de espacos: ck_laudo_emissao
+resultado
+PASS rejeicao laudo PENDENTE com data de emissao: ck_laudo_emissao
+resultado
+PASS rejeicao referencia documental vazia: ck_laudo_referencia
+resultado
+PASS aceita laudo emitido com data e resultado
+resultado
+PASS restricoes: 11 violacoes originais e 49 casos da revisao de dominios; DML isolado em transacao
+Note (Code 1305): FUNCTION multiplikar.data_referencia does not exist
+resultado
+PASS demonstracao: alternativas A/B/C e trade-off R0/R4 conferidos
+resultado
+PASS massa proposta: condicoes, troca e simulacoes conferidas
+Note (Code 1305): PROCEDURE multiplikar.teste_regra_ext02 does not exist
+resultado
+PASS ext02 condicao duplicada na proposta: Duplicate entry
+resultado
+PASS ext02 valor da condicao deve ser positivo: ck_proposta_condicao_valor
+resultado
+PASS ext02 apresentada imutavel: Proposta apresentada e imutavel
+resultado
+PASS ext02 condicao de proposta apresentada imutavel: Proposta apresentada e imutavel
+resultado
+PASS ext02 ACEITA exige funcao atomica: Use aceitar_proposta
+resultado
+PASS ext02 consentimento de renda obrigatorio: ck_simulacao_consentimento_renda
+resultado
+PASS ext02 retorno sem vigencia: Parametro_retorno vigente
+resultado
+PASS ext02 simulacao nao pode ser apagada: nao pode ser removida
+resultado
+PASS ext02 simulacao em analise nao altera dados-base: so permite alterar situacao
+resultado
+PASS ext02 obrigacao nao pode ser apagada: nao pode ser removida
+resultado
+PASS ext02 vencimento original e imutavel: so permite alterar vencimento_atual
+resultado
+PASS ext02 arco administrativo sem FK: ck_obrigacao_arco
+resultado
+PASS ext02 troca ja consumida: Troca exige avaliacao aprovada
+resultado
+PASS ext02 troca ligada a proposta apresentada: Troca exige avaliacao aprovada
+resultado
+PASS ext02 percentual de retorno limitado: ck_parametro_retorno_pct
+resultado
+PASS ext02 instituicao e tabela unicas por vigencia: Duplicate entry
+resultado
+PASS ext02 obrigacao so permite campos de previsao: so permite alterar vencimento_atual
+resultado
+PASS ext02 simulacao sem taxa tabela valida: Parametro_retorno vigente
+resultado
+PASS ext02 venda referencia proposta nao aceita: Venda exige proposta aceita
+resultado
+PASS ext02 datas da obrigacao em ordem: ck_obrigacao_datas
+resultado
+PASS ext02 raiz exige versao 1: Proposta raiz deve iniciar
+resultado
+PASS ext02 alternativa raiz rotulo e versao unicos: Duplicate entry
+resultado
+PASS ext02 sucessora exige predecessora substituida: Contraproposta deve suceder
+resultado
+PASS ext02 decisao nula antes da decisao: ck_proposta_data_decisao
+resultado
+PASS ext02 ACEITA depois da validade: Proposta aceita exige entrada ativa
+resultado
+PASS ext02 situacao terminal da obrigacao: Situacao terminal da obrigacao financeira
+resultado
+PASS ext02 transicao atrasada para aberta proibida: Situacao terminal da obrigacao financeira
+resultado
+PASS ext02 segunda simulacao aprovada para proposta: Duplicate entry
+resultado
+PASS ext02 data resposta anterior a simulacao: ck_simulacao_datas
+resultado
+PASS ext02 simulacao R4 em analise nao altera tabela: so permite alterar situacao
+resultado
+PASS ext02 substituicao positiva: alternativa A sucede para versao 2 e aplica desconto
+resultado
+PASS ext02 sucessora herda rotulo: Contraproposta deve suceder a mesma alternativa
+resultado
+PASS CRM: quatro classificacoes e referencia 2026-02-10 conferidas
+resultado
+PASS CRM: atendimento 7 MORNO sugerido e QUENTE revisado
+resultado
+PASS CRM: atendimento 8 encerrado com desfecho de perda
+Note (Code 1305): PROCEDURE multiplikar.teste_regra_crm does not exist
+resultado
+PASS CRM interacao somente insercao update: somente insercao
+resultado
+PASS CRM interacao somente insercao delete: somente insercao
+resultado
+PASS CRM desfecho somente insercao update: somente insercao
+resultado
+PASS CRM desfecho somente insercao delete: somente insercao
+resultado
+PASS CRM fator somente insercao update: somente insercao
+resultado
+PASS CRM fator somente insercao delete: somente insercao
+resultado
+PASS CRM classificacao revisada imutavel: Apenas revisao humana ausente
+resultado
+PASS CRM classificacao historica nao apaga: historico; nunca e apagada
+resultado
+PASS CRM temperatura fora do dominio: ck_parametro_temperatura
+resultado
+PASS CRM probabilidade fora do intervalo: ck_parametro_probabilidade
+resultado
+PASS CRM fator fora do dominio: ck_fator_codigo
+resultado
+PASS CRM classificacao sem atendimento: fk_classificacao_lead_id_atendimento
+resultado
+PASS CRM desfecho duplicado: Duplicate entry
+resultado
+PASS CRM tipo de desfecho fora do dominio: ck_desfecho_tipo
+resultado
+PASS CRM interacao com atendimento inexistente: fk_interacao_id_atendimento
+resultado
+PASS CRM proximo passo antes da interacao: ck_interacao_proximo_passo
+resultado
+PASS CRM interacao sem resumo: ck_interacao_resumo
+resultado
+PASS CRM parametro temperatura duplicado: Duplicate entry
+resultado
+PASS CRM revisao divergente exige justificativa: ck_classificacao_justificativa
+resultado
+PASS CRM procedure limpa marca da sessao apos INSERT falho: data_hora
+Note (Code 1051): Unknown table 'multiplikar.vw_previsao_caixa'
+Note (Code 1051): Unknown table 'multiplikar.vw_fluxos_previsao'
+Note (Code 1051): Unknown table 'multiplikar.vw_caixa_realizado_referencia'
+Note (Code 1305): PROCEDURE multiplikar.fn_previsao_caixa_cenario does not exist
+Note (Code 1305): PROCEDURE multiplikar.verificar_previsao_caixa does not exist
+resultado
+PASS previsao: semanas e realizado ate a referencia
+resultado
+PASS previsao: funil limitado a alternativas e liquido de repasse
+Note (Code 1051): Unknown table 'multiplikar.estoque_loja'
+Note (Code 1051): Unknown table 'multiplikar.antes'
+Note (Code 1051): Unknown table 'multiplikar.carga'
+Note (Code 1051): Unknown table 'multiplikar.laudos'
+Note (Code 1051): Unknown table 'multiplikar.avaliacoes'
+resultado
+PASS estoque: 27 veiculos anunciados disponiveis
+resultado
+PASS estoque: disponiveis aumentaram exatamente em 27
+resultado
+PASS estoque: fila, previsao e propostas inalterados
+resultado
+PASS estoque: previsao e comparativo conferidos contra captura anterior
+resultado
+PASS estoque: casos reprovados fora do estoque
+Note (Code 1305): PROCEDURE multiplikar.estoque_rejeitar does not exist
+resultado
+PASS estoque rejeita avaliacao reprovada fora do estoque: RN06/RN07
+resultado
+PASS estoque rejeita avaliacao sem interesse fora do estoque: RN06/RN07
+resultado
+PASS estoque rejeita avaliacao ja usada em entrada: Duplicate entry
+resultado
+PASS RN44: tres intencoes registradas para atendimentos de compra
+resultado
+PASS RN44 versao de regra desconhecida: Versao de regra desconhecida
+resultado
+PASS RN44 intencao duplicada: Duplicate entry
+resultado
+PASS RN44 intencao sem conteudo: ck_intencao_conteudo
+resultado
+PASS RN44 valor negativo: ck_intencao_valor
+resultado
+PASS RN44 forma nao cadastrada: fk_intencao_forma
+resultado
+PASS RN44 veiculo pretendido inativo: veiculo pretendido deve estar anunciado
+resultado
+PASS RN44 atendimento de venda nao aceita intencao de compra: RN44: intencao de compra exige atendimento de COMPRA ou TROCA
+resultado
+PASS RN44 valor disponivel acima do preco anunciado: RN44: valor disponivel maior que o preco anunciado
+resultado
+PASS RN44 codigo de fator fora do dominio: ck_fator_codigo
+resultado
+PASS REGRA-V2 cobertura >= 90% e pagamento a vista = 40.00 pts
+resultado
+PASS REGRA-V2 cobertura >= 90% sem pagamento a vista = 30.00 pts
+resultado
+PASS REGRA-V2 cobertura >= 50% = 20.00 pts
+resultado
+PASS REGRA-V2 financiamento com cobertura baixa = 20.00 pts
+resultado
+PASS REGRA-V2 cobertura menor que 50% = 0.00 pts
+resultado
+PASS REGRA-V2 sem veiculo selecionado, forma PIX = 10.00 pts
+resultado
+PASS REGRA-V1 permanece em 35 pontos FRIO apos introduzir V2
+resultado
+PASS REGRA-V2: cobertura 97 por cento a vista resulta em 75 pontos QUENTE e cinco fatores
+resultado
+PASS REGRA-V2 intencao sem forma e 22% de cobertura do atendimento 9 = 0.00 pts
+resultado
+PASS REGRA-V2 atendimento sem intencao: fator zero com evidencia = 0.00 pts
+resultado
+PASS oferta de 5000 sobre preco 135900 preserva lead FRIO em 35 pontos
+resultado
+PASS REGRA-V2 oferta baixa nao pontua capacidade de pagamento = 0.00 pts
+resultado
+PASS REGRA-V2: capacidade de pagamento eleva lead a 95 pontos QUENTE
+Note (Code 1305): PROCEDURE multiplikar.fluxo_rejeicao does not exist
+Note (Code 1305): PROCEDURE multiplikar.fluxo_confere does not exist
+Note (Code 1305): PROCEDURE multiplikar.fluxo_recusa_regra does not exist
+resultado
+PASS fluxo demonstracao tem alternativas A/B/C
+resultado
+PASS fluxo R0 e R4 estao disponiveis para a simulacao
+resultado
+PASS fluxo margem estimada igual nas tres alternativas
+resultado
+PASS fluxo valor de troca nao aparece como caixa D0
+resultado
+PASS fluxo saldo de entrada da semana incorpora 6 mil liquidos
+resultado
+PASS fluxo recebimento vencido da venda 6 compoe explicacao
+resultado
+PASS fluxo CRM exclui atendimento convertido
+resultado
+PASS fluxo simulacao R4 aumenta parcela e retorno da loja
+resultado
+PASS fluxo PMT, total pago e CET preservam centavos e escala
+resultado
+PASS fluxo parcelas e retorno do banco identificados como movimento bancario para o cenario de atraso
+resultado
+PASS fluxo desvio venda proposta para outro cliente: operacao recusada
+resultado
+PASS fluxo desvio delete historico de interacao: operacao recusada
+resultado
+PASS fluxo desvio troca consumida: operacao recusada
+resultado
+PASS fluxo desvio arco administrativo preenchido: operacao recusada
+resultado
+PASS fluxo desvio obrigacao terminal imutavel: operacao recusada
+resultado
+PASS fluxo desvio simulacao nao pode ser apagada: operacao recusada
+resultado
+PASS fluxo desvio simulacao exige tabela vigente: operacao recusada
+resultado
+PASS fluxo validade omitida ancora em data_referencia
+resultado
+PASS fluxo desvio proposta rascunho nao aceita direto: apresentada antes da decisao
+resultado
+PASS fluxo desvio proposta nao apresenta sem condicoes: Composicao da proposta deve igualar
+resultado
+PASS fluxo desvio nova venda nao vincula proposta apresentada: Venda exige proposta aceita
+resultado
+PASS fluxo obrigacao prevista abre no fluxo permitido
+resultado
+PASS fluxo desvio transicao invalida de obrigacao: Transicao de situacao da obrigacao financeira invalida
+resultado
+PASS fluxo desvio simulacao depois da resposta nao edita parcela: imutavel apos EM_ANALISE
+resultado
+PASS fluxo desvio situacao terminal da proposta: Situacao terminal da proposta e imutavel
+resultado
+PASS fluxo 09 alternativas A/B/C usam a entrada 10
+resultado
+PASS fluxo 09 cada alternativa comeca como versao raiz
+resultado
+PASS fluxo 09 proposta A e PIX integral
+resultado
+PASS fluxo 09 proposta B combina entrada PIX de 20 por cento
+resultado
+PASS fluxo 09 proposta B financia o saldo de 80 por cento
+resultado
+PASS fluxo 09 proposta C registra a entrada PIX em dinheiro
+resultado
+PASS fluxo 09 proposta C registra o Gol avaliado como troca
+resultado
+PASS fluxo 09 as condicoes e a troca fecham o total de cada proposta
+resultado
+PASS fluxo 09 comparador usa o CPF do cliente do atendimento
+resultado
+PASS fluxo 09 recebimento no ato varia por alternativa
+resultado
+PASS fluxo 09 valor recebido depois do ato e separado do caixa D0
+resultado
+PASS fluxo 09 troca nao e receita em dinheiro nem altera caixa D0
+resultado
+PASS fluxo 09 margem de veiculo permanece igual nas tres opcoes
+resultado
+PASS fluxo 09 retorno do banco soma apenas a margem da proposta financiada
+resultado
+PASS fluxo 09 simulacao R0 usa a taxa base mensal
+resultado
+PASS fluxo 09 simulacao R0 apresenta CET anual aproximado
+resultado
+PASS fluxo 09 simulacao R4 soma acrescimo a taxa base
+resultado
+PASS fluxo 09 simulacao R4 mostra CET anual aproximado maior
+resultado
+PASS fluxo 09 simulacao R0 nao remunera retorno a loja
+resultado
+PASS fluxo 09 simulacao aprovada mantem consentimento de renda
+resultado
+PASS fluxo 01 atendimento 7 preserva a data de abertura do contato
+resultado
+PASS fluxo 01 lead final esta revisado por funcionario ativo
+resultado
+PASS fluxo 01 classificacao humana preserva sugestao MORNO
+resultado
+PASS fluxo 01 lead mantem uma interacao no historico
+resultado
+PASS fluxo 01 fila CRM prioriza o lead quente de 55 mil
+resultado
+PASS fluxo 08 fila de caixa identifica a obrigacao da venda 6
+resultado
+PASS fluxo 08 saldo de venda 6 permanece a receber
+resultado
+PASS fluxo 08 obrigacao da venda 6 preserva vencimento original
+resultado
+PASS fluxo 05 previsao inclui semana atual e semanas futuras
+resultado
+PASS fluxo 05 previsao parte do saldo inicial hipotetico documentado
+resultado
+PASS fluxo 05 camada realizado e recebimentos historicos ate a referencia
+resultado
+PASS fluxo 05 primeira semana explica obrigacao vencida da venda 6
+resultado
+PASS fluxo 05 recebimento vencido de 80 mil entra na semana inicial com aviso
+resultado
+PASS fluxo 05 semana do financiamento inclui caixa liquido ponderado
+resultado
+PASS fluxo 05 semana do repasse registra saida do consignante ponderada
+resultado
+PASS fluxo desvio 09 proposta apresentada nao permite alterar preco: Proposta apresentada e imutavel
+resultado
+PASS fluxo desvio 09 proposta apresentada nao permite incluir condicao: Proposta apresentada e imutavel
+resultado
+PASS fluxo desvio 09 aceite direto sem aceitar_proposta e bloqueado: Use aceitar_proposta
+resultado
+PASS fluxo desvio 09 avaliacao de troca duplicada na mesma proposta e bloqueada: Troca exige avaliacao
+resultado
+PASS fluxo desvio 08 vencimento original da obrigacao e imutavel: so permite alterar vencimento_atual
+resultado
+PASS fluxo desvio 05 parametros de simulacao respondida sao imutaveis: so permite alterar situacao, data_resposta e parcela_informada
+resultado
+PASS fluxo P9 estado inicial: venda 6 financiada, em formalizacao e sem orientacao bancaria
+resultado
+PASS fluxo desvio P9 cancelar venda financiada sem orientacao bancaria: RN13/RN28-RN31: cancelamento pendente: orientacao bancaria;
+resultado
+PASS fluxo P9 recusa preserva a venda: situacao, cancelamento e financiamento inalterados
+resultado
+PASS fluxo P9 controle positivo: com orientacao bancaria o mesmo cancelamento e aceito
+resultado
+PASS fluxos MySQL: verificacoes reais encerradas em transacao
+Note (Code 1305): PROCEDURE multiplikar.verificar_relacionamentos does not exist
+Note (Code 1051): Unknown table 'multiplikar.rel_esperados'
+Note (Code 1051): Unknown table 'multiplikar.rel_resultado'
+Note (Code 1051): Unknown table 'multiplikar.rel_ai_before'
+resultado
+PASS R01 funcionario.id_pessoa -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R02 atendimento.id_pessoa -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R03 atendimento.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R04 avaliacao.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R05 avaliacao.id_avaliador -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R06 laudo.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R07 avaliacao_laudo.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R07 avaliacao_laudo.id_laudo -> laudo.id_laudo; FK, nulidade e unicidade conferidas
+resultado
+PASS R08 entrada.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R09 entrada.id_contraparte -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R10 entrada.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R11 venda.id_comprador -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R12 venda.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R13 venda.id_entrada_principal -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R14 entrada.id_venda_origem -> venda.id_venda; FK, nulidade e unicidade conferidas
+resultado
+PASS R15 venda.id_laudo -> laudo.id_laudo; FK, nulidade e unicidade conferidas
+resultado
+PASS R16 ocorrencia_garantia.id_venda -> venda.id_venda; FK, nulidade e unicidade conferidas
+resultado
+PASS R17 ocorrencia_garantia.id_mecanico -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R18 despesa.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R19 entrada.id_entrada_anterior -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R20 proposta.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R21 proposta.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R22 proposta.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R23 proposta.id_proposta_anterior -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R24 venda.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R25 proposta_condicao.codigo_forma -> forma_pagamento.codigo; FK, nulidade e unicidade conferidas
+resultado
+PASS R25 proposta_condicao.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R26 proposta_troca.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R26 proposta_troca.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R27 simulacao_financiamento.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R29 obrigacao_financeira.id_venda -> venda.id_venda; FK, nulidade e unicidade conferidas
+resultado
+PASS R30 obrigacao_financeira.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R31 obrigacao_financeira.id_despesa -> despesa.id_despesa; FK, nulidade e unicidade conferidas
+resultado
+PASS R32 interacao.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R33 interacao.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R34 atendimento_desfecho.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R35 classificacao_lead.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R36 classificacao_lead.id_revisor -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R37 classificacao_fator.id_classificacao -> classificacao_lead.id_classificacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R38 atendimento_desfecho.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R39 intencao_compra.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R40 intencao_compra.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R41 intencao_compra.codigo_forma -> forma_pagamento.codigo; FK, nulidade e unicidade conferidas
+resultado
+PASS R28 simulacao_parametro_retorno: gatilho de vigencia instalado
+Note (Code 1305): PROCEDURE multiplikar.rel_rejeita does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_aceita does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_volta_obrigatoria does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_confere does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_restaurar_auto_increment does not exist
+resultado
+PASS R01 Volta (minimo 1): recusado (id_pessoa)
+resultado
+PASS R01 Volta (pai inexistente): recusado (fk_funcionario_id_pessoa)
+resultado
+PASS R01 Ida (maximo 1): recusado (Duplicate entry)
+resultado
+PASS R01 Ida (minimo 0): pessoa sem funcionario
+resultado
+PASS R02 Volta (minimo 1): recusado (id_pessoa)
+resultado
+PASS R02 Volta (pai inexistente): recusado (fk_atendimento_id_pessoa)
+resultado
+PASS R02 Ida (maximo N): segunda interacao da mesma pessoa: aceito
+resultado
+PASS R03 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R03 Volta (pai inexistente): recusado (fk_atendimento_id_funcionario)
+resultado
+PASS R03 Ida (maximo N): funcionario com dois atendimentos
+resultado
+PASS R04 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R04 Volta (pai inexistente): recusado (fk_avaliacao_id_veiculo)
+resultado
+PASS R04 Ida (maximo N): reavaliacao do mesmo veiculo: aceito
+resultado
+PASS R05 Volta (minimo 1): recusado (id_avaliador)
+resultado
+PASS R05 Volta (pai inexistente): recusado (fk_avaliacao_id_avaliador)
+resultado
+PASS R05 Ida (maximo N): avaliador com varias avaliacoes
+resultado
+PASS R06 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R06 Volta (pai inexistente): recusado (fk_laudo_id_veiculo)
+resultado
+PASS R06 Ida (maximo N): segundo laudo historico do mesmo veiculo: aceito
+resultado
+PASS R07 Ida (maximo 1): recusado (Duplicate entry)
+resultado
+PASS R07 Ida (minimo 0): avaliacao sem laudo
+resultado
+PASS R07 Volta (maximo N): mesmo laudo pode subsidiar varias avaliacoes: aceito
+resultado
+PASS R07 Volta (laudo de outro veiculo, RN08): recusado (RN08)
+resultado
+PASS R07 Volta (laudo inexistente barrado pela regra de laudo): recusado (RN08)
+resultado
+PASS R08 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R08 Volta (pai inexistente): recusado (entrada exige avaliacao aprovada, interesse e veiculo)
+resultado
+PASS R08 Ida (maximo N): HB20 tem ciclos de entrada anteriores e atual
+resultado
+PASS R08 Ida (minimo 0): veiculo preliminar sem entrada
+resultado
+PASS R09 Volta (minimo 1): recusado (id_contraparte)
+resultado
+PASS R09 Volta (pai inexistente): recusado (fk_entrada_id_contraparte)
+resultado
+PASS R09 Ida (maximo N): fornecedor com tres entradas
+resultado
+PASS R10 Volta (pai inexistente): recusado (fk_entrada_id_avaliacao)
+resultado
+PASS R10 Volta (minimo 1): recusado (id_avaliacao)
+resultado
+PASS R10 Ida (maximo 1): mesma avaliacao nao fundamenta duas entradas: recusado (Duplicate entry)
+resultado
+PASS R10 Ida (minimo 0): avaliacao sem entrada
+resultado
+PASS R11 Volta (minimo 1): recusado (id_comprador)
+resultado
+PASS R11 Volta (pai inexistente): recusado (fk_venda_id_comprador)
+resultado
+PASS R11/R12 Ida (maximo N): comprador e funcionario podem ter outra venda: aceito
+resultado
+PASS R12 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R12 Volta (pai inexistente): recusado (fk_venda_id_funcionario)
+resultado
+PASS R13 Volta (minimo 1): recusado (Venda exige entrada disponivel)
+resultado
+PASS R13 Volta (referencia inexistente interceptada por regra de disponibilidade): recusado (Venda exige entrada disponivel)
+resultado
+PASS R13 Ida (maximo 1): entrada ja vinculada a venda: recusado (Duplicate entry)
+resultado
+PASS R13 Ida (minimo 0): entrada sem venda
+resultado
+PASS R14 Ida (maximo N): venda aceita varias entradas de troca
+resultado
+PASS R14 Volta (minimo 0): compra propria nao aponta venda de origem
+resultado
+PASS R14 Volta (venda de origem inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R15 Volta (minimo 0): venda ainda sem laudo: aceito
+resultado
+PASS R15 Volta (laudo inexistente interceptado pela regra): recusado (Laudo deve corresponder)
+resultado
+PASS R15 Ida (maximo N): laudo 4 documenta duas vendas
+resultado
+PASS R16 Volta (minimo 1): recusado (Ocorrencia de garantia exige concessao e entrega anterior)
+resultado
+PASS R16 Volta (venda inexistente barrada pela regra de garantia): recusado (Ocorrencia de garantia exige concessao e entrega anterior)
+resultado
+PASS R16 Ida (maximo N) e R17 Volta (minimo 0): outra ocorrencia sem mecanico: aceito
+resultado
+PASS R17 Volta (mecanico inexistente): recusado (fk_ocorrencia_garantia_id_mecanico)
+resultado
+PASS R17 Ida (maximo N): mecanico 4 esta em duas ocorrencias
+resultado
+PASS R18 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R18 Volta (pai inexistente): recusado (fk_despesa_id_veiculo)
+resultado
+PASS R18 Ida (maximo N): segunda despesa do veiculo: aceito
+resultado
+PASS R19 Ida (maximo 1): entrada 4 ja tem sucessora: recusado (Duplicate entry)
+resultado
+PASS R19 Volta (anterior inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R19 minimo 0: primeira entrada sem anterior nem sucessora
+resultado
+PASS R20 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R20 Volta (pai inexistente): recusado (fk_proposta_id_atendimento)
+resultado
+PASS R21 Volta (minimo 1): recusado (id_entrada)
+resultado
+PASS R21 Volta (pai inexistente): recusado (fk_proposta_id_entrada)
+resultado
+PASS R22 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R22 Volta (pai inexistente): recusado (fk_proposta_id_funcionario)
+resultado
+PASS R20-R22 Ida (maximo N): atendimento, entrada e funcionario associados a propostas multiplas
+resultado
+PASS R23 Ida (maximo 1): duas sucessoras da mesma proposta: recusado (Duplicate entry)
+resultado
+PASS R23 Volta (anterior inexistente interceptado pela cadeia): recusado (Contraproposta deve suceder)
+resultado
+PASS R23 minimo 0: raiz ainda sem sucessora
+resultado
+PASS R24 minimo 0 nos dois lados: venda sem proposta e proposta ainda sem venda
+resultado
+PASS R24 Volta (proposta inexistente preemptada por validacao de proposta): recusado (Venda exige proposta aceita)
+resultado
+PASS R24 Ida (maximo 1): venda da mesma proposta nao duplica: recusado (Duplicate entry)
+resultado
+PASS R25 Volta condicao-proposta (minimo 1): recusado (Proposta apresentada e imutavel)
+resultado
+PASS R25 Volta condicao-proposta (pai inexistente): recusado (Proposta apresentada e imutavel)
+resultado
+PASS R25 Volta condicao-forma (minimo 1): recusado (codigo_forma)
+resultado
+PASS R25 Volta condicao-forma inexistente: recusado (fk_proposta_condicao_codigo_forma)
+resultado
+PASS R25 Ida (maximo N): proposta possui multiplas formas de pagamento
+resultado
+PASS R25 Volta forma (maximo N): PIX reutilizado em varias propostas
+resultado
+PASS R26 Volta proposta inexistente barrada pela regra de rascunho: recusado (Troca exige avaliacao)
+resultado
+PASS R26 Volta avaliacao inexistente barrada pela regra de avaliacao: recusado (Troca exige avaliacao)
+resultado
+PASS R26 Ida (maximo N): proposta inclui duas avaliacoes de troca
+resultado
+PASS R26 Ida (maximo 1): avaliacao nao duplica na mesma proposta: recusado (Duplicate entry)
+resultado
+PASS R27 Volta (minimo 1): recusado (id_proposta)
+resultado
+PASS R27 Volta (pai inexistente): recusado (fk_simulacao_financiamento_id_proposta)
+resultado
+PASS R27 Ida (maximo N): proposta tem varias simulacoes
+resultado
+PASS R27 Ida (maximo 1 APROVADA por proposta): recusado (Duplicate entry)
+resultado
+PASS R28 Volta (parametro de retorno inexistente ou fora da vigencia): recusado (Parametro_retorno vigente nao encontrado)
+resultado
+PASS R29 Ida (maximo N): venda tem outra obrigacao: aceito
+resultado
+PASS R30 Ida (maximo N): entrada tem outra obrigacao: aceito
+resultado
+PASS R31 Ida (maximo N): despesa tem outra obrigacao: aceito
+resultado
+PASS R29-R31 Volta (minimo 0): obrigacao administrativa sem arco: aceito
+resultado
+PASS R29 Volta (venda inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R30 Volta (entrada inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R31 Volta (despesa inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R29/R30 arco exclusivo: recusado (ck_obrigacao_arco)
+resultado
+PASS R32 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R32 Volta (pai inexistente): recusado (fk_interacao_id_atendimento)
+resultado
+PASS R33 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R33 Volta (pai inexistente): recusado (fk_interacao_id_funcionario)
+resultado
+PASS R32/R33 Ida (maximo N): segundo contato no mesmo atendimento: aceito
+resultado
+PASS R34 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R34 Volta (pai inexistente): recusado (fk_atendimento_desfecho_id_atendimento)
+resultado
+PASS R38 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R38 Volta (pai inexistente): recusado (fk_atendimento_desfecho_id_funcionario)
+resultado
+PASS R34 Ida (maximo 1): segundo desfecho no atendimento: recusado (Duplicate entry)
+resultado
+PASS R38 Ida (maximo N): mesmo funcionario encerra outro atendimento: aceito
+resultado
+PASS R35 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R35 Volta (pai inexistente): recusado (fk_classificacao_lead_id_atendimento)
+resultado
+PASS R35 Ida (maximo N): atendimento recebeu duas classificacoes
+resultado
+PASS R36 Volta (minimo 0): nova classificacao aguarda revisao
+resultado
+PASS R36 Volta (revisor inexistente): recusado (fk_classificacao_lead_id_revisor)
+resultado
+PASS R36 Ida (maximo N): funcionario revisa classificacoes distintas: aceito
+resultado
+PASS R37 Ida (maximo N): classificacao registra quatro fatores
+resultado
+PASS R37 Ida (minimo 1 fator): INSERT direto sem fatores: recusado (R37: classificacao de lead exige ao menos um fator explicativo; use registrar_classificacao_lead)
+resultado
+PASS R37 Volta (minimo 1): recusado (id_classificacao)
+resultado
+PASS R37 Volta (pai inexistente): recusado (fk_classificacao_fator_id_classificacao)
+resultado
+PASS R37 Volta (maximo 1): fator repetido na mesma classificacao: recusado (Duplicate entry)
+resultado
+PASS R39 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R39 Volta (pai inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R39 Ida (maximo 1): segunda intencao no atendimento: recusado (Duplicate entry)
+resultado
+PASS R39 Ida (minimo 0): atendimento sem intencao
+resultado
+PASS R40/R41 Volta (minimo 0): intencao sem entrada nem forma: aceito
+resultado
+PASS R40 Volta (entrada inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R41 Volta (forma inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R40/R41 Ida (maximo N): mesma entrada e forma aparecem em várias intenções
+resultado
+PASS R26 Volta (maximo N): mesma avaliacao pode aparecer em propostas distintas: aceito
+resultado
+PASS R26 Ida e Volta: proposta 9202 possui duas trocas e avaliacao 9206 esta em duas propostas
+resultado
+PASS R27 Ida e R28 Volta: R0 e R4 vigentes geram tres simulacoes para a proposta
+resultado
+PASS Fixture relacional: propostas e condicoes permanecem vinculadas a pais existentes
+resultado
+PASS Fixture relacional: troca, financiamento e obrigacoes apontam para seus pais
+resultado
+PASS Suite de relacionamentos conclui com cobertura R01-R41 documentada

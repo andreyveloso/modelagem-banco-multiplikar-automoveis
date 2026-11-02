@@ -1,0 +1,13 @@
+tipo_registro	id_registro	data_evento	modalidade	situacao_entrada	valor_acordado	preco_anunciado	contraparte	doc_contraparte	prazo_consignacao	motivo_encerramento	data_encerramento
+ENTRADA	4	2026-01-04 10:00:00	COMPRA_PROPRIA	ENCERRADA	58000.00	70000.00	Eva Fornecedora	CPF 00000000005	NULL	DESFAZIMENTO	2026-01-11 10:00:00
+VENDA_PRINCIPAL	4	2026-01-08 10:00:00	VENDA	CANCELADA	70000.00	NULL	Joao Comprador	CPF 00000000010	NULL	Desfazimento acordado entre as partes.	2026-01-20 15:00:00
+ENTRADA	9	2026-01-20 14:00:00	COMPRA_PROPRIA	COMERCIALIZADA	58000.00	68000.00	Joao Comprador	CPF 00000000010	NULL	VENDA_CONCLUIDA	2026-01-24 10:00:00
+VENDA_PRINCIPAL	5	2026-01-23 10:00:00	VENDA	CONCLUIDA	68000.00	NULL	Lia Compradora	CPF 00000000011	NULL	NULL	NULL
+id_veiculo	total_entradas	total_vezes_vendido_como_principal	total_vezes_recebido_como_troca	total_vendas_canceladas_como_principal	total_vendas_canceladas_onde_era_troca
+4	2	2	0	1	0
+id_venda	data_registro	dias_em_formalizacao	comprador	veiculo	valor_total	instituicao_financeira	situacao_financiamento	documentos_ok	reconhecimento_ok	laudo_ok	detalhe
+6	2026-01-09 10:00:00	297	Mario Comprador	Chevrolet Tracker	90000.00	Banco Demonstracao	APROVADO_A_RECEBER	1	1	1	ALERTA: Venda em formalização há 297 dias sem conclusão/cancelamento
+id_venda	data_registro	data_aprovacao_financiamento	dias_aprovado_sem_receber	instituicao_financeira	valor_financiado	valor_recebido	comprador	veiculo	detalhe
+6	2026-01-09 10:00:00	2026-01-10 10:00:00	296	Banco Demonstracao	80000.00	10000.00	Mario Comprador	Chevrolet Tracker	ALERTA: Financiamento aprovado há 296 dias sem recebimento confirmado
+id_ocorrencia	data_abertura	dias_aberta	id_venda	cliente	veiculo	problema_relatado	situacao	atendimento_externo_informado	detalhe
+2	2026-02-03 09:00:00	272	3	Iara Compradora	Honda City	Ruido na suspensao	EM_ANALISE	NAO	ALERTA: Ocorrência aberta há 272 dias sem encerramento

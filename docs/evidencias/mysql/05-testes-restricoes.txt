@@ -1,0 +1,124 @@
+Note (Code 1305): PROCEDURE multiplikar.teste_rejeicao does not exist
+Note (Code 1305): PROCEDURE multiplikar.teste_aceita does not exist
+resultado
+PASS rejeicao PK forma: forma_pagamento
+resultado
+PASS rejeicao UNIQUE documento: uq_pessoa_documento
+resultado
+PASS rejeicao FK pessoa: fk_atendimento_id_pessoa
+resultado
+PASS rejeicao FK funcionario: fk_atendimento_id_funcionario
+resultado
+PASS rejeicao CHECK CPF: ck_pessoa_documento
+resultado
+PASS rejeicao CHECK atendimento: ck_atendimento_situacao
+resultado
+PASS rejeicao NOT NULL pessoa.nome: nome
+resultado
+PASS rejeicao UNIQUE pessoa-funcionario: Duplicate entry
+resultado
+PASS rejeicao PK associativa: Duplicate entry
+resultado
+PASS rejeicao FK associativa: fk_venda_forma_pagamento_id_venda
+resultado
+PASS rejeicao DELETE pessoa referenciada: fk_
+resultado
+PASS rejeicao ocorrencia ENCERRADA sem data: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia encerrada antes da abertura: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia ENCERRADA sem solucao: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia ENCERRADA com solucao so de espacos: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia em andamento com data de encerramento: ck_ocorrencia_encerramento
+resultado
+PASS rejeicao ocorrencia encerrada sem data ao mudar situacao: ck_ocorrencia_encerramento
+resultado
+PASS aceita ocorrencia encerrada no mesmo instante da abertura
+resultado
+PASS rejeicao possui_cnh = 2: ck_pessoa_cnh
+resultado
+PASS rejeicao possui_cnh = -1: ck_pessoa_cnh
+resultado
+PASS rejeicao condicao_repasse = 2: ck_venda_booleanos
+resultado
+PASS rejeicao concessao_garantia = 5: ck_venda_booleanos
+resultado
+PASS rejeicao reconhecimento_aplicavel = 3: ck_documento_aplicavel
+resultado
+PASS aceita possui_cnh NULL (nao informado)
+resultado
+PASS rejeicao UF inexistente XX: ck_pessoa_uf
+resultado
+PASS rejeicao UF em minusculas: ck_pessoa_uf
+resultado
+PASS rejeicao UF com espaco: ck_pessoa_uf
+resultado
+PASS aceita UF valida DF
+resultado
+PASS rejeicao telefone so de espacos: ck_pessoa_textos
+resultado
+PASS rejeicao e-mail vazio: ck_pessoa_email
+resultado
+PASS rejeicao e-mail sem arroba: ck_pessoa_email
+resultado
+PASS rejeicao e-mail sem dominio: ck_pessoa_email
+resultado
+PASS rejeicao e-mail com espaco: ck_pessoa_email
+resultado
+PASS aceita e-mail valido
+resultado
+PASS rejeicao cidade so de espacos: ck_pessoa_textos
+resultado
+PASS rejeicao cargo vazio: ck_funcionario_cargo
+resultado
+PASS rejeicao marca vazia: ck_veiculo_textos
+resultado
+PASS rejeicao descricao de interesse vazia: ck_atendimento_descricao
+resultado
+PASS rejeicao descricao de despesa vazia: ck_despesa_descricao
+resultado
+PASS rejeicao problema relatado vazio: ck_ocorrencia_problema
+resultado
+PASS rejeicao NOT NULL telefone: telefone
+resultado
+PASS aceita pessoa no primeiro contato sem e-mail e endereco
+resultado
+PASS rejeicao endereco parcial: ck_pessoa_endereco
+resultado
+PASS aceita endereco completo sem complemento
+resultado
+PASS rejeicao apagar e-mail de pessoa com contrato: RO02
+resultado
+PASS aceita veiculo para entrada com contrato
+resultado
+PASS aceita placa e chassi ainda nulos em segundo veiculo (UNIQUE admite varios NULL)
+resultado
+PASS aceita avaliacao aprovada do veiculo 9901
+resultado
+PASS rejeicao contrato de entrada com contraparte sem e-mail e endereco: RO02
+resultado
+PASS aceita cadastro completado antes do contrato
+resultado
+PASS aceita contrato de entrada apos completar o cadastro
+resultado
+PASS aceita nova avaliacao aprovada do veiculo 9901
+resultado
+PASS rejeicao segundo ciclo vigente do mesmo veiculo: uq_entrada_veiculo_vigente
+resultado
+PASS aceita laudo PENDENTE sem data e resultado
+resultado
+PASS rejeicao laudo PENDENTE nao vincula avaliacao: RN08
+resultado
+PASS rejeicao laudo EMITIDO sem data: ck_laudo_emissao
+resultado
+PASS rejeicao laudo EMITIDO com resultado so de espacos: ck_laudo_emissao
+resultado
+PASS rejeicao laudo PENDENTE com data de emissao: ck_laudo_emissao
+resultado
+PASS rejeicao referencia documental vazia: ck_laudo_referencia
+resultado
+PASS aceita laudo emitido com data e resultado
+resultado
+PASS restricoes: 11 violacoes originais e 49 casos da revisao de dominios; DML isolado em transacao

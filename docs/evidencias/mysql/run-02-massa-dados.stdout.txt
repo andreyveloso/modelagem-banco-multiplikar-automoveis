@@ -1,0 +1,73 @@
+resultado
+PASS massa: 6 vendas, 10 entradas e 2 ocorrencias
+resultado
+PASS RN22: vendas concluidas atendem aos requisitos
+resultado
+PASS composicao: troca, saldo quitado e financiamento pendente
+resultado
+PASS RN13: distrato e novo ciclo do HB20 preservados
+Note (Code 1305): PROCEDURE multiplikar.massa_rejeitar does not exist
+resultado
+PASS massa vinculo avaliacao-laudo de outro veiculo: RN08
+resultado
+PASS massa laudo usado nao muda de veiculo: RN08
+resultado
+PASS massa avaliacao de entrada nao pode reprovar: RN06/RN07
+resultado
+PASS massa identidade de entrada imutavel: Identidade e origem
+resultado
+PASS massa entrada historica nao apaga: nunca apagado
+resultado
+PASS massa venda historica nao apaga: nunca apagado
+resultado
+PASS massa recebimento da venda concluida e imutavel: RN22
+resultado
+PASS massa documento concluido nao apaga: RN22
+resultado
+PASS massa documento concluido nao altera: RN22
+resultado
+PASS massa despesa sem veiculo: fk_despesa
+resultado
+PASS massa despesa negativa: ck_despesa_valor
+resultado
+PASS massa pessoa sem nome: nome
+resultado
+PASS massa data de recebimento posterior a conclusao: RN22
+resultado
+PASS massa tipo de documento desconhecido: ck_documento_tipo
+resultado
+PASS massa categoria de despesa desconhecida: ck_despesa_categoria
+resultado
+PASS massa status de atendimento desconhecido: ck_atendimento_situacao
+resultado
+PASS massa entrada duplica ciclo ativo do veiculo: Duplicate entry
+resultado
+PASS massa concluir venda com financiamento pendente: RN22
+resultado
+PASS massa cancelar venda sem ciclo de retorno: RN13/RN28-RN31
+resultado
+PASS massa forma de venda duplicada: Duplicate entry
+resultado
+PASS massa estado final irregular de venda: Use concluir_venda
+resultado
+PASS massa forma de pagamento de venda concluida nao apaga: RN22
+resultado
+PASS massa financiamento de venda concluida nao apaga: RN22
+resultado
+PASS massa garantia historica da venda concluida: RN22
+resultado
+PASS massa garantia historica da venda 5: RN22
+resultado
+PASS massa recebimento de venda 5 concluida e imutavel: RN22
+resultado
+PASS massa situacao de funcionario fora do dominio: ck_funcionario_situacao
+resultado
+PASS massa situacao de laudo fora do dominio: ck_laudo_situacao
+resultado
+PASS massa situacao de ocorrencia fora do dominio: ck_ocorrencia_situacao
+resultado
+PASS massa responsabilidade de ocorrencia fora do dominio: ck_ocorrencia_responsabilidade
+resultado
+PASS massa ano de veiculo abaixo do limite: ck_veiculo_ano
+resultado
+PASS massa ano de veiculo acima do limite: ck_veiculo_ano

@@ -1,0 +1,15 @@
+# Teste API fase 2 com SQL mode padrao MySQL 8.4
+Servidor: MySQL 8.4.13 em 127.0.0.1:33306
+sql_mode: ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+Execucao local em 2026-11-01; conexoes da API usaram esse servidor, sem SET sql_mode.
+Rotas HTTP GET:
+PASS /saude — 1 registro
+PASS /estoque — 39 registros
+PASS /propostas — 3 registros
+PASS /simulacoes — 2 registros
+PASS /previsao — 4 registros
+PASS /fila — 4 registros
+PASS /cenario/BASE — 4 registros
+PASS /cenario/BANCO_ATRA_15_DIAS — 6 registros
+PASS /cenario/LEADS_QUENTES_NAO_FECHAM — 1 registro
+PASS /testar-regras — 8/8 operacoes invalidas recusadas

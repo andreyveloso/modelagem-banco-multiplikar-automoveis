@@ -1,0 +1,8 @@
+VERIFICACAO DE SEGURANCA — AMBIENTE LOCAL MYSQL
+
+Data da cadeia: 2026-11-01
+Origem observada: docs/evidencias/mysql/00-server-info.txt
+Servidor local: MySQL Community Server 8.4.13 em 127.0.0.1:33306
+Modo SQL: ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+
+A verificação automatizada ocorreu no ambiente local descartável e não mediu a configuração de uma máquina remota. Os controles esperados para a instalação do servidor, incluindo bind-address, TLS, caching_sha2_password, contas por função e menor privilégio, estão descritos em docs/seguranca.md.

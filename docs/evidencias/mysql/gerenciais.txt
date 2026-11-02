@@ -1,0 +1,45 @@
+marca	modelo	qtd_vendas	valor_total_vendido	ticket_medio
+Toyota	Corolla	1	100000.00	100000.000000
+Honda	City	1	80000.00	80000.000000
+Hyundai	HB20	1	68000.00	68000.000000
+Fiat	Argo	1	60000.00	60000.000000
+nome	documento_mascarado	telefone_mascarado	email_mascarado	qtd_compras	valor_total_comprado	ultima_compra	classificacao_cliente
+Gabi Compradora	CPF ***.***.000-07	(**) ****0007	****@example.invalid	1	100000.00	2026-01-11 10:00:00	CLIENTE OCASIONAL
+Iara Compradora	CPF ***.***.000-09	(**) ****0009	****@example.invalid	1	80000.00	2026-01-11 10:00:00	CLIENTE OCASIONAL
+Lia Compradora	CPF ***.***.000-11	(**) ****0011	****@example.invalid	1	68000.00	2026-01-24 10:00:00	CLIENTE OCASIONAL
+Fabio Comprador	CPF ***.***.000-06	(**) ****0006	****@example.invalid	1	60000.00	2026-01-11 10:00:00	CLIENTE OCASIONAL
+ano	mes	qtd_vendas	faturamento_bruto	valor_financiado	total_recebido_loja	ticket_medio_mes
+2026	1	4	308000.00	60000.00	268000.00	77000.000000
+id_veiculo	marca	modelo	ano_modelo	cor	modalidade	data_entrada_estoque	dias_no_estoque	custo_aquisicao	preco_anunciado	consignante_nome	consignante_telefone
+9	Renault	Kwid	2024	Branco	CONSIGNACAO	2026-01-04 11:00:00	301	55000.00	55000.00	Hugo Consignante	11900000008
+6	Fiat	Uno	2015	Branco	TROCA	2026-01-06 11:00:00	299	25000.00	30000.00	Gabi Compradora	11900000007
+7	Ford	Ka	2013	Vermelho	TROCA	2026-01-06 11:00:00	299	15000.00	20000.00	Gabi Compradora	11900000007
+id_veiculo	marca	modelo	ano_modelo	data_entrada	prazo_consignacao	dias_para_vencer	proprietario_nome	proprietario_telefone	valor_repasse_acordado
+9	Renault	Kwid	2024	2026-01-04 11:00:00	2026-11-15	14	Hugo Consignante	11900000008	50000.00
+id_venda	data_venda	comprador	veiculo_vendido	valor_venda_principal	qtd_veiculos_troca	valor_total_trocas	veiculos_troca_detalhe
+4	2026-01-08 10:00:00	Joao Comprador	Hyundai HB20	70000.00	1	30000.00	Volkswagen Gol (30000.00)
+2	2026-01-06 10:00:00	Gabi Compradora	Toyota Corolla	100000.00	2	40000.00	Fiat Uno (25000.00), Ford Ka (15000.00)
+id_venda	data_venda	comprador	veiculo	valor_total	valor_recebido	saldo_pendente	situacao_financeira	tem_financiamento	situacao_financiamento	valor_financiado	data_ultimo_recebimento
+6	2026-01-09 10:00:00	Mario Comprador	Chevrolet Tracker	90000.00	10000.00	80000.00	PARCIAL	SIM	APROVADO_A_RECEBER	80000.00	2026-01-09 11:00:00
+id_veiculo	marca	modelo	ano_modelo	modalidade	custo_aquisicao	valor_repasse_acordado	despesas_preparacao	despesas_garantia	total_despesas_ciclo	valor_venda	margem_liquida_estimada
+3	Honda	City	2023	CONSIGNACAO	80000.00	74000.00	0.00	150.00	150.00	80000.00	5850.00
+1	Fiat	Argo	2022	COMPRA_PROPRIA	50000.00	NULL	0.00	650.00	650.00	60000.00	9350.00
+4	Hyundai	HB20	2022	COMPRA_PROPRIA	58000.00	NULL	400.00	0.00	400.00	68000.00	9600.00
+2	Toyota	Corolla	2021	COMPRA_PROPRIA	85000.00	NULL	250.00	0.00	250.00	100000.00	14750.00
+id_funcionario	vendedor	total_atendimentos	total_vendas_concluidas	taxa_conversao_pct
+1	Ana Comercial	4	2	50.00
+2	Bruno Administrativo	2	1	50.00
+id_veiculo	marca	modelo	ano_modelo	qtd_vendas_com_ocorrencia	qtd_ocorrencias	tipos_problema	solucoes_aplicadas
+1	Fiat	Argo	2022	1	1	Falha de partida	Problema resolvido
+3	Honda	City	2023	1	1	Ruido na suspensao	NULL
+id_venda	data_venda	comprador	veiculo	valor_total	valor_recebido	situacao_financeira	situacao_financiamento	documentos_ok	reconhecimento_ok	laudo_ok	scanner_realizado	apta_para_conclusao_rn22	apta_para_entrega	data_conclusao	data_entrega	status_conclusao_rn22	status_entrega
+6	2026-01-09 10:00:00	Mario Comprador	Chevrolet Tracker	90000.00	10000.00	PARCIAL	APROVADO_A_RECEBER	1	1	1	0	0	0	NULL	NULL	PENDENTE RN22	PENDENTE RN22
+modalidade	situacao_atual	qtd_veiculos	valor_total_estoque	media_dias_estoque
+COMPRA_PROPRIA	EM_FORMALIZACAO	1	78000.00	301.0000
+CONSIGNACAO	DISPONIVEL	1	55000.00	301.0000
+TROCA	DISPONIVEL	2	40000.00	299.0000
+id_avaliacao	data_avaliacao	finalidade	quilometragem	condicao_externa	condicao_interna	condicao_mecanica	condicao_estrutural	condicao_documental	decisao_tecnica	interesse_comercial	avaliador	id_laudo	data_laudo	situacao_laudo	resultado_laudo
+9	2026-01-20 13:00:00	COMPRA_PROPRIA	45300	Conservada	Conservada	Reavaliada apos retorno	Verificada	Em regularizacao administrativa	APROVADA	SIM	Caio Avaliador	4	2026-01-02	EMITIDO	Documento cautelar realizado; resultado registrado para analise.
+4	2026-01-03 10:00:00	COMPRA_PROPRIA	45000	Conservada	Conservada	Vistoriada	Verificada	Conferida	APROVADA	SIM	Caio Avaliador	4	2026-01-02	EMITIDO	Documento cautelar realizado; resultado registrado para analise.
+id_venda	data_venda	data_cancelamento	motivo_cancelamento	valor_restituido_loja	data_retorno_veiculo	data_aviso_consignante	orientacao_bancaria	comprador	veiculo_vendido	valor_venda_original	valor_ja_recebido	tinha_financiamento	observacoes_cancelamento	veiculos_troca_situacao
+4	2026-01-08 10:00:00	2026-01-20 15:00:00	Desfazimento acordado entre as partes.	40000.00	2026-01-20 10:00:00	NULL	NULL	Joao Comprador	Hyundai HB20	70000.00	40000.00	NAO	HB20 recebido; Gol devolvido; 40000 restituidos; novo ciclo 9 em regularizacao.	Volkswagen Gol (DEVOLVIDA)

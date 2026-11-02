@@ -1,0 +1,22 @@
+Note (Code 1051): Unknown table 'multiplikar.estoque_loja'
+Note (Code 1051): Unknown table 'multiplikar.antes'
+Note (Code 1051): Unknown table 'multiplikar.carga'
+Note (Code 1051): Unknown table 'multiplikar.laudos'
+Note (Code 1051): Unknown table 'multiplikar.avaliacoes'
+resultado
+PASS estoque: 27 veiculos anunciados disponiveis
+resultado
+PASS estoque: disponiveis aumentaram exatamente em 27
+resultado
+PASS estoque: fila, previsao e propostas inalterados
+resultado
+PASS estoque: previsao e comparativo conferidos contra captura anterior
+resultado
+PASS estoque: casos reprovados fora do estoque
+Note (Code 1305): PROCEDURE multiplikar.estoque_rejeitar does not exist
+resultado
+PASS estoque rejeita avaliacao reprovada fora do estoque: RN06/RN07
+resultado
+PASS estoque rejeita avaliacao sem interesse fora do estoque: RN06/RN07
+resultado
+PASS estoque rejeita avaliacao ja usada em entrada: Duplicate entry

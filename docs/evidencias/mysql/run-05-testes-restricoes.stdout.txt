@@ -1,0 +1,25 @@
+Note (Code 1305): PROCEDURE multiplikar.teste_rejeicao does not exist
+resultado
+PASS rejeicao PK forma: forma_pagamento
+resultado
+PASS rejeicao UNIQUE documento: uq_pessoa_documento
+resultado
+PASS rejeicao FK pessoa: fk_atendimento_id_pessoa
+resultado
+PASS rejeicao FK funcionario: fk_atendimento_id_funcionario
+resultado
+PASS rejeicao CHECK CPF: ck_pessoa_documento
+resultado
+PASS rejeicao CHECK atendimento: ck_atendimento_situacao
+resultado
+PASS rejeicao NOT NULL pessoa.nome: nome
+resultado
+PASS rejeicao UNIQUE pessoa-funcionario: Duplicate entry
+resultado
+PASS rejeicao PK associativa: Duplicate entry
+resultado
+PASS rejeicao FK associativa: fk_venda_forma_pagamento_id_venda
+resultado
+PASS rejeicao DELETE pessoa referenciada: fk_
+resultado
+PASS restricoes: 11 violacoes rejeitadas pelo MySQL; DML isolado em transacao

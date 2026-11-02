@@ -1,0 +1,46 @@
+resultado
+PASS RN44: tres intencoes registradas para atendimentos de compra
+resultado
+PASS RN44 versao de regra desconhecida: Versao de regra desconhecida
+resultado
+PASS RN44 intencao duplicada: Duplicate entry
+resultado
+PASS RN44 intencao sem conteudo: ck_intencao_conteudo
+resultado
+PASS RN44 valor negativo: ck_intencao_valor
+resultado
+PASS RN44 forma nao cadastrada: fk_intencao_forma
+resultado
+PASS RN44 veiculo pretendido inativo: veiculo pretendido deve estar anunciado
+resultado
+PASS RN44 atendimento de venda nao aceita intencao de compra: RN44: intencao de compra exige atendimento de COMPRA ou TROCA
+resultado
+PASS RN44 valor disponivel acima do preco anunciado: RN44: valor disponivel maior que o preco anunciado
+resultado
+PASS RN44 codigo de fator fora do dominio: ck_fator_codigo
+resultado
+PASS REGRA-V2 cobertura >= 90% e pagamento a vista = 40.00 pts
+resultado
+PASS REGRA-V2 cobertura >= 90% sem pagamento a vista = 30.00 pts
+resultado
+PASS REGRA-V2 cobertura >= 50% = 20.00 pts
+resultado
+PASS REGRA-V2 financiamento com cobertura baixa = 20.00 pts
+resultado
+PASS REGRA-V2 cobertura menor que 50% = 0.00 pts
+resultado
+PASS REGRA-V2 sem veiculo selecionado, forma PIX = 10.00 pts
+resultado
+PASS REGRA-V1 permanece em 35 pontos FRIO apos introduzir V2
+resultado
+PASS REGRA-V2: cobertura 97 por cento a vista resulta em 75 pontos QUENTE e cinco fatores
+resultado
+PASS REGRA-V2 intencao sem forma e 22% de cobertura do atendimento 9 = 0.00 pts
+resultado
+PASS REGRA-V2 atendimento sem intencao: fator zero com evidencia = 0.00 pts
+resultado
+PASS oferta de 5000 sobre preco 135900 preserva lead FRIO em 35 pontos
+resultado
+PASS REGRA-V2 oferta baixa nao pontua capacidade de pagamento = 0.00 pts
+resultado
+PASS REGRA-V2: capacidade de pagamento eleva lead a 95 pontos QUENTE

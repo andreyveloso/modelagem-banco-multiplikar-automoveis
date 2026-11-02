@@ -1,0 +1,23 @@
+# Execucao MySQL 8.4.13 — 2026-11-01
+Banco multiplikar recriado do zero pelo RODAR-BANCO-MULTIPLIKAR.bat em 127.0.0.1:33306. A cadeia teve exit 0 nos 14 passos.
+
+sql_mode (padrao MySQL 8.4): ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION. O valor foi consultado pelo proprio .bat e esta em 00-server-info.txt. my.ini nao sobrescreve sql_mode.
+
+PASS total: 382. Contagens por arquivo e linhas integrais em testes-pass.txt.
+- 01-schema: 0 PASS
+- 02-massa-dados: 36 PASS
+- 03-gerenciais: 0 PASS
+- 04-auditoria: 0 PASS
+- 05-testes-restricoes: 12 PASS
+- 06-ext01: 0 PASS
+- 07-ext02: 34 PASS
+- 08-ext03: 0 PASS
+- 09-ext04: 23 PASS
+- 10-ext05: 2 PASS
+- 11-ext06: 8 PASS
+- 12-ext07: 23 PASS
+- 13-testes-fluxos: 67 PASS
+- 14-testes-relacionamentos: 177 PASS
+
+A consulta gerencial 3 (gerenciais.sql, linha 7) agora agrupa pelas expressões ano/mes efetivamente projetadas e ordena pelos aliases. Nenhum dos 14 scripts altera sql_mode. app-mysql.sql tambem executou sob o modo padrao. As consultas SQL de api.py e migrar-leads.py/.sql nao contem GROUP BY nem alteracao de sql_mode.
+

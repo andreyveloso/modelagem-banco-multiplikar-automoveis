@@ -1,0 +1,435 @@
+02-massa-dados: PASS massa: 6 vendas, 10 entradas e 2 ocorrencias
+02-massa-dados: PASS RN22: vendas concluidas atendem aos requisitos
+02-massa-dados: PASS composicao: troca, saldo quitado e financiamento pendente
+02-massa-dados: PASS RN13: distrato e novo ciclo do HB20 preservados
+02-massa-dados: PASS massa vinculo avaliacao-laudo de outro veiculo: RN08
+02-massa-dados: PASS massa laudo usado nao muda de veiculo: RN08
+02-massa-dados: PASS massa avaliacao de entrada nao pode reprovar: RN06/RN07
+02-massa-dados: PASS massa identidade de entrada imutavel: Identidade e origem
+02-massa-dados: PASS massa entrada historica nao apaga: nunca apagado
+02-massa-dados: PASS massa venda historica nao apaga: nunca apagado
+02-massa-dados: PASS massa recebimento da venda concluida e imutavel: RN22
+02-massa-dados: PASS massa documento concluido nao apaga: RN22
+02-massa-dados: PASS massa documento concluido nao altera: RN22
+02-massa-dados: PASS massa despesa sem veiculo: fk_despesa
+02-massa-dados: PASS massa despesa negativa: ck_despesa_valor
+02-massa-dados: PASS massa pessoa sem nome: nome
+02-massa-dados: PASS massa data de recebimento posterior a conclusao: RN22
+02-massa-dados: PASS massa tipo de documento desconhecido: ck_documento_tipo
+02-massa-dados: PASS massa categoria de despesa desconhecida: ck_despesa_categoria
+02-massa-dados: PASS massa status de atendimento desconhecido: ck_atendimento_situacao
+02-massa-dados: PASS massa entrada duplica ciclo ativo do veiculo: Duplicate entry
+02-massa-dados: PASS massa concluir venda com financiamento pendente: RN22
+02-massa-dados: PASS massa cancelar venda sem ciclo de retorno: RN13/RN28-RN31
+02-massa-dados: PASS massa forma de venda duplicada: Duplicate entry
+02-massa-dados: PASS massa estado final irregular de venda: Use concluir_venda
+02-massa-dados: PASS massa forma de pagamento de venda concluida nao apaga: RN22
+02-massa-dados: PASS massa financiamento de venda concluida nao apaga: RN22
+02-massa-dados: PASS massa garantia historica da venda concluida: RN22
+02-massa-dados: PASS massa garantia historica da venda 5: RN22
+02-massa-dados: PASS massa recebimento de venda 5 concluida e imutavel: RN22
+02-massa-dados: PASS massa situacao de funcionario fora do dominio: ck_funcionario_situacao
+02-massa-dados: PASS massa situacao de laudo fora do dominio: ck_laudo_situacao
+02-massa-dados: PASS massa situacao de ocorrencia fora do dominio: ck_ocorrencia_situacao
+02-massa-dados: PASS massa responsabilidade de ocorrencia fora do dominio: ck_ocorrencia_responsabilidade
+02-massa-dados: PASS massa ano de veiculo abaixo do limite: ck_veiculo_ano
+02-massa-dados: PASS massa ano de veiculo acima do limite: ck_veiculo_ano
+05-testes-restricoes: PASS rejeicao PK forma: forma_pagamento
+05-testes-restricoes: PASS rejeicao UNIQUE documento: uq_pessoa_documento
+05-testes-restricoes: PASS rejeicao FK pessoa: fk_atendimento_id_pessoa
+05-testes-restricoes: PASS rejeicao FK funcionario: fk_atendimento_id_funcionario
+05-testes-restricoes: PASS rejeicao CHECK CPF: ck_pessoa_documento
+05-testes-restricoes: PASS rejeicao CHECK atendimento: ck_atendimento_situacao
+05-testes-restricoes: PASS rejeicao NOT NULL pessoa.nome: nome
+05-testes-restricoes: PASS rejeicao UNIQUE pessoa-funcionario: Duplicate entry
+05-testes-restricoes: PASS rejeicao PK associativa: Duplicate entry
+05-testes-restricoes: PASS rejeicao FK associativa: fk_venda_forma_pagamento_id_venda
+05-testes-restricoes: PASS rejeicao DELETE pessoa referenciada: fk_
+05-testes-restricoes: PASS rejeicao ocorrencia ENCERRADA sem data: ck_ocorrencia_encerramento
+05-testes-restricoes: PASS rejeicao ocorrencia encerrada antes da abertura: ck_ocorrencia_encerramento
+05-testes-restricoes: PASS rejeicao ocorrencia ENCERRADA sem solucao: ck_ocorrencia_encerramento
+05-testes-restricoes: PASS rejeicao ocorrencia ENCERRADA com solucao so de espacos: ck_ocorrencia_encerramento
+05-testes-restricoes: PASS rejeicao ocorrencia em andamento com data de encerramento: ck_ocorrencia_encerramento
+05-testes-restricoes: PASS rejeicao ocorrencia encerrada sem data ao mudar situacao: ck_ocorrencia_encerramento
+05-testes-restricoes: PASS aceita ocorrencia encerrada no mesmo instante da abertura
+05-testes-restricoes: PASS rejeicao possui_cnh = 2: ck_pessoa_cnh
+05-testes-restricoes: PASS rejeicao possui_cnh = -1: ck_pessoa_cnh
+05-testes-restricoes: PASS rejeicao condicao_repasse = 2: ck_venda_booleanos
+05-testes-restricoes: PASS rejeicao concessao_garantia = 5: ck_venda_booleanos
+05-testes-restricoes: PASS rejeicao reconhecimento_aplicavel = 3: ck_documento_aplicavel
+05-testes-restricoes: PASS aceita possui_cnh NULL (nao informado)
+05-testes-restricoes: PASS rejeicao UF inexistente XX: ck_pessoa_uf
+05-testes-restricoes: PASS rejeicao UF em minusculas: ck_pessoa_uf
+05-testes-restricoes: PASS rejeicao UF com espaco: ck_pessoa_uf
+05-testes-restricoes: PASS aceita UF valida DF
+05-testes-restricoes: PASS rejeicao telefone so de espacos: ck_pessoa_textos
+05-testes-restricoes: PASS rejeicao e-mail vazio: ck_pessoa_email
+05-testes-restricoes: PASS rejeicao e-mail sem arroba: ck_pessoa_email
+05-testes-restricoes: PASS rejeicao e-mail sem dominio: ck_pessoa_email
+05-testes-restricoes: PASS rejeicao e-mail com espaco: ck_pessoa_email
+05-testes-restricoes: PASS aceita e-mail valido
+05-testes-restricoes: PASS rejeicao cidade so de espacos: ck_pessoa_textos
+05-testes-restricoes: PASS rejeicao cargo vazio: ck_funcionario_cargo
+05-testes-restricoes: PASS rejeicao marca vazia: ck_veiculo_textos
+05-testes-restricoes: PASS rejeicao descricao de interesse vazia: ck_atendimento_descricao
+05-testes-restricoes: PASS rejeicao descricao de despesa vazia: ck_despesa_descricao
+05-testes-restricoes: PASS rejeicao problema relatado vazio: ck_ocorrencia_problema
+05-testes-restricoes: PASS rejeicao NOT NULL telefone: telefone
+05-testes-restricoes: PASS aceita pessoa no primeiro contato sem e-mail e endereco
+05-testes-restricoes: PASS rejeicao endereco parcial: ck_pessoa_endereco
+05-testes-restricoes: PASS aceita endereco completo sem complemento
+05-testes-restricoes: PASS rejeicao apagar e-mail de pessoa com contrato: RO02
+05-testes-restricoes: PASS aceita veiculo para entrada com contrato
+05-testes-restricoes: PASS aceita placa e chassi ainda nulos em segundo veiculo (UNIQUE admite varios NULL)
+05-testes-restricoes: PASS aceita avaliacao aprovada do veiculo 9901
+05-testes-restricoes: PASS rejeicao contrato de entrada com contraparte sem e-mail e endereco: RO02
+05-testes-restricoes: PASS aceita cadastro completado antes do contrato
+05-testes-restricoes: PASS aceita contrato de entrada apos completar o cadastro
+05-testes-restricoes: PASS aceita nova avaliacao aprovada do veiculo 9901
+05-testes-restricoes: PASS rejeicao segundo ciclo vigente do mesmo veiculo: uq_entrada_veiculo_vigente
+05-testes-restricoes: PASS aceita laudo PENDENTE sem data e resultado
+05-testes-restricoes: PASS rejeicao laudo PENDENTE nao vincula avaliacao: RN08
+05-testes-restricoes: PASS rejeicao laudo EMITIDO sem data: ck_laudo_emissao
+05-testes-restricoes: PASS rejeicao laudo EMITIDO com resultado so de espacos: ck_laudo_emissao
+05-testes-restricoes: PASS rejeicao laudo PENDENTE com data de emissao: ck_laudo_emissao
+05-testes-restricoes: PASS rejeicao referencia documental vazia: ck_laudo_referencia
+05-testes-restricoes: PASS aceita laudo emitido com data e resultado
+05-testes-restricoes: PASS restricoes: 11 violacoes originais e 49 casos da revisao de dominios; DML isolado em transacao
+07-ext02: PASS demonstracao: alternativas A/B/C e trade-off R0/R4 conferidos
+07-ext02: PASS massa proposta: condicoes, troca e simulacoes conferidas
+07-ext02: PASS ext02 condicao duplicada na proposta: Duplicate entry
+07-ext02: PASS ext02 valor da condicao deve ser positivo: ck_proposta_condicao_valor
+07-ext02: PASS ext02 apresentada imutavel: Proposta apresentada e imutavel
+07-ext02: PASS ext02 condicao de proposta apresentada imutavel: Proposta apresentada e imutavel
+07-ext02: PASS ext02 ACEITA exige funcao atomica: Use aceitar_proposta
+07-ext02: PASS ext02 consentimento de renda obrigatorio: ck_simulacao_consentimento_renda
+07-ext02: PASS ext02 retorno sem vigencia: Parametro_retorno vigente
+07-ext02: PASS ext02 simulacao nao pode ser apagada: nao pode ser removida
+07-ext02: PASS ext02 simulacao em analise nao altera dados-base: so permite alterar situacao
+07-ext02: PASS ext02 obrigacao nao pode ser apagada: nao pode ser removida
+07-ext02: PASS ext02 vencimento original e imutavel: so permite alterar vencimento_atual
+07-ext02: PASS ext02 arco administrativo sem FK: ck_obrigacao_arco
+07-ext02: PASS ext02 troca ja consumida: Troca exige avaliacao aprovada
+07-ext02: PASS ext02 troca ligada a proposta apresentada: Troca exige avaliacao aprovada
+07-ext02: PASS ext02 percentual de retorno limitado: ck_parametro_retorno_pct
+07-ext02: PASS ext02 instituicao e tabela unicas por vigencia: Duplicate entry
+07-ext02: PASS ext02 obrigacao so permite campos de previsao: so permite alterar vencimento_atual
+07-ext02: PASS ext02 simulacao sem taxa tabela valida: Parametro_retorno vigente
+07-ext02: PASS ext02 venda referencia proposta nao aceita: Venda exige proposta aceita
+07-ext02: PASS ext02 datas da obrigacao em ordem: ck_obrigacao_datas
+07-ext02: PASS ext02 raiz exige versao 1: Proposta raiz deve iniciar
+07-ext02: PASS ext02 alternativa raiz rotulo e versao unicos: Duplicate entry
+07-ext02: PASS ext02 sucessora exige predecessora substituida: Contraproposta deve suceder
+07-ext02: PASS ext02 decisao nula antes da decisao: ck_proposta_data_decisao
+07-ext02: PASS ext02 ACEITA depois da validade: Proposta aceita exige entrada ativa
+07-ext02: PASS ext02 situacao terminal da obrigacao: Situacao terminal da obrigacao financeira
+07-ext02: PASS ext02 transicao atrasada para aberta proibida: Situacao terminal da obrigacao financeira
+07-ext02: PASS ext02 segunda simulacao aprovada para proposta: Duplicate entry
+07-ext02: PASS ext02 data resposta anterior a simulacao: ck_simulacao_datas
+07-ext02: PASS ext02 simulacao R4 em analise nao altera tabela: so permite alterar situacao
+07-ext02: PASS ext02 substituicao positiva: alternativa A sucede para versao 2 e aplica desconto
+07-ext02: PASS ext02 sucessora herda rotulo: Contraproposta deve suceder a mesma alternativa
+09-ext04: PASS CRM: quatro classificacoes e referencia 2026-02-10 conferidas
+09-ext04: PASS CRM: atendimento 7 MORNO sugerido e QUENTE revisado
+09-ext04: PASS CRM: atendimento 8 encerrado com desfecho de perda
+09-ext04: PASS CRM interacao somente insercao update: somente insercao
+09-ext04: PASS CRM interacao somente insercao delete: somente insercao
+09-ext04: PASS CRM desfecho somente insercao update: somente insercao
+09-ext04: PASS CRM desfecho somente insercao delete: somente insercao
+09-ext04: PASS CRM fator somente insercao update: somente insercao
+09-ext04: PASS CRM fator somente insercao delete: somente insercao
+09-ext04: PASS CRM classificacao revisada imutavel: Apenas revisao humana ausente
+09-ext04: PASS CRM classificacao historica nao apaga: historico; nunca e apagada
+09-ext04: PASS CRM temperatura fora do dominio: ck_parametro_temperatura
+09-ext04: PASS CRM probabilidade fora do intervalo: ck_parametro_probabilidade
+09-ext04: PASS CRM fator fora do dominio: ck_fator_codigo
+09-ext04: PASS CRM classificacao sem atendimento: fk_classificacao_lead_id_atendimento
+09-ext04: PASS CRM desfecho duplicado: Duplicate entry
+09-ext04: PASS CRM tipo de desfecho fora do dominio: ck_desfecho_tipo
+09-ext04: PASS CRM interacao com atendimento inexistente: fk_interacao_id_atendimento
+09-ext04: PASS CRM proximo passo antes da interacao: ck_interacao_proximo_passo
+09-ext04: PASS CRM interacao sem resumo: ck_interacao_resumo
+09-ext04: PASS CRM parametro temperatura duplicado: Duplicate entry
+09-ext04: PASS CRM revisao divergente exige justificativa: ck_classificacao_justificativa
+09-ext04: PASS CRM procedure limpa marca da sessao apos INSERT falho: data_hora
+10-ext05: PASS previsao: semanas e realizado ate a referencia
+10-ext05: PASS previsao: funil limitado a alternativas e liquido de repasse
+11-ext06: PASS estoque: 27 veiculos anunciados disponiveis
+11-ext06: PASS estoque: disponiveis aumentaram exatamente em 27
+11-ext06: PASS estoque: fila, previsao e propostas inalterados
+11-ext06: PASS estoque: previsao e comparativo conferidos contra captura anterior
+11-ext06: PASS estoque: casos reprovados fora do estoque
+11-ext06: PASS estoque rejeita avaliacao reprovada fora do estoque: RN06/RN07
+11-ext06: PASS estoque rejeita avaliacao sem interesse fora do estoque: RN06/RN07
+11-ext06: PASS estoque rejeita avaliacao ja usada em entrada: Duplicate entry
+12-ext07: PASS RN44: tres intencoes registradas para atendimentos de compra
+12-ext07: PASS RN44 versao de regra desconhecida: Versao de regra desconhecida
+12-ext07: PASS RN44 intencao duplicada: Duplicate entry
+12-ext07: PASS RN44 intencao sem conteudo: ck_intencao_conteudo
+12-ext07: PASS RN44 valor negativo: ck_intencao_valor
+12-ext07: PASS RN44 forma nao cadastrada: fk_intencao_forma
+12-ext07: PASS RN44 veiculo pretendido inativo: veiculo pretendido deve estar anunciado
+12-ext07: PASS RN44 atendimento de venda nao aceita intencao de compra: RN44: intencao de compra exige atendimento de COMPRA ou TROCA
+12-ext07: PASS RN44 valor disponivel acima do preco anunciado: RN44: valor disponivel maior que o preco anunciado
+12-ext07: PASS RN44 codigo de fator fora do dominio: ck_fator_codigo
+12-ext07: PASS REGRA-V2 cobertura >= 90% e pagamento a vista = 40.00 pts
+12-ext07: PASS REGRA-V2 cobertura >= 90% sem pagamento a vista = 30.00 pts
+12-ext07: PASS REGRA-V2 cobertura >= 50% = 20.00 pts
+12-ext07: PASS REGRA-V2 financiamento com cobertura baixa = 20.00 pts
+12-ext07: PASS REGRA-V2 cobertura menor que 50% = 0.00 pts
+12-ext07: PASS REGRA-V2 sem veiculo selecionado, forma PIX = 10.00 pts
+12-ext07: PASS REGRA-V1 permanece em 35 pontos FRIO apos introduzir V2
+12-ext07: PASS REGRA-V2: cobertura 97 por cento a vista resulta em 75 pontos QUENTE e cinco fatores
+12-ext07: PASS REGRA-V2 intencao sem forma e 22% de cobertura do atendimento 9 = 0.00 pts
+12-ext07: PASS REGRA-V2 atendimento sem intencao: fator zero com evidencia = 0.00 pts
+12-ext07: PASS oferta de 5000 sobre preco 135900 preserva lead FRIO em 35 pontos
+12-ext07: PASS REGRA-V2 oferta baixa nao pontua capacidade de pagamento = 0.00 pts
+12-ext07: PASS REGRA-V2: capacidade de pagamento eleva lead a 95 pontos QUENTE
+13-testes-fluxos: PASS fluxo demonstracao tem alternativas A/B/C
+13-testes-fluxos: PASS fluxo R0 e R4 estao disponiveis para a simulacao
+13-testes-fluxos: PASS fluxo margem estimada igual nas tres alternativas
+13-testes-fluxos: PASS fluxo valor de troca nao aparece como caixa D0
+13-testes-fluxos: PASS fluxo saldo de entrada da semana incorpora 6 mil liquidos
+13-testes-fluxos: PASS fluxo recebimento vencido da venda 6 compoe explicacao
+13-testes-fluxos: PASS fluxo CRM exclui atendimento convertido
+13-testes-fluxos: PASS fluxo simulacao R4 aumenta parcela e retorno da loja
+13-testes-fluxos: PASS fluxo PMT, total pago e CET preservam centavos e escala
+13-testes-fluxos: PASS fluxo parcelas e retorno do banco identificados como movimento bancario para o cenario de atraso
+13-testes-fluxos: PASS fluxo desvio venda proposta para outro cliente: operacao recusada
+13-testes-fluxos: PASS fluxo desvio delete historico de interacao: operacao recusada
+13-testes-fluxos: PASS fluxo desvio troca consumida: operacao recusada
+13-testes-fluxos: PASS fluxo desvio arco administrativo preenchido: operacao recusada
+13-testes-fluxos: PASS fluxo desvio obrigacao terminal imutavel: operacao recusada
+13-testes-fluxos: PASS fluxo desvio simulacao nao pode ser apagada: operacao recusada
+13-testes-fluxos: PASS fluxo desvio simulacao exige tabela vigente: operacao recusada
+13-testes-fluxos: PASS fluxo validade omitida ancora em data_referencia
+13-testes-fluxos: PASS fluxo desvio proposta rascunho nao aceita direto: apresentada antes da decisao
+13-testes-fluxos: PASS fluxo desvio proposta nao apresenta sem condicoes: Composicao da proposta deve igualar
+13-testes-fluxos: PASS fluxo desvio nova venda nao vincula proposta apresentada: Venda exige proposta aceita
+13-testes-fluxos: PASS fluxo obrigacao prevista abre no fluxo permitido
+13-testes-fluxos: PASS fluxo desvio transicao invalida de obrigacao: Transicao de situacao da obrigacao financeira invalida
+13-testes-fluxos: PASS fluxo desvio simulacao depois da resposta nao edita parcela: imutavel apos EM_ANALISE
+13-testes-fluxos: PASS fluxo desvio situacao terminal da proposta: Situacao terminal da proposta e imutavel
+13-testes-fluxos: PASS fluxo 09 alternativas A/B/C usam a entrada 10
+13-testes-fluxos: PASS fluxo 09 cada alternativa comeca como versao raiz
+13-testes-fluxos: PASS fluxo 09 proposta A e PIX integral
+13-testes-fluxos: PASS fluxo 09 proposta B combina entrada PIX de 20 por cento
+13-testes-fluxos: PASS fluxo 09 proposta B financia o saldo de 80 por cento
+13-testes-fluxos: PASS fluxo 09 proposta C registra a entrada PIX em dinheiro
+13-testes-fluxos: PASS fluxo 09 proposta C registra o Gol avaliado como troca
+13-testes-fluxos: PASS fluxo 09 as condicoes e a troca fecham o total de cada proposta
+13-testes-fluxos: PASS fluxo 09 comparador usa o CPF do cliente do atendimento
+13-testes-fluxos: PASS fluxo 09 recebimento no ato varia por alternativa
+13-testes-fluxos: PASS fluxo 09 valor recebido depois do ato e separado do caixa D0
+13-testes-fluxos: PASS fluxo 09 troca nao e receita em dinheiro nem altera caixa D0
+13-testes-fluxos: PASS fluxo 09 margem de veiculo permanece igual nas tres opcoes
+13-testes-fluxos: PASS fluxo 09 retorno do banco soma apenas a margem da proposta financiada
+13-testes-fluxos: PASS fluxo 09 simulacao R0 usa a taxa base mensal
+13-testes-fluxos: PASS fluxo 09 simulacao R0 apresenta CET anual aproximado
+13-testes-fluxos: PASS fluxo 09 simulacao R4 soma acrescimo a taxa base
+13-testes-fluxos: PASS fluxo 09 simulacao R4 mostra CET anual aproximado maior
+13-testes-fluxos: PASS fluxo 09 simulacao R0 nao remunera retorno a loja
+13-testes-fluxos: PASS fluxo 09 simulacao aprovada mantem consentimento de renda
+13-testes-fluxos: PASS fluxo 01 atendimento 7 preserva a data de abertura do contato
+13-testes-fluxos: PASS fluxo 01 lead final esta revisado por funcionario ativo
+13-testes-fluxos: PASS fluxo 01 classificacao humana preserva sugestao MORNO
+13-testes-fluxos: PASS fluxo 01 lead mantem uma interacao no historico
+13-testes-fluxos: PASS fluxo 01 fila CRM prioriza o lead quente de 55 mil
+13-testes-fluxos: PASS fluxo 08 fila de caixa identifica a obrigacao da venda 6
+13-testes-fluxos: PASS fluxo 08 saldo de venda 6 permanece a receber
+13-testes-fluxos: PASS fluxo 08 obrigacao da venda 6 preserva vencimento original
+13-testes-fluxos: PASS fluxo 05 previsao inclui semana atual e semanas futuras
+13-testes-fluxos: PASS fluxo 05 previsao parte do saldo inicial hipotetico documentado
+13-testes-fluxos: PASS fluxo 05 camada realizado e recebimentos historicos ate a referencia
+13-testes-fluxos: PASS fluxo 05 primeira semana explica obrigacao vencida da venda 6
+13-testes-fluxos: PASS fluxo 05 recebimento vencido de 80 mil entra na semana inicial com aviso
+13-testes-fluxos: PASS fluxo 05 semana do financiamento inclui caixa liquido ponderado
+13-testes-fluxos: PASS fluxo 05 semana do repasse registra saida do consignante ponderada
+13-testes-fluxos: PASS fluxo desvio 09 proposta apresentada nao permite alterar preco: Proposta apresentada e imutavel
+13-testes-fluxos: PASS fluxo desvio 09 proposta apresentada nao permite incluir condicao: Proposta apresentada e imutavel
+13-testes-fluxos: PASS fluxo desvio 09 aceite direto sem aceitar_proposta e bloqueado: Use aceitar_proposta
+13-testes-fluxos: PASS fluxo desvio 09 avaliacao de troca duplicada na mesma proposta e bloqueada: Troca exige avaliacao
+13-testes-fluxos: PASS fluxo desvio 08 vencimento original da obrigacao e imutavel: so permite alterar vencimento_atual
+13-testes-fluxos: PASS fluxo desvio 05 parametros de simulacao respondida sao imutaveis: so permite alterar situacao, data_resposta e parcela_informada
+13-testes-fluxos: PASS fluxo P9 estado inicial: venda 6 financiada, em formalizacao e sem orientacao bancaria
+13-testes-fluxos: PASS fluxo desvio P9 cancelar venda financiada sem orientacao bancaria: RN13/RN28-RN31: cancelamento pendente: orientacao bancaria;
+13-testes-fluxos: PASS fluxo P9 recusa preserva a venda: situacao, cancelamento e financiamento inalterados
+13-testes-fluxos: PASS fluxo P9 controle positivo: com orientacao bancaria o mesmo cancelamento e aceito
+13-testes-fluxos: PASS fluxos MySQL: verificacoes reais encerradas em transacao
+14-testes-relacionamentos: PASS R01 funcionario.id_pessoa -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R02 atendimento.id_pessoa -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R03 atendimento.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R04 avaliacao.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R05 avaliacao.id_avaliador -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R06 laudo.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R07 avaliacao_laudo.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R07 avaliacao_laudo.id_laudo -> laudo.id_laudo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R08 entrada.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R09 entrada.id_contraparte -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R10 entrada.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R11 venda.id_comprador -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R12 venda.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R13 venda.id_entrada_principal -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R14 entrada.id_venda_origem -> venda.id_venda; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R15 venda.id_laudo -> laudo.id_laudo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R16 ocorrencia_garantia.id_venda -> venda.id_venda; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R17 ocorrencia_garantia.id_mecanico -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R18 despesa.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R19 entrada.id_entrada_anterior -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R20 proposta.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R21 proposta.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R22 proposta.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R23 proposta.id_proposta_anterior -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R24 venda.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R25 proposta_condicao.codigo_forma -> forma_pagamento.codigo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R25 proposta_condicao.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R26 proposta_troca.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R26 proposta_troca.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R27 simulacao_financiamento.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R29 obrigacao_financeira.id_venda -> venda.id_venda; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R30 obrigacao_financeira.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R31 obrigacao_financeira.id_despesa -> despesa.id_despesa; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R32 interacao.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R33 interacao.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R34 atendimento_desfecho.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R35 classificacao_lead.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R36 classificacao_lead.id_revisor -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R37 classificacao_fator.id_classificacao -> classificacao_lead.id_classificacao; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R38 atendimento_desfecho.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R39 intencao_compra.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R40 intencao_compra.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R41 intencao_compra.codigo_forma -> forma_pagamento.codigo; FK, nulidade e unicidade conferidas
+14-testes-relacionamentos: PASS R28 simulacao_parametro_retorno: gatilho de vigencia instalado
+14-testes-relacionamentos: PASS R01 Volta (minimo 1): recusado (id_pessoa)
+14-testes-relacionamentos: PASS R01 Volta (pai inexistente): recusado (fk_funcionario_id_pessoa)
+14-testes-relacionamentos: PASS R01 Ida (maximo 1): recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R01 Ida (minimo 0): pessoa sem funcionario
+14-testes-relacionamentos: PASS R02 Volta (minimo 1): recusado (id_pessoa)
+14-testes-relacionamentos: PASS R02 Volta (pai inexistente): recusado (fk_atendimento_id_pessoa)
+14-testes-relacionamentos: PASS R02 Ida (maximo N): segunda interacao da mesma pessoa: aceito
+14-testes-relacionamentos: PASS R03 Volta (minimo 1): recusado (id_funcionario)
+14-testes-relacionamentos: PASS R03 Volta (pai inexistente): recusado (fk_atendimento_id_funcionario)
+14-testes-relacionamentos: PASS R03 Ida (maximo N): funcionario com dois atendimentos
+14-testes-relacionamentos: PASS R04 Volta (minimo 1): recusado (id_veiculo)
+14-testes-relacionamentos: PASS R04 Volta (pai inexistente): recusado (fk_avaliacao_id_veiculo)
+14-testes-relacionamentos: PASS R04 Ida (maximo N): reavaliacao do mesmo veiculo: aceito
+14-testes-relacionamentos: PASS R05 Volta (minimo 1): recusado (id_avaliador)
+14-testes-relacionamentos: PASS R05 Volta (pai inexistente): recusado (fk_avaliacao_id_avaliador)
+14-testes-relacionamentos: PASS R05 Ida (maximo N): avaliador com varias avaliacoes
+14-testes-relacionamentos: PASS R06 Volta (minimo 1): recusado (id_veiculo)
+14-testes-relacionamentos: PASS R06 Volta (pai inexistente): recusado (fk_laudo_id_veiculo)
+14-testes-relacionamentos: PASS R06 Ida (maximo N): segundo laudo historico do mesmo veiculo: aceito
+14-testes-relacionamentos: PASS R07 Ida (maximo 1): recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R07 Ida (minimo 0): avaliacao sem laudo
+14-testes-relacionamentos: PASS R07 Volta (maximo N): mesmo laudo pode subsidiar varias avaliacoes: aceito
+14-testes-relacionamentos: PASS R07 Volta (laudo de outro veiculo, RN08): recusado (RN08)
+14-testes-relacionamentos: PASS R07 Volta (laudo inexistente barrado pela regra de laudo): recusado (RN08)
+14-testes-relacionamentos: PASS R08 Volta (minimo 1): recusado (id_veiculo)
+14-testes-relacionamentos: PASS R08 Volta (pai inexistente): recusado (entrada exige avaliacao aprovada, interesse e veiculo)
+14-testes-relacionamentos: PASS R08 Ida (maximo N): HB20 tem ciclos de entrada anteriores e atual
+14-testes-relacionamentos: PASS R08 Ida (minimo 0): veiculo preliminar sem entrada
+14-testes-relacionamentos: PASS R09 Volta (minimo 1): recusado (id_contraparte)
+14-testes-relacionamentos: PASS R09 Volta (pai inexistente): recusado (fk_entrada_id_contraparte)
+14-testes-relacionamentos: PASS R09 Ida (maximo N): fornecedor com tres entradas
+14-testes-relacionamentos: PASS R10 Volta (pai inexistente): recusado (fk_entrada_id_avaliacao)
+14-testes-relacionamentos: PASS R10 Volta (minimo 1): recusado (id_avaliacao)
+14-testes-relacionamentos: PASS R10 Ida (maximo 1): mesma avaliacao nao fundamenta duas entradas: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R10 Ida (minimo 0): avaliacao sem entrada
+14-testes-relacionamentos: PASS R11 Volta (minimo 1): recusado (id_comprador)
+14-testes-relacionamentos: PASS R11 Volta (pai inexistente): recusado (fk_venda_id_comprador)
+14-testes-relacionamentos: PASS R11/R12 Ida (maximo N): comprador e funcionario podem ter outra venda: aceito
+14-testes-relacionamentos: PASS R12 Volta (minimo 1): recusado (id_funcionario)
+14-testes-relacionamentos: PASS R12 Volta (pai inexistente): recusado (fk_venda_id_funcionario)
+14-testes-relacionamentos: PASS R13 Volta (minimo 1): recusado (Venda exige entrada disponivel)
+14-testes-relacionamentos: PASS R13 Volta (referencia inexistente interceptada por regra de disponibilidade): recusado (Venda exige entrada disponivel)
+14-testes-relacionamentos: PASS R13 Ida (maximo 1): entrada ja vinculada a venda: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R13 Ida (minimo 0): entrada sem venda
+14-testes-relacionamentos: PASS R14 Ida (maximo N): venda aceita varias entradas de troca
+14-testes-relacionamentos: PASS R14 Volta (minimo 0): compra propria nao aponta venda de origem
+14-testes-relacionamentos: PASS R14 Volta (venda de origem inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R15 Volta (minimo 0): venda ainda sem laudo: aceito
+14-testes-relacionamentos: PASS R15 Volta (laudo inexistente interceptado pela regra): recusado (Laudo deve corresponder)
+14-testes-relacionamentos: PASS R15 Ida (maximo N): laudo 4 documenta duas vendas
+14-testes-relacionamentos: PASS R16 Volta (minimo 1): recusado (Ocorrencia de garantia exige concessao e entrega anterior)
+14-testes-relacionamentos: PASS R16 Volta (venda inexistente barrada pela regra de garantia): recusado (Ocorrencia de garantia exige concessao e entrega anterior)
+14-testes-relacionamentos: PASS R16 Ida (maximo N) e R17 Volta (minimo 0): outra ocorrencia sem mecanico: aceito
+14-testes-relacionamentos: PASS R17 Volta (mecanico inexistente): recusado (fk_ocorrencia_garantia_id_mecanico)
+14-testes-relacionamentos: PASS R17 Ida (maximo N): mecanico 4 esta em duas ocorrencias
+14-testes-relacionamentos: PASS R18 Volta (minimo 1): recusado (id_veiculo)
+14-testes-relacionamentos: PASS R18 Volta (pai inexistente): recusado (fk_despesa_id_veiculo)
+14-testes-relacionamentos: PASS R18 Ida (maximo N): segunda despesa do veiculo: aceito
+14-testes-relacionamentos: PASS R19 Ida (maximo 1): entrada 4 ja tem sucessora: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R19 Volta (anterior inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R19 minimo 0: primeira entrada sem anterior nem sucessora
+14-testes-relacionamentos: PASS R20 Volta (minimo 1): recusado (id_atendimento)
+14-testes-relacionamentos: PASS R20 Volta (pai inexistente): recusado (fk_proposta_id_atendimento)
+14-testes-relacionamentos: PASS R21 Volta (minimo 1): recusado (id_entrada)
+14-testes-relacionamentos: PASS R21 Volta (pai inexistente): recusado (fk_proposta_id_entrada)
+14-testes-relacionamentos: PASS R22 Volta (minimo 1): recusado (id_funcionario)
+14-testes-relacionamentos: PASS R22 Volta (pai inexistente): recusado (fk_proposta_id_funcionario)
+14-testes-relacionamentos: PASS R20-R22 Ida (maximo N): atendimento, entrada e funcionario associados a propostas multiplas
+14-testes-relacionamentos: PASS R23 Ida (maximo 1): duas sucessoras da mesma proposta: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R23 Volta (anterior inexistente interceptado pela cadeia): recusado (Contraproposta deve suceder)
+14-testes-relacionamentos: PASS R23 minimo 0: raiz ainda sem sucessora
+14-testes-relacionamentos: PASS R24 minimo 0 nos dois lados: venda sem proposta e proposta ainda sem venda
+14-testes-relacionamentos: PASS R24 Volta (proposta inexistente preemptada por validacao de proposta): recusado (Venda exige proposta aceita)
+14-testes-relacionamentos: PASS R24 Ida (maximo 1): venda da mesma proposta nao duplica: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R25 Volta condicao-proposta (minimo 1): recusado (Proposta apresentada e imutavel)
+14-testes-relacionamentos: PASS R25 Volta condicao-proposta (pai inexistente): recusado (Proposta apresentada e imutavel)
+14-testes-relacionamentos: PASS R25 Volta condicao-forma (minimo 1): recusado (codigo_forma)
+14-testes-relacionamentos: PASS R25 Volta condicao-forma inexistente: recusado (fk_proposta_condicao_codigo_forma)
+14-testes-relacionamentos: PASS R25 Ida (maximo N): proposta possui multiplas formas de pagamento
+14-testes-relacionamentos: PASS R25 Volta forma (maximo N): PIX reutilizado em varias propostas
+14-testes-relacionamentos: PASS R26 Volta proposta inexistente barrada pela regra de rascunho: recusado (Troca exige avaliacao)
+14-testes-relacionamentos: PASS R26 Volta avaliacao inexistente barrada pela regra de avaliacao: recusado (Troca exige avaliacao)
+14-testes-relacionamentos: PASS R26 Ida (maximo N): proposta inclui duas avaliacoes de troca
+14-testes-relacionamentos: PASS R26 Ida (maximo 1): avaliacao nao duplica na mesma proposta: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R27 Volta (minimo 1): recusado (id_proposta)
+14-testes-relacionamentos: PASS R27 Volta (pai inexistente): recusado (fk_simulacao_financiamento_id_proposta)
+14-testes-relacionamentos: PASS R27 Ida (maximo N): proposta tem varias simulacoes
+14-testes-relacionamentos: PASS R27 Ida (maximo 1 APROVADA por proposta): recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R28 Volta (parametro de retorno inexistente ou fora da vigencia): recusado (Parametro_retorno vigente nao encontrado)
+14-testes-relacionamentos: PASS R29 Ida (maximo N): venda tem outra obrigacao: aceito
+14-testes-relacionamentos: PASS R30 Ida (maximo N): entrada tem outra obrigacao: aceito
+14-testes-relacionamentos: PASS R31 Ida (maximo N): despesa tem outra obrigacao: aceito
+14-testes-relacionamentos: PASS R29-R31 Volta (minimo 0): obrigacao administrativa sem arco: aceito
+14-testes-relacionamentos: PASS R29 Volta (venda inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R30 Volta (entrada inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R31 Volta (despesa inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R29/R30 arco exclusivo: recusado (ck_obrigacao_arco)
+14-testes-relacionamentos: PASS R32 Volta (minimo 1): recusado (id_atendimento)
+14-testes-relacionamentos: PASS R32 Volta (pai inexistente): recusado (fk_interacao_id_atendimento)
+14-testes-relacionamentos: PASS R33 Volta (minimo 1): recusado (id_funcionario)
+14-testes-relacionamentos: PASS R33 Volta (pai inexistente): recusado (fk_interacao_id_funcionario)
+14-testes-relacionamentos: PASS R32/R33 Ida (maximo N): segundo contato no mesmo atendimento: aceito
+14-testes-relacionamentos: PASS R34 Volta (minimo 1): recusado (id_atendimento)
+14-testes-relacionamentos: PASS R34 Volta (pai inexistente): recusado (fk_atendimento_desfecho_id_atendimento)
+14-testes-relacionamentos: PASS R38 Volta (minimo 1): recusado (id_funcionario)
+14-testes-relacionamentos: PASS R38 Volta (pai inexistente): recusado (fk_atendimento_desfecho_id_funcionario)
+14-testes-relacionamentos: PASS R34 Ida (maximo 1): segundo desfecho no atendimento: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R38 Ida (maximo N): mesmo funcionario encerra outro atendimento: aceito
+14-testes-relacionamentos: PASS R35 Volta (minimo 1): recusado (id_atendimento)
+14-testes-relacionamentos: PASS R35 Volta (pai inexistente): recusado (fk_classificacao_lead_id_atendimento)
+14-testes-relacionamentos: PASS R35 Ida (maximo N): atendimento recebeu duas classificacoes
+14-testes-relacionamentos: PASS R36 Volta (minimo 0): nova classificacao aguarda revisao
+14-testes-relacionamentos: PASS R36 Volta (revisor inexistente): recusado (fk_classificacao_lead_id_revisor)
+14-testes-relacionamentos: PASS R36 Ida (maximo N): funcionario revisa classificacoes distintas: aceito
+14-testes-relacionamentos: PASS R37 Ida (maximo N): classificacao registra quatro fatores
+14-testes-relacionamentos: PASS R37 Ida (minimo 1 fator): INSERT direto sem fatores: recusado (R37: classificacao de lead exige ao menos um fator explicativo; use registrar_classificacao_lead)
+14-testes-relacionamentos: PASS R37 Volta (minimo 1): recusado (id_classificacao)
+14-testes-relacionamentos: PASS R37 Volta (pai inexistente): recusado (fk_classificacao_fator_id_classificacao)
+14-testes-relacionamentos: PASS R37 Volta (maximo 1): fator repetido na mesma classificacao: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R39 Volta (minimo 1): recusado (id_atendimento)
+14-testes-relacionamentos: PASS R39 Volta (pai inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R39 Ida (maximo 1): segunda intencao no atendimento: recusado (Duplicate entry)
+14-testes-relacionamentos: PASS R39 Ida (minimo 0): atendimento sem intencao
+14-testes-relacionamentos: PASS R40/R41 Volta (minimo 0): intencao sem entrada nem forma: aceito
+14-testes-relacionamentos: PASS R40 Volta (entrada inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R41 Volta (forma inexistente): recusado (foreign key constraint fails)
+14-testes-relacionamentos: PASS R40/R41 Ida (maximo N): mesma entrada e forma aparecem em várias intenções
+14-testes-relacionamentos: PASS R26 Volta (maximo N): mesma avaliacao pode aparecer em propostas distintas: aceito
+14-testes-relacionamentos: PASS R26 Ida e Volta: proposta 9202 possui duas trocas e avaliacao 9206 esta em duas propostas
+14-testes-relacionamentos: PASS R27 Ida e R28 Volta: R0 e R4 vigentes geram tres simulacoes para a proposta
+14-testes-relacionamentos: PASS Fixture relacional: propostas e condicoes permanecem vinculadas a pais existentes
+14-testes-relacionamentos: PASS Fixture relacional: troca, financiamento e obrigacoes apontam para seus pais
+14-testes-relacionamentos: PASS Suite de relacionamentos conclui com cobertura R01-R41 documentada

@@ -1,0 +1,145 @@
+Note (Code 1305): PROCEDURE multiplikar.fluxo_rejeicao does not exist
+Note (Code 1305): PROCEDURE multiplikar.fluxo_confere does not exist
+Note (Code 1305): PROCEDURE multiplikar.fluxo_recusa_regra does not exist
+resultado
+PASS fluxo demonstracao tem alternativas A/B/C
+resultado
+PASS fluxo R0 e R4 estao disponiveis para a simulacao
+resultado
+PASS fluxo margem estimada igual nas tres alternativas
+resultado
+PASS fluxo valor de troca nao aparece como caixa D0
+resultado
+PASS fluxo saldo de entrada da semana incorpora 6 mil liquidos
+resultado
+PASS fluxo recebimento vencido da venda 6 compoe explicacao
+resultado
+PASS fluxo CRM exclui atendimento convertido
+resultado
+PASS fluxo simulacao R4 aumenta parcela e retorno da loja
+resultado
+PASS fluxo PMT, total pago e CET preservam centavos e escala
+resultado
+PASS fluxo parcelas e retorno do banco identificados como movimento bancario para o cenario de atraso
+resultado
+PASS fluxo desvio venda proposta para outro cliente: operacao recusada
+resultado
+PASS fluxo desvio delete historico de interacao: operacao recusada
+resultado
+PASS fluxo desvio troca consumida: operacao recusada
+resultado
+PASS fluxo desvio arco administrativo preenchido: operacao recusada
+resultado
+PASS fluxo desvio obrigacao terminal imutavel: operacao recusada
+resultado
+PASS fluxo desvio simulacao nao pode ser apagada: operacao recusada
+resultado
+PASS fluxo desvio simulacao exige tabela vigente: operacao recusada
+resultado
+PASS fluxo validade omitida ancora em data_referencia
+resultado
+PASS fluxo desvio proposta rascunho nao aceita direto: apresentada antes da decisao
+resultado
+PASS fluxo desvio proposta nao apresenta sem condicoes: Composicao da proposta deve igualar
+resultado
+PASS fluxo desvio nova venda nao vincula proposta apresentada: Venda exige proposta aceita
+resultado
+PASS fluxo obrigacao prevista abre no fluxo permitido
+resultado
+PASS fluxo desvio transicao invalida de obrigacao: Transicao de situacao da obrigacao financeira invalida
+resultado
+PASS fluxo desvio simulacao depois da resposta nao edita parcela: imutavel apos EM_ANALISE
+resultado
+PASS fluxo desvio situacao terminal da proposta: Situacao terminal da proposta e imutavel
+resultado
+PASS fluxo 09 alternativas A/B/C usam a entrada 10
+resultado
+PASS fluxo 09 cada alternativa comeca como versao raiz
+resultado
+PASS fluxo 09 proposta A e PIX integral
+resultado
+PASS fluxo 09 proposta B combina entrada PIX de 20 por cento
+resultado
+PASS fluxo 09 proposta B financia o saldo de 80 por cento
+resultado
+PASS fluxo 09 proposta C registra a entrada PIX em dinheiro
+resultado
+PASS fluxo 09 proposta C registra o Gol avaliado como troca
+resultado
+PASS fluxo 09 as condicoes e a troca fecham o total de cada proposta
+resultado
+PASS fluxo 09 comparador usa o CPF do cliente do atendimento
+resultado
+PASS fluxo 09 recebimento no ato varia por alternativa
+resultado
+PASS fluxo 09 valor recebido depois do ato e separado do caixa D0
+resultado
+PASS fluxo 09 troca nao e receita em dinheiro nem altera caixa D0
+resultado
+PASS fluxo 09 margem de veiculo permanece igual nas tres opcoes
+resultado
+PASS fluxo 09 retorno do banco soma apenas a margem da proposta financiada
+resultado
+PASS fluxo 09 simulacao R0 usa a taxa base mensal
+resultado
+PASS fluxo 09 simulacao R0 apresenta CET anual aproximado
+resultado
+PASS fluxo 09 simulacao R4 soma acrescimo a taxa base
+resultado
+PASS fluxo 09 simulacao R4 mostra CET anual aproximado maior
+resultado
+PASS fluxo 09 simulacao R0 nao remunera retorno a loja
+resultado
+PASS fluxo 09 simulacao aprovada mantem consentimento de renda
+resultado
+PASS fluxo 01 atendimento 7 preserva a data de abertura do contato
+resultado
+PASS fluxo 01 lead final esta revisado por funcionario ativo
+resultado
+PASS fluxo 01 classificacao humana preserva sugestao MORNO
+resultado
+PASS fluxo 01 lead mantem uma interacao no historico
+resultado
+PASS fluxo 01 fila CRM prioriza o lead quente de 55 mil
+resultado
+PASS fluxo 08 fila de caixa identifica a obrigacao da venda 6
+resultado
+PASS fluxo 08 saldo de venda 6 permanece a receber
+resultado
+PASS fluxo 08 obrigacao da venda 6 preserva vencimento original
+resultado
+PASS fluxo 05 previsao inclui semana atual e semanas futuras
+resultado
+PASS fluxo 05 previsao parte do saldo inicial hipotetico documentado
+resultado
+PASS fluxo 05 camada realizado e recebimentos historicos ate a referencia
+resultado
+PASS fluxo 05 primeira semana explica obrigacao vencida da venda 6
+resultado
+PASS fluxo 05 recebimento vencido de 80 mil entra na semana inicial com aviso
+resultado
+PASS fluxo 05 semana do financiamento inclui caixa liquido ponderado
+resultado
+PASS fluxo 05 semana do repasse registra saida do consignante ponderada
+resultado
+PASS fluxo desvio 09 proposta apresentada nao permite alterar preco: Proposta apresentada e imutavel
+resultado
+PASS fluxo desvio 09 proposta apresentada nao permite incluir condicao: Proposta apresentada e imutavel
+resultado
+PASS fluxo desvio 09 aceite direto sem aceitar_proposta e bloqueado: Use aceitar_proposta
+resultado
+PASS fluxo desvio 09 avaliacao de troca duplicada na mesma proposta e bloqueada: Troca exige avaliacao
+resultado
+PASS fluxo desvio 08 vencimento original da obrigacao e imutavel: so permite alterar vencimento_atual
+resultado
+PASS fluxo desvio 05 parametros de simulacao respondida sao imutaveis: so permite alterar situacao, data_resposta e parcela_informada
+resultado
+PASS fluxo P9 estado inicial: venda 6 financiada, em formalizacao e sem orientacao bancaria
+resultado
+PASS fluxo desvio P9 cancelar venda financiada sem orientacao bancaria: RN13/RN28-RN31: cancelamento pendente: orientacao bancaria;
+resultado
+PASS fluxo P9 recusa preserva a venda: situacao, cancelamento e financiamento inalterados
+resultado
+PASS fluxo P9 controle positivo: com orientacao bancaria o mesmo cancelamento e aceito
+resultado
+PASS fluxos MySQL: verificacoes reais encerradas em transacao

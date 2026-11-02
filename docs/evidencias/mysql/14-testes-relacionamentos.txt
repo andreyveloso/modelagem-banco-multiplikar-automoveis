@@ -1,0 +1,363 @@
+Note (Code 1305): PROCEDURE multiplikar.verificar_relacionamentos does not exist
+Note (Code 1051): Unknown table 'multiplikar.rel_esperados'
+Note (Code 1051): Unknown table 'multiplikar.rel_resultado'
+Note (Code 1051): Unknown table 'multiplikar.rel_ai_before'
+resultado
+PASS R01 funcionario.id_pessoa -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R02 atendimento.id_pessoa -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R03 atendimento.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R04 avaliacao.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R05 avaliacao.id_avaliador -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R06 laudo.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R07 avaliacao_laudo.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R07 avaliacao_laudo.id_laudo -> laudo.id_laudo; FK, nulidade e unicidade conferidas
+resultado
+PASS R08 entrada.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R09 entrada.id_contraparte -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R10 entrada.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R11 venda.id_comprador -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R12 venda.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R13 venda.id_entrada_principal -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R14 entrada.id_venda_origem -> venda.id_venda; FK, nulidade e unicidade conferidas
+resultado
+PASS R15 venda.id_laudo -> laudo.id_laudo; FK, nulidade e unicidade conferidas
+resultado
+PASS R16 ocorrencia_garantia.id_venda -> venda.id_venda; FK, nulidade e unicidade conferidas
+resultado
+PASS R17 ocorrencia_garantia.id_mecanico -> pessoa.id_pessoa; FK, nulidade e unicidade conferidas
+resultado
+PASS R18 despesa.id_veiculo -> veiculo.id_veiculo; FK, nulidade e unicidade conferidas
+resultado
+PASS R19 entrada.id_entrada_anterior -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R20 proposta.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R21 proposta.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R22 proposta.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R23 proposta.id_proposta_anterior -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R24 venda.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R25 proposta_condicao.codigo_forma -> forma_pagamento.codigo; FK, nulidade e unicidade conferidas
+resultado
+PASS R25 proposta_condicao.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R26 proposta_troca.id_avaliacao -> avaliacao.id_avaliacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R26 proposta_troca.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R27 simulacao_financiamento.id_proposta -> proposta.id_proposta; FK, nulidade e unicidade conferidas
+resultado
+PASS R29 obrigacao_financeira.id_venda -> venda.id_venda; FK, nulidade e unicidade conferidas
+resultado
+PASS R30 obrigacao_financeira.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R31 obrigacao_financeira.id_despesa -> despesa.id_despesa; FK, nulidade e unicidade conferidas
+resultado
+PASS R32 interacao.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R33 interacao.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R34 atendimento_desfecho.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R35 classificacao_lead.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R36 classificacao_lead.id_revisor -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R37 classificacao_fator.id_classificacao -> classificacao_lead.id_classificacao; FK, nulidade e unicidade conferidas
+resultado
+PASS R38 atendimento_desfecho.id_funcionario -> funcionario.id_funcionario; FK, nulidade e unicidade conferidas
+resultado
+PASS R39 intencao_compra.id_atendimento -> atendimento.id_atendimento; FK, nulidade e unicidade conferidas
+resultado
+PASS R40 intencao_compra.id_entrada -> entrada.id_entrada; FK, nulidade e unicidade conferidas
+resultado
+PASS R41 intencao_compra.codigo_forma -> forma_pagamento.codigo; FK, nulidade e unicidade conferidas
+resultado
+PASS R28 simulacao_parametro_retorno: gatilho de vigencia instalado
+Note (Code 1305): PROCEDURE multiplikar.rel_rejeita does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_aceita does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_volta_obrigatoria does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_confere does not exist
+Note (Code 1305): PROCEDURE multiplikar.rel_restaurar_auto_increment does not exist
+resultado
+PASS R01 Volta (minimo 1): recusado (id_pessoa)
+resultado
+PASS R01 Volta (pai inexistente): recusado (fk_funcionario_id_pessoa)
+resultado
+PASS R01 Ida (maximo 1): recusado (Duplicate entry)
+resultado
+PASS R01 Ida (minimo 0): pessoa sem funcionario
+resultado
+PASS R02 Volta (minimo 1): recusado (id_pessoa)
+resultado
+PASS R02 Volta (pai inexistente): recusado (fk_atendimento_id_pessoa)
+resultado
+PASS R02 Ida (maximo N): segunda interacao da mesma pessoa: aceito
+resultado
+PASS R03 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R03 Volta (pai inexistente): recusado (fk_atendimento_id_funcionario)
+resultado
+PASS R03 Ida (maximo N): funcionario com dois atendimentos
+resultado
+PASS R04 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R04 Volta (pai inexistente): recusado (fk_avaliacao_id_veiculo)
+resultado
+PASS R04 Ida (maximo N): reavaliacao do mesmo veiculo: aceito
+resultado
+PASS R05 Volta (minimo 1): recusado (id_avaliador)
+resultado
+PASS R05 Volta (pai inexistente): recusado (fk_avaliacao_id_avaliador)
+resultado
+PASS R05 Ida (maximo N): avaliador com varias avaliacoes
+resultado
+PASS R06 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R06 Volta (pai inexistente): recusado (fk_laudo_id_veiculo)
+resultado
+PASS R06 Ida (maximo N): segundo laudo historico do mesmo veiculo: aceito
+resultado
+PASS R07 Ida (maximo 1): recusado (Duplicate entry)
+resultado
+PASS R07 Ida (minimo 0): avaliacao sem laudo
+resultado
+PASS R07 Volta (maximo N): mesmo laudo pode subsidiar varias avaliacoes: aceito
+resultado
+PASS R07 Volta (laudo de outro veiculo, RN08): recusado (RN08)
+resultado
+PASS R07 Volta (laudo inexistente barrado pela regra de laudo): recusado (RN08)
+resultado
+PASS R08 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R08 Volta (pai inexistente): recusado (entrada exige avaliacao aprovada, interesse e veiculo)
+resultado
+PASS R08 Ida (maximo N): HB20 tem ciclos de entrada anteriores e atual
+resultado
+PASS R08 Ida (minimo 0): veiculo preliminar sem entrada
+resultado
+PASS R09 Volta (minimo 1): recusado (id_contraparte)
+resultado
+PASS R09 Volta (pai inexistente): recusado (fk_entrada_id_contraparte)
+resultado
+PASS R09 Ida (maximo N): fornecedor com tres entradas
+resultado
+PASS R10 Volta (pai inexistente): recusado (fk_entrada_id_avaliacao)
+resultado
+PASS R10 Volta (minimo 1): recusado (id_avaliacao)
+resultado
+PASS R10 Ida (maximo 1): mesma avaliacao nao fundamenta duas entradas: recusado (Duplicate entry)
+resultado
+PASS R10 Ida (minimo 0): avaliacao sem entrada
+resultado
+PASS R11 Volta (minimo 1): recusado (id_comprador)
+resultado
+PASS R11 Volta (pai inexistente): recusado (fk_venda_id_comprador)
+resultado
+PASS R11/R12 Ida (maximo N): comprador e funcionario podem ter outra venda: aceito
+resultado
+PASS R12 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R12 Volta (pai inexistente): recusado (fk_venda_id_funcionario)
+resultado
+PASS R13 Volta (minimo 1): recusado (Venda exige entrada disponivel)
+resultado
+PASS R13 Volta (referencia inexistente interceptada por regra de disponibilidade): recusado (Venda exige entrada disponivel)
+resultado
+PASS R13 Ida (maximo 1): entrada ja vinculada a venda: recusado (Duplicate entry)
+resultado
+PASS R13 Ida (minimo 0): entrada sem venda
+resultado
+PASS R14 Ida (maximo N): venda aceita varias entradas de troca
+resultado
+PASS R14 Volta (minimo 0): compra propria nao aponta venda de origem
+resultado
+PASS R14 Volta (venda de origem inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R15 Volta (minimo 0): venda ainda sem laudo: aceito
+resultado
+PASS R15 Volta (laudo inexistente interceptado pela regra): recusado (Laudo deve corresponder)
+resultado
+PASS R15 Ida (maximo N): laudo 4 documenta duas vendas
+resultado
+PASS R16 Volta (minimo 1): recusado (Ocorrencia de garantia exige concessao e entrega anterior)
+resultado
+PASS R16 Volta (venda inexistente barrada pela regra de garantia): recusado (Ocorrencia de garantia exige concessao e entrega anterior)
+resultado
+PASS R16 Ida (maximo N) e R17 Volta (minimo 0): outra ocorrencia sem mecanico: aceito
+resultado
+PASS R17 Volta (mecanico inexistente): recusado (fk_ocorrencia_garantia_id_mecanico)
+resultado
+PASS R17 Ida (maximo N): mecanico 4 esta em duas ocorrencias
+resultado
+PASS R18 Volta (minimo 1): recusado (id_veiculo)
+resultado
+PASS R18 Volta (pai inexistente): recusado (fk_despesa_id_veiculo)
+resultado
+PASS R18 Ida (maximo N): segunda despesa do veiculo: aceito
+resultado
+PASS R19 Ida (maximo 1): entrada 4 ja tem sucessora: recusado (Duplicate entry)
+resultado
+PASS R19 Volta (anterior inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R19 minimo 0: primeira entrada sem anterior nem sucessora
+resultado
+PASS R20 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R20 Volta (pai inexistente): recusado (fk_proposta_id_atendimento)
+resultado
+PASS R21 Volta (minimo 1): recusado (id_entrada)
+resultado
+PASS R21 Volta (pai inexistente): recusado (fk_proposta_id_entrada)
+resultado
+PASS R22 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R22 Volta (pai inexistente): recusado (fk_proposta_id_funcionario)
+resultado
+PASS R20-R22 Ida (maximo N): atendimento, entrada e funcionario associados a propostas multiplas
+resultado
+PASS R23 Ida (maximo 1): duas sucessoras da mesma proposta: recusado (Duplicate entry)
+resultado
+PASS R23 Volta (anterior inexistente interceptado pela cadeia): recusado (Contraproposta deve suceder)
+resultado
+PASS R23 minimo 0: raiz ainda sem sucessora
+resultado
+PASS R24 minimo 0 nos dois lados: venda sem proposta e proposta ainda sem venda
+resultado
+PASS R24 Volta (proposta inexistente preemptada por validacao de proposta): recusado (Venda exige proposta aceita)
+resultado
+PASS R24 Ida (maximo 1): venda da mesma proposta nao duplica: recusado (Duplicate entry)
+resultado
+PASS R25 Volta condicao-proposta (minimo 1): recusado (Proposta apresentada e imutavel)
+resultado
+PASS R25 Volta condicao-proposta (pai inexistente): recusado (Proposta apresentada e imutavel)
+resultado
+PASS R25 Volta condicao-forma (minimo 1): recusado (codigo_forma)
+resultado
+PASS R25 Volta condicao-forma inexistente: recusado (fk_proposta_condicao_codigo_forma)
+resultado
+PASS R25 Ida (maximo N): proposta possui multiplas formas de pagamento
+resultado
+PASS R25 Volta forma (maximo N): PIX reutilizado em varias propostas
+resultado
+PASS R26 Volta proposta inexistente barrada pela regra de rascunho: recusado (Troca exige avaliacao)
+resultado
+PASS R26 Volta avaliacao inexistente barrada pela regra de avaliacao: recusado (Troca exige avaliacao)
+resultado
+PASS R26 Ida (maximo N): proposta inclui duas avaliacoes de troca
+resultado
+PASS R26 Ida (maximo 1): avaliacao nao duplica na mesma proposta: recusado (Duplicate entry)
+resultado
+PASS R27 Volta (minimo 1): recusado (id_proposta)
+resultado
+PASS R27 Volta (pai inexistente): recusado (fk_simulacao_financiamento_id_proposta)
+resultado
+PASS R27 Ida (maximo N): proposta tem varias simulacoes
+resultado
+PASS R27 Ida (maximo 1 APROVADA por proposta): recusado (Duplicate entry)
+resultado
+PASS R28 Volta (parametro de retorno inexistente ou fora da vigencia): recusado (Parametro_retorno vigente nao encontrado)
+resultado
+PASS R29 Ida (maximo N): venda tem outra obrigacao: aceito
+resultado
+PASS R30 Ida (maximo N): entrada tem outra obrigacao: aceito
+resultado
+PASS R31 Ida (maximo N): despesa tem outra obrigacao: aceito
+resultado
+PASS R29-R31 Volta (minimo 0): obrigacao administrativa sem arco: aceito
+resultado
+PASS R29 Volta (venda inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R30 Volta (entrada inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R31 Volta (despesa inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R29/R30 arco exclusivo: recusado (ck_obrigacao_arco)
+resultado
+PASS R32 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R32 Volta (pai inexistente): recusado (fk_interacao_id_atendimento)
+resultado
+PASS R33 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R33 Volta (pai inexistente): recusado (fk_interacao_id_funcionario)
+resultado
+PASS R32/R33 Ida (maximo N): segundo contato no mesmo atendimento: aceito
+resultado
+PASS R34 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R34 Volta (pai inexistente): recusado (fk_atendimento_desfecho_id_atendimento)
+resultado
+PASS R38 Volta (minimo 1): recusado (id_funcionario)
+resultado
+PASS R38 Volta (pai inexistente): recusado (fk_atendimento_desfecho_id_funcionario)
+resultado
+PASS R34 Ida (maximo 1): segundo desfecho no atendimento: recusado (Duplicate entry)
+resultado
+PASS R38 Ida (maximo N): mesmo funcionario encerra outro atendimento: aceito
+resultado
+PASS R35 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R35 Volta (pai inexistente): recusado (fk_classificacao_lead_id_atendimento)
+resultado
+PASS R35 Ida (maximo N): atendimento recebeu duas classificacoes
+resultado
+PASS R36 Volta (minimo 0): nova classificacao aguarda revisao
+resultado
+PASS R36 Volta (revisor inexistente): recusado (fk_classificacao_lead_id_revisor)
+resultado
+PASS R36 Ida (maximo N): funcionario revisa classificacoes distintas: aceito
+resultado
+PASS R37 Ida (maximo N): classificacao registra quatro fatores
+resultado
+PASS R37 Ida (minimo 1 fator): INSERT direto sem fatores: recusado (R37: classificacao de lead exige ao menos um fator explicativo; use registrar_classificacao_lead)
+resultado
+PASS R37 Volta (minimo 1): recusado (id_classificacao)
+resultado
+PASS R37 Volta (pai inexistente): recusado (fk_classificacao_fator_id_classificacao)
+resultado
+PASS R37 Volta (maximo 1): fator repetido na mesma classificacao: recusado (Duplicate entry)
+resultado
+PASS R39 Volta (minimo 1): recusado (id_atendimento)
+resultado
+PASS R39 Volta (pai inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R39 Ida (maximo 1): segunda intencao no atendimento: recusado (Duplicate entry)
+resultado
+PASS R39 Ida (minimo 0): atendimento sem intencao
+resultado
+PASS R40/R41 Volta (minimo 0): intencao sem entrada nem forma: aceito
+resultado
+PASS R40 Volta (entrada inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R41 Volta (forma inexistente): recusado (foreign key constraint fails)
+resultado
+PASS R40/R41 Ida (maximo N): mesma entrada e forma aparecem em várias intenções
+resultado
+PASS R26 Volta (maximo N): mesma avaliacao pode aparecer em propostas distintas: aceito
+resultado
+PASS R26 Ida e Volta: proposta 9202 possui duas trocas e avaliacao 9206 esta em duas propostas
+resultado
+PASS R27 Ida e R28 Volta: R0 e R4 vigentes geram tres simulacoes para a proposta
+resultado
+PASS Fixture relacional: propostas e condicoes permanecem vinculadas a pais existentes
+resultado
+PASS Fixture relacional: troca, financiamento e obrigacoes apontam para seus pais
+resultado
+PASS Suite de relacionamentos conclui com cobertura R01-R41 documentada

@@ -1,0 +1,1 @@
+Note (Code 1305): FUNCTION multiplikar.data_referencia does not exist

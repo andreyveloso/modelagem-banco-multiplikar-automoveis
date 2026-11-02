@@ -1,0 +1,55 @@
+ROTEIRO E RESULTADOS ATUAIS - MySQL 8.4.13, 2026-11-01
+Consulta 1: vw_cliente_cpf, CPF 00000000010.
+[vw_cliente_cpf]
+00000000010	10	Joao Comprador	ATENDIMENTO	4	2026-01-07 09:00:00	HB20 com Gol de entrada	NULL	CONVERTIDO
+00000000010	10	Joao Comprador	ATENDIMENTO	7	2026-02-02 12:00:00	Propostas para o Kwid consignado; comparacao de pagamento.	NULL	ABERTO
+00000000010	10	Joao Comprador	PROPOSTA	1	2026-02-03 00:00:00	Proposta para entrada 10	55000.00	APRESENTADA
+00000000010	10	Joao Comprador	PROPOSTA	2	2026-02-03 00:00:00	Proposta para entrada 10	55000.00	APRESENTADA
+00000000010	10	Joao Comprador	PROPOSTA	3	2026-02-03 00:00:00	Proposta para entrada 10	55000.00	APRESENTADA
+00000000010	10	Joao Comprador	VENDA	4	2026-01-08 00:00:00	Venda para entrada 4	70000.00	CANCELADA
+
+Consulta 2: vw_proposta_comparativo, atendimento 7; A/B/C sao tres alternativas independentes. Valores em R$.
+[vw_proposta_comparativo]
+A	1	APRESENTADA	55000.00	55000.00	0.00	0.00	5000.00	0.00	5000.00	0.00	D+0
+B	1	APRESENTADA	55000.00	11000.00	45760.00	0.00	5000.00	1760.00	6760.00	1490.50	D+15
+C	1	APRESENTADA	55000.00	25000.00	0.00	30000.00	5000.00	0.00	5000.00	0.00	D+0
+
+Consulta 3: simulacoes R0 e R4 da proposta B; parcela, custo total e CET aproximado do cliente; retorno da loja.
+[vw_simulacao_parcela]
+1	R0	0.018900	0.018900	1402.56	67322.88	0.251926	0.00	21.58
+2	R4	0.018900	0.021900	1490.50	71544.00	0.296883	1760.00	22.93
+
+Consulta 4: lead atual do atendimento 7.
+[vw_lead_atual]
+7	2026-02-02 12:00:00	MORNO	QUENTE	QUENTE	55.00	1	7
+
+Consulta 5: fila de acoes.
+[vw_fila_acoes]
+CAIXA	1	Obrigacao 1 venda 6: receber 80000.00 vencida ha 16 dias	situacao=ATRASADA, vencimento_original=2026-01-25, vencimento_atual=2026-01-25	80000.00	16
+CRM	7	Lead Joao Comprador (atendimento 7) quente sem contato ha 7 dias	temperatura=QUENTE, pontuacao=55.00, sem contato=7 dias; valor em risco=55000.00	55000.00	7
+ESTOQUE	6	Veiculo Fiat Uno parado ha 35 dias	entrada ativa sem venda nem proposta aberta; capital=25000.00	25000.00	35
+ESTOQUE	7	Veiculo Ford Ka parado ha 35 dias	entrada ativa sem venda nem proposta aberta; capital=15000.00	15000.00	35
+
+Consulta 6: caixa realizado ate a referencia; apenas entradas historicas sao registradas; saidas historicas nao estao disponiveis e saldo inicial permanece HIPOTESE.
+[vw_caixa_realizado_referencia]
+2026-02-09	0.00	Recebimentos de vendas com data_ultimo_recebimento entre segunda-feira e 2026-02-10; entradas historicas apenas; saidas historicas nao registradas, saldo inicial HIPOTESE
+
+Consulta 7: previsao base e cenarios. Saldo inicial HIPOTESE R$ 25.000.
+[cenario BASE]
+2026-02-09	0.00	6000.00	-1950.00	29050.00	Cenario BASE; saldo inicial HIPOTESE 25000.00; Obrigacao 1 RECEBER 80000.00 vencimento 2026-01-25 (vencida antes da referencia; incluida na primeira semana) | PAGAR consignante da venda 3: -74000.00, vencimento estimado 2026-01-16 (HIPOTESE); vencida antes da referencia, incluida na primeira semana | PAGAR consignante na proposta 1: -50000.00 x P(lead) 0.6500 / 3 alternativas; caixa liquido do repasse | PAGAR consignante na proposta 3: -50000.00 x P(lead) 0.6500 / 3 alternativas; caixa liquido do repasse | Proposta 1 condicao PIX: 55000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+0 | Proposta 2 condicao PIX: 11000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+0 | Proposta 3 condicao PIX: 25000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+0; troca 30000.00 entra em estoque e nao e caixa | Recebimentos de vendas com data_ultimo_recebimento entre segunda-feira e 2026-02-10; entradas historicas apenas; saidas historicas nao registradas, saldo inicial HIPOTESE
+2026-02-16	0.00	0.00	0.00	29050.00	Cenario BASE; saldo inicial HIPOTESE 25000.00; sem outros movimentos
+2026-02-23	0.00	0.00	9914.67	38964.67	Cenario BASE; saldo inicial HIPOTESE 25000.00; Proposta 2 condicao FINANCIAMENTO: 44000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+15 | RETORNO BANCO Banco Demonstracao: 1760.00 x P(lead) 0.6500 / 3 alternativas; receita da loja na liberacao, nao comissao de vendedor
+2026-03-02	0.00	0.00	-10833.33	28131.34	Cenario BASE; saldo inicial HIPOTESE 25000.00; PAGAR consignante na proposta 2: -50000.00 x P(lead) 0.6500 / 3 alternativas; caixa liquido do repasse
+
+[cenario BANCO_ATRA_15_DIAS]
+2026-02-09	0.00	-74000.00	-1950.00	-50950.00	Cenario BANCO_ATRA_15_DIAS; saldo inicial HIPOTESE 25000.00; PAGAR consignante da venda 3: -74000.00, vencimento estimado 2026-01-16 (HIPOTESE); vencida antes da referencia, incluida na primeira semana | PAGAR consignante na proposta 1: -50000.00 x P(lead) 0.6500 / 3 alternativas; caixa liquido do repasse | PAGAR consignante na proposta 3: -50000.00 x P(lead) 0.6500 / 3 alternativas; caixa liquido do repasse | Proposta 1 condicao PIX: 55000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+0 | Proposta 2 condicao PIX: 11000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+0 | Proposta 3 condicao PIX: 25000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+0; troca 30000.00 entra em estoque e nao e caixa | Recebimentos de vendas com data_ultimo_recebimento entre segunda-feira e 2026-02-10; entradas historicas apenas; saidas historicas nao registradas, saldo inicial HIPOTESE
+2026-02-16	0.00	0.00	0.00	-50950.00	Cenario BANCO_ATRA_15_DIAS; saldo inicial HIPOTESE 25000.00; sem outros movimentos
+2026-02-23	0.00	80000.00	0.00	29050.00	Cenario BANCO_ATRA_15_DIAS; saldo inicial HIPOTESE 25000.00; Obrigacao 1 RECEBER 80000.00 vencimento 2026-01-25 (vencida antes da referencia; incluida na primeira semana)
+2026-03-02	0.00	0.00	0.00	29050.00	Cenario BANCO_ATRA_15_DIAS; saldo inicial HIPOTESE 25000.00; sem outros movimentos
+2026-03-09	0.00	0.00	9914.67	38964.67	Cenario BANCO_ATRA_15_DIAS; saldo inicial HIPOTESE 25000.00; Proposta 2 condicao FINANCIAMENTO: 44000.00 x P(lead) 0.6500 / 3 alternativas (hipotese de escolha uniforme), D+15 | RETORNO BANCO Banco Demonstracao: 1760.00 x P(lead) 0.6500 / 3 alternativas; receita da loja na liberacao, nao comissao de vendedor
+2026-03-16	0.00	0.00	-10833.33	28131.34	Cenario BANCO_ATRA_15_DIAS; saldo inicial HIPOTESE 25000.00; PAGAR consignante na proposta 2: -50000.00 x P(lead) 0.6500 / 3 alternativas; caixa liquido do repasse
+
+[cenario LEADS_QUENTES_NAO_FECHAM]
+2026-02-09	0.00	6000.00	0.00	31000.00	Cenario LEADS_QUENTES_NAO_FECHAM; saldo inicial HIPOTESE 25000.00; Obrigacao 1 RECEBER 80000.00 vencimento 2026-01-25 (vencida antes da referencia; incluida na primeira semana) | PAGAR consignante da venda 3: -74000.00, vencimento estimado 2026-01-16 (HIPOTESE); vencida antes da referencia, incluida na primeira semana | Recebimentos de vendas com data_ultimo_recebimento entre segunda-feira e 2026-02-10; entradas historicas apenas; saidas historicas nao registradas, saldo inicial HIPOTESE
+
+Quando falta dinheiro: BASE nao tem saldo negativo; BANCO_ATRA_15_DIAS tem primeira semana negativa em 2026-02-09 (R$ -50.950,00); LEADS_QUENTES_NAO_FECHAM nao tem saldo negativo.
