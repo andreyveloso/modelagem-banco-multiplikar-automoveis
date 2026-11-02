@@ -1,0 +1,220 @@
+﻿erDiagram
+    ATENDIMENTO {
+        BIGINT_AUTO_INCREMENT id_atendimento PK "NOT NULL (nucleo)"
+        BIGINT id_pessoa FK "NOT NULL"
+        BIGINT id_funcionario FK "NOT NULL"
+        DATETIME data "NOT NULL"
+        VARCHAR_6 tipo_interesse "NOT NULL"
+        TEXT descricao_interesse "NOT NULL"
+        VARCHAR_13 situacao "NOT NULL"
+        TEXT observacoes "NULL permitido"
+    }
+    FUNCIONARIO {
+        BIGINT_AUTO_INCREMENT id_funcionario PK "NOT NULL (nucleo)"
+        BIGINT id_pessoa FK, UK "NOT NULL"
+        VARCHAR_80 cargo "NOT NULL"
+        DATE data_admissao "NOT NULL"
+        VARCHAR_10 situacao "NOT NULL"
+    }
+    ENTRADA {
+        BIGINT_AUTO_INCREMENT id_entrada PK "NOT NULL (nucleo)"
+        BIGINT id_veiculo FK "NOT NULL"
+        BIGINT id_contraparte FK "NOT NULL"
+        BIGINT id_avaliacao FK, UK "NOT NULL"
+        VARCHAR_14 modalidade "NOT NULL"
+        VARCHAR_18 situacao "NOT NULL"
+        DECIMAL_14_2 valor_acordado "NOT NULL"
+        DECIMAL_14_2 preco_anunciado "NULL permitido"
+        DECIMAL_14_2 valor_repasse_acordado "NULL permitido"
+    }
+    VENDA {
+        BIGINT_AUTO_INCREMENT id_venda PK "NOT NULL (nucleo)"
+        BIGINT id_comprador FK "NOT NULL"
+        BIGINT id_funcionario FK "NOT NULL"
+        BIGINT id_entrada_principal FK, UK "NOT NULL"
+        BIGINT id_laudo FK "NULL permitido"
+        BIGINT id_proposta FK, UK "NULL permitido (extensao)"
+        VARCHAR_18 situacao_comercial "NOT NULL"
+        DECIMAL_14_2 valor_total "GENERATED VIRTUAL, NULL permitido"
+        DECIMAL_14_2 valor_recebido "NOT NULL"
+    }
+    FORMA_PAGAMENTO {
+        VARCHAR_20 codigo PK "NOT NULL (nucleo)"
+        VARCHAR_40 descricao UK "NOT NULL"
+    }
+    AVALIACAO {
+        BIGINT_AUTO_INCREMENT id_avaliacao PK "NOT NULL (nucleo)"
+        BIGINT id_veiculo FK "NOT NULL"
+        BIGINT id_avaliador FK "NOT NULL"
+        VARCHAR_14 finalidade "NOT NULL"
+        VARCHAR_10 decisao_tecnica "NOT NULL"
+        VARCHAR_10 interesse_comercial "NOT NULL"
+    }
+    DESPESA {
+        BIGINT_AUTO_INCREMENT id_despesa PK "NOT NULL (nucleo)"
+        BIGINT id_veiculo FK "NOT NULL"
+        DATE data "NOT NULL"
+        VARCHAR_11 categoria "NOT NULL"
+        DECIMAL_14_2 valor "NOT NULL"
+    }
+    PARAMETRO_REFERENCIA {
+        TINYINT_1 chave PK "NOT NULL"
+        DATE data_referencia "NOT NULL"
+        VARCHAR_12 origem "NOT NULL"
+    }
+    PROPOSTA {
+        BIGINT_AUTO_INCREMENT id_proposta PK "NOT NULL"
+        BIGINT id_atendimento FK, UK "NOT NULL"
+        BIGINT id_entrada FK, UK "NOT NULL"
+        BIGINT id_funcionario FK "NOT NULL"
+        BIGINT id_proposta_anterior FK, UK "NULL permitido"
+        VARCHAR_1 rotulo UK "NOT NULL"
+        INT versao UK "NOT NULL"
+        DATE data_criacao "NOT NULL"
+        DATE validade "NOT NULL"
+        DECIMAL_14_2 valor_base "NOT NULL"
+        DECIMAL_14_2 desconto "NOT NULL"
+        DECIMAL_14_2 acrescimo "NOT NULL"
+        DECIMAL_14_2 taxas "NOT NULL"
+        DECIMAL_14_2 valor_total "GENERATED STORED, NULL permitido"
+        VARCHAR_12 situacao "NOT NULL"
+        DATETIME data_decisao "NULL permitido"
+        TEXT motivo_recusa "NULL permitido"
+        BIGINT id_entrada_aceita UK "GENERATED STORED, NULL permitido (uma proposta aceita por entrada)"
+    }
+    PROPOSTA_CONDICAO {
+        BIGINT id_proposta PK, FK "NOT NULL"
+        VARCHAR_20 codigo_forma PK, FK "NOT NULL"
+        DECIMAL_14_2 valor "NOT NULL"
+        INT prazo_previsto_dias "NOT NULL"
+    }
+    PROPOSTA_TROCA {
+        BIGINT id_proposta PK, FK "NOT NULL"
+        BIGINT id_avaliacao PK, FK "NOT NULL"
+        DECIMAL_14_2 valor_oferecido "NOT NULL"
+    }
+    PARAMETRO_RETORNO {
+        VARCHAR_100 instituicao PK "NOT NULL"
+        VARCHAR_2 tabela_retorno PK "NOT NULL"
+        DECIMAL_8_6 acrescimo_taxa_mensal "NOT NULL"
+        DECIMAL_5_4 retorno_pct "NOT NULL"
+        VARCHAR_10 origem "NOT NULL"
+        DATE vigencia PK "NOT NULL"
+    }
+    SIMULACAO_FINANCIAMENTO {
+        BIGINT_AUTO_INCREMENT id_simulacao PK "NOT NULL"
+        BIGINT id_proposta FK "NOT NULL"
+        VARCHAR_100 instituicao "NOT NULL"
+        VARCHAR_2 tabela_retorno "NOT NULL"
+        VARCHAR_16 origem "NOT NULL"
+        DECIMAL_14_2 valor_financiado "NOT NULL"
+        DECIMAL_8_6 taxa_mensal "NOT NULL"
+        SMALLINT prazo_meses "NOT NULL"
+        DECIMAL_14_2 parcela_informada "NULL permitido"
+        DECIMAL_14_2 renda_declarada "NULL permitido"
+        TINYINT_1 consentimento_renda "NOT NULL"
+        VARCHAR_12 situacao "NOT NULL"
+        DATETIME data_simulacao "NOT NULL"
+        DATETIME data_resposta "NULL permitido"
+        BIGINT id_proposta_aprovada UK "GENERATED STORED, NULL permitido (uma simulacao aprovada por proposta)"
+    }
+    OBRIGACAO_FINANCEIRA {
+        BIGINT_AUTO_INCREMENT id_obrigacao PK "NOT NULL"
+        VARCHAR_8 natureza "NOT NULL"
+        VARCHAR_16 origem "NOT NULL"
+        BIGINT id_venda FK "NULL permitido"
+        BIGINT id_entrada FK "NULL permitido"
+        BIGINT id_despesa FK "NULL permitido"
+        VARCHAR_40 categoria "NOT NULL"
+        VARCHAR_150 contraparte "NOT NULL"
+        DECIMAL_14_2 valor "NOT NULL"
+        DATE data_competencia "NOT NULL"
+        DATE vencimento_original "NOT NULL"
+        DATE vencimento_atual "NOT NULL"
+        VARCHAR_10 situacao "NOT NULL"
+        VARCHAR_10 origem_estimativa "NOT NULL"
+    }
+    PARAMETRO_PRAZO {
+        VARCHAR_100 banco PK "NOT NULL"
+        VARCHAR_32 tipo_obrigacao PK "NOT NULL"
+        INT dias_previstos "NOT NULL"
+        VARCHAR_10 origem "NOT NULL"
+        DATE vigencia PK "NOT NULL"
+    }
+    INTERACAO {
+        BIGINT_AUTO_INCREMENT id_interacao PK "NOT NULL"
+        BIGINT id_atendimento FK "NOT NULL"
+        BIGINT id_funcionario FK "NOT NULL"
+        DATETIME data_hora "NOT NULL"
+        VARCHAR_16 canal "NOT NULL"
+        VARCHAR_10 direcao "NOT NULL"
+        TEXT resumo "NOT NULL"
+        TEXT proximo_passo "NULL permitido"
+        DATETIME data_proximo_passo "NULL permitido"
+    }
+    ATENDIMENTO_DESFECHO {
+        BIGINT id_atendimento PK, FK "NOT NULL"
+        BIGINT id_funcionario FK "NOT NULL"
+        DATETIME data_hora "NOT NULL"
+        VARCHAR_16 tipo_desfecho "NOT NULL"
+        TEXT motivo "NOT NULL"
+        TEXT detalhe "NULL permitido"
+    }
+    CLASSIFICACAO_LEAD {
+        BIGINT_AUTO_INCREMENT id_classificacao PK "NOT NULL"
+        BIGINT id_atendimento FK "NOT NULL"
+        DATETIME data_hora "NOT NULL"
+        VARCHAR_10 origem "NOT NULL"
+        VARCHAR_16 versao_regra "NOT NULL"
+        VARCHAR_8 temperatura_sugerida "NOT NULL"
+        DECIMAL_6_2 pontuacao "NOT NULL"
+        VARCHAR_8 temperatura_final "NULL permitido"
+        BIGINT id_revisor FK "NULL permitido"
+        DATETIME data_revisao "NULL permitido"
+        TEXT justificativa_revisao "NULL permitido"
+    }
+    CLASSIFICACAO_FATOR {
+        BIGINT id_classificacao PK, FK "NOT NULL"
+        VARCHAR_32 codigo_fator PK "NOT NULL"
+        DECIMAL_6_2 pontos "NOT NULL"
+        TEXT evidencia "NOT NULL"
+    }
+    PARAMETRO_TEMPERATURA {
+        VARCHAR_8 temperatura PK "NOT NULL"
+        DECIMAL_5_4 probabilidade "NOT NULL"
+        VARCHAR_10 origem "NOT NULL"
+        DATE vigencia "NOT NULL"
+    }
+    INTENCAO_COMPRA {
+        BIGINT id_atendimento PK, FK "NOT NULL"
+        BIGINT id_entrada FK "NULL permitido"
+        DECIMAL_14_2 valor_disponivel "NULL permitido (CHECK >= 0)"
+        VARCHAR_20 codigo_forma FK "NULL permitido"
+        DATETIME data_registro "NOT NULL"
+        VARCHAR_20 origem "NOT NULL (SITE ou VENDEDOR)"
+    }
+
+    ATENDIMENTO ||--o{ PROPOSTA : "gera (R20)"
+    ENTRADA ||--o{ PROPOSTA : "e ofertada em (R21)"
+    FUNCIONARIO ||--o{ PROPOSTA : "elabora (R22)"
+    PROPOSTA o|--o| PROPOSTA : "sucede versao da mesma alternativa (R23)"
+    PROPOSTA o|--o| VENDA : "formaliza (R24)"
+    PROPOSTA ||--o{ PROPOSTA_CONDICAO : "compoe pagamento em (R25)"
+    FORMA_PAGAMENTO ||--o{ PROPOSTA_CONDICAO : "modalidade de (R25)"
+    PROPOSTA ||--o{ PROPOSTA_TROCA : "inclui troca em (R26)"
+    AVALIACAO ||--o{ PROPOSTA_TROCA : "fundamenta troca em (R26)"
+    PROPOSTA ||--o{ SIMULACAO_FINANCIAMENTO : "cotada em (R27)"
+    PARAMETRO_RETORNO ||--o{ SIMULACAO_FINANCIAMENTO : "parametriza retorno vigente (R28)"
+    VENDA o|--o{ OBRIGACAO_FINANCEIRA : "origina recebivel (R29)"
+    ENTRADA o|--o{ OBRIGACAO_FINANCEIRA : "origina repasse/aquisicao (R30)"
+    DESPESA o|--o{ OBRIGACAO_FINANCEIRA : "origina conta veicular (R31)"
+    ATENDIMENTO ||--o{ INTERACAO : "registra contato (R32)"
+    FUNCIONARIO ||--o{ INTERACAO : "realiza contato (R33)"
+    ATENDIMENTO ||--o| ATENDIMENTO_DESFECHO : "encerra com (R34)"
+    FUNCIONARIO ||--o{ ATENDIMENTO_DESFECHO : "registra desfecho (R38)"
+    ATENDIMENTO ||--o{ CLASSIFICACAO_LEAD : "avaliado em (R35)"
+    FUNCIONARIO o|--o{ CLASSIFICACAO_LEAD : "revisa (R36)"
+    CLASSIFICACAO_LEAD ||--|{ CLASSIFICACAO_FATOR : "explicada por (R37)"
+    ATENDIMENTO ||--o| INTENCAO_COMPRA : "declara (R39)"
+    ENTRADA o|--o{ INTENCAO_COMPRA : "pretendida em (R40)"
+    FORMA_PAGAMENTO o|--o{ INTENCAO_COMPRA : "pretendida em (R41)"
