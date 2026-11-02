@@ -92,7 +92,11 @@ Observação: As informações acadêmicas e a estrutura do repositório foram r
 
 As responsabilidades foram divididas entre os integrantes para cobrir todas as etapas solicitadas no manual. Na Primeira Entrega, o grupo alinhou o DER e validou a coerência do modelo; na Entrega Final, converteu o modelo conceitual em modelo lógico e físico, implementou e testou o banco MySQL 8.4 e revisou os pontos da devolutiva do professor antes de consolidar os artefatos no repositório.
 
-( parte do Brenno — PARTE 3: 1.3. Diário de bordo )
+### 1.3. Diário de bordo
+O registro contínuo das atividades, evolução do modelo e acompanhamento das tarefas do grupo foi documentado aula a aula no modelo oficial de Diário de Bordo disponibilizado pelo professor Clóvis Ferraro.
+
+Os diários de bordo dos integrantes são entregues separadamente, por meio da pasta específica disponibilizada pelo professor, conforme o procedimento estabelecido para a atividade. Por esse motivo, não integram os arquivos deste repositório, e a confirmação da entrega depende dessa pasta externa.
+
 
 <a id="secao-2"></a>
 
@@ -577,7 +581,29 @@ Registra análise técnica e interesse comercial para fundamentar a aceitação.
 
 ( parte do David — PARTE 21: Entidades E06 a E10 e Detalhamento de Componentes )
 
-( parte do Brenno — PARTE 22: 16. DER )
+<a id="secao-16"></a>
+
+## 16. DER
+
+O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 19 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
+
+![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
+
+[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
+
+### 16.1. Convenções de Notação Adotadas
+
+- *Entidades:* representadas por retângulos (ex.: PESSOA, Veículo, VENDA).
+- *Relacionamentos:* representados por losangos com os nomes dos verbos que descrevem as interações reais (ex.: compra em, passa por).
+- *Atributos:* representados por elipses ligadas às suas respectivas entidades.
+  - Atributos *identificadores* aparecem com o nome sublinhado (ex.: <u>identificador</u>).
+  - Atributos *multivalorados* possuem contorno duplo (como formas_pagamento e documentos_conferidos).
+  - Atributos *derivados* possuem traço pontilhado/tracejado (como valor_total e situacao_atual).
+  - Atributos *compostos* possuem seus sub-atributos atômicos detalhados no dicionário de dados (Seção 15.6) para manter o diagrama visualmente limpo e legível.
+- *Cardinalidades:* cada conexão indica a participação mínima e máxima da entidade no relacionamento (min, max), conforme detalhado na análise Vá e Volte da Seção 14.
+- As relações R13 e R14 distinguem com exatidão o carro principal vendido (é comercializada em) dos carros recebidos como entrada em trocas (recebe em troca).
+- **Atualização da Entrega Final:** o DER recebeu o relacionamento R19, autorrelacionamento de ENTRADA *sucede* (0,1):(0,1), que liga o ciclo encerrado por desfazimento ao novo ciclo do mesmo veículo (RN13), conforme exigido pela devolutiva para preservar o histórico de comercialização.
+- **Extensão (seção 30.1):** o DER acima segue representando o núcleo. As 14 entidades novas da extensão estão em um DER próprio, na mesma notação e com as mesmas convenções, ligadas às entidades do núcleo que referenciam (ATENDIMENTO, FUNCIONARIO, ENTRADA, VENDA, Avaliação e DESPESA) pelos relacionamentos R20 a R41: [DER da extensão em SVG](docs/der/der-extensao.svg) · [PNG](docs/der/der-extensao.png) · [Draw.io](docs/der/der-extensao.drawio).
 
 <a id="secao-17"></a>
 
@@ -701,7 +727,32 @@ Para as etapas seguintes da disciplina, utilizaremos este modelo conceitual como
 
 ( parte da Ana Beatriz — PARTE 25: 19. Revisão da 1ª entrega e registro de alterações )
 
-( parte do Brenno — PARTE 26: 20. Modelo Lógico Relacional )
+<a id="secao-20"></a>
+
+## 20. Modelo Lógico Relacional
+
+O modelo conceitual foi convertido em **14 tabelas físicas** e **3 views do núcleo** no MySQL 8.4, cobrindo as 10 entidades originais mais 4 tabelas adicionais para atributos multivalorados e para resolver a integridade avaliação–laudo (forma_pagamento, venda_forma_pagamento, venda_documento, avaliacao_laudo). Os 19 relacionamentos do DER foram convertidos com cardinalidade física (PK/FK/UNIQUE), com justificativa individual de cada restrição, e o encadeamento de ciclos de comercialização foi representado pela autorreferência entrada.id_entrada_anterior (RN13).
+
+O projeto tem **28 tabelas**, representadas em dois diagramas: o do **núcleo** (14 tabelas, abaixo), derivado do DER da Primeira Entrega, e o da **extensão** (14 tabelas, logo depois), módulo aditivo que não altera o núcleo (Seção 30.1).
+
+**Núcleo — 14 tabelas:**
+
+![Diagrama do Modelo Lógico Relacional da Multiplikar](docs/modelo-logico/modelo-logico.svg)
+
+[Abrir diagrama em SVG ampliado](docs/modelo-logico/modelo-logico.svg) · [Visualizar imagem PNG](docs/modelo-logico/modelo-logico.png) · [Fonte do diagrama do núcleo (Mermaid)](docs/modelo-logico/modelo-logico.mmd)
+
+**Extensão — 14 tabelas** (propostas, simulação de financiamento, obrigações e caixa, CRM e intenção de compra). As tabelas do núcleo que a extensão referencia (`ATENDIMENTO`, `ENTRADA`, `VENDA`, `FUNCIONARIO`, `AVALIACAO`, `DESPESA` e `FORMA_PAGAMENTO`) aparecem no diagrama apenas para mostrar as chaves estrangeiras; elas não são tabelas novas.
+
+![Diagrama do Modelo Lógico Relacional da extensão](docs/modelo-logico/extensao.svg)
+
+[Abrir diagrama em SVG ampliado](docs/modelo-logico/extensao.svg) · [Visualizar imagem PNG](docs/modelo-logico/extensao.png) · [Fonte do diagrama da extensão (Mermaid)](docs/modelo-logico/extensao.mmd)
+
+> **Notação dos tipos no diagrama:** `VARCHAR_N` representa `VARCHAR(N)` e `DECIMAL_P_S` representa `DECIMAL(P,S)` — limitação de sintaxe do Mermaid, não do banco. Colunas geradas aparecem como `GENERATED STORED` ou `GENERATED VIRTUAL`. Os arquivos `.mmd` são a fonte editável e conferida coluna a coluna com o catálogo do MySQL (259 colunas, mesma nulidade e tipo); as imagens são geradas a partir deles. O arquivo `modelo-logico.drawio` traz o mesmo modelo do núcleo para edição no draw.io, com os tipos MySQL escritos por extenso (`VARCHAR(150)`, `DECIMAL(14,2)`) e a mesma nulidade. Os tipos e tamanhos exatos estão em `sql/ddl/schema.sql` e no [dicionário de dados](docs/dicionario-dados.md).
+
+Os 19 relacionamentos do núcleo e os 22 da extensão, com a regra que cada FK representa, estão em **[`docs/modelo-logico.md`](docs/modelo-logico.md)**. O catálogo nominal de restrições, com a expressão de cada `CHECK`, está na seção 3 do [dicionário de dados](docs/dicionario-dados.md). Contagem do catálogo após `sql/ddl/schema.sql` (núcleo): 14 PK, 23 FK, 9 UNIQUE e 56 CHECK; com a extensão, o banco completo tem 46 FK e 114 CHECK.
+Script executável: **[`sql/ddl/schema.sql`](sql/ddl/schema.sql)**.
+
+---
 
 ( parte do David — PARTE 27: 21. Normalização (1FN, 2FN, 3FN) )
 
