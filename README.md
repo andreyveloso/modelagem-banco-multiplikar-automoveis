@@ -206,7 +206,7 @@ Os requisitos não funcionais definem os parâmetros essenciais de segurança, i
 |---|---|---|
 | RNF01 | O acesso a dados pessoais e financeiros deverá respeitar perfis autorizados. | Testar operações permitidas e negadas após definição dos perfis. |
 | RNF02 | Documentos e informações pessoais deverão ser protegidos contra consulta/exportação não autorizadas. | Verificar restrições sobre CPF/CNPJ, contato, endereço e referências documentais. |
-| RNF03 | Alterações de valores, situação financeira e cancelamento deverão ser rastreáveis. | Reconstruir autor, momento e conteúdo alterado; retenção a definir. |
+| RNF03 | Alterações de valores, situação financeira e cancelamento deverão ser rastreáveis. | Reconstruir autor, momento e conteúdo alterado; prazo de retenção definido pela política de privacidade da loja. |
 | RNF04 | Operações concorrentes não deverão permitir vendas incompatíveis do mesmo veículo. | Testar tentativas simultâneas de conclusão. |
 | RNF05 | Vínculos entre veículo, avaliação, entrada e venda deverão permanecer íntegros. | Rejeitar associações contraditórias e preservar histórico. |
 | RNF06 | Consultas deverão ter desempenho adequado ao atendimento. | Definir volume, concorrência e tempo aceitável antes de implementar. |
@@ -369,50 +369,7 @@ A relação **R07 (AVALIAÇÃO — consulta — LAUDO)** foi definida como **1:N
 
 Na troca, o valor aceito pertence à ENTRADA daquele veículo na negociação. A identidade do veículo continua a mesma; seu valor pode variar entre operações. ENTRADA tem identidade de evento comercial, não é apenas uma ligação sem conteúdo.
 
-<a id="secao-14"></a>
-
-## 14. Cardinalidades
-
-### 14.1. Convenção e Método Vá e Volte
-
-Para definir as cardinalidades de forma correta e sem inconsistências, aplicamos o **Método Vá e Volte** em todos os 19 relacionamentos do modelo, conforme ensinado na disciplina e solicitado no manual (Etapa 13). Como aprendemos, nunca devemos definir a multiplicidade olhando apenas para um lado da relação. Para cada ligação entre as entidades A e B, analisamos os dois sentidos:
-1. **Sentido de Ida (A → B):** Uma ocorrência de A pode se relacionar com quantas ocorrências de B (mínimo e máximo)?
-2. **Sentido de Volta (B → A):** Uma ocorrência de B pode se relacionar com quantas ocorrências de A (mínimo e máximo)?
-
-A participação mínima (0) representa associação opcional, enquanto a mínima (1) indica obrigatoriedade. O valor máximo (1 ou N) determina a multiplicidade.
-
-### 14.2. Análise nos dois sentidos
-
-| Relação | Ida (A → B) | Volta (B → A) | Justificativa Técnica (Regra de Negócio) |
-|---|---|---|---|
-| R01 | (0,1) | (1,1) | Uma pessoa pode não ser funcionária; cada vínculo pertence a uma pessoa. Adotada a hipótese de vínculo funcional único por colaborador (RN01–RN02). |
-| R02 | (0,N) | (1,1) | Pessoa pode ter nenhum ou vários contatos; cada atendimento identifica um interessado (RN03). |
-| R03 | (0,N) | (1,1) | Funcionário pode ainda não ter atendido; cada atendimento tem um responsável (RN03). |
-| R04 | (0,N) | (1,1) | Cadastro pode preceder análise; são possíveis reavaliações. Cada análise examina um veículo (RN05–RN06). |
-| R05 | (0,N) | (1,1) | Pessoa pode não ser avaliadora; cada avaliação tem um responsável técnico principal registrado. |
-| R06 | (0,N) | (1,1) | Veículo pode ainda não ter laudo ou possuir vários documentos históricos; cada laudo pertence a um veículo (RN08). |
-| R07 | (0,1) | (0,N) | Uma avaliação consulta no máximo um laudo cautelar daquele veículo (0 se pendente, 1 se emitido); um laudo pode subsidiar reavaliações do mesmo veículo (RN08). |
-| R08 | (0,N) | (1,1) | Cadastro preliminar pode não gerar entrada; novas entradas podem ocorrer em momentos distintos. Cada entrada é de um veículo, unificando compra, consignação e troca. |
-| R09 | (0,N) | (1,1) | Pessoa pode fornecer vários veículos; cada entrada tem uma contraparte formalmente identificada (RN10). |
-| R10 | (0,1) | (1,1) | Uma análise pode não resultar em entrada; cada entrada aceita utiliza avaliação específica aprovada na vistoria técnica. |
-| R11 | (0,N) | (1,1) | Pessoa pode nunca comprar ou comprar várias vezes; cada venda tem um comprador (RN14). |
-| R12 | (0,N) | (1,1) | Funcionário pode ter nenhuma ou várias vendas; cada venda tem responsável da loja (RN14). |
-| R13 | (0,1) | (1,1) | No ciclo operacional de comercialização, cada entrada aceita pode ser comercializada em no máximo uma venda (0 se disponível, 1 se vendida). Cada venda tem uma entrada principal (RN13–RN14). (Entrega Final: o reuso da mesma entrada após desfazimento foi descartado; R13 é 0,1 também no histórico, e o retorno do veículo gera nova ENTRADA ligada à anterior — RN13.) |
-| R14 | (0,N) | (0,1) | Venda pode receber vários veículos. Entrada de compra/consignação não tem venda de origem; para troca, exatamente uma é obrigatória (RN16–RN18). |
-| R15 | (0,N) | (0,1) | Laudo pode não ser usado em venda. Venda em formalização pode aguardar laudo; na conclusão o vínculo é obrigatório (RN22). |
-| R16 | (0,N) | (1,1) | Venda pode não gerar reclamações ou gerar várias; cada ocorrência pertence à venda original (RN25–RN27). |
-| R17 | (0,N) | (0,1) | Pessoa pode não atuar como mecânico; ocorrência pode aguardar designação. Adotado um mecânico responsável principal por atendimento de garantia. |
-| R18 | (0,N) | (1,1) | Veículo pode não ter despesas registradas; cada despesa do escopo pertence a um veículo (RN32). |
-| R19 | (0,1) | (0,1) | Uma entrada anterior pode ter uma sucessora; cada nova entrada aponta para no máximo uma anterior (RN13). |
-
-### 14.3. Participações condicionais
-
-- R14: uma entrada de troca deve ter exatamente uma venda de origem; compra própria e consignação não possuem esse vínculo.
-- R15: uma venda em formalização pode aguardar o laudo; a conclusão exige um laudo do veículo principal.
-- R17: uma ocorrência pode ser aberta antes da designação do mecânico principal.
-- As multiplicidades históricas de R08 e R13 não autorizam entradas vigentes incompatíveis nem vendas simultâneas do mesmo veículo.
-
-As regras da seção 8 complementam o DER, incluindo avaliação aprovada, interesse comercial, documentos e cumprimento financeiro.
+( parte do Jocerlan — PARTE 19: 14. Cardinalidades )
 
 
 ( parte do Caique — PARTE 20: 15. Dicionário de dados conceitual )
@@ -491,28 +448,11 @@ Conteúdo completo, incluindo o quadro consolidado RNF01–RNF08 e o dimensionam
 
 ( parte do Erin — PARTE 31: 25. Implementação SQL (MySQL 8.4) )
 
-<a id="secao-26"></a>
-
-## 26. Massa de dados
-
-Massa de dados coerente, com datas em ordem cronológica (atendimento → laudo → avaliação → entrada → venda), cobrindo: venda normal, venda com duas trocas, consignação com financiamento recebido, consignação ativa com prazo, cancelamento com devolução da troca e revenda do mesmo veículo (RN13 na prática), revenda com financiamento recusado e quitada por Pix, financiamento aprovado ainda a receber e ocorrências de garantia. 12 pessoas, 9 veículos, 10 entradas, 6 vendas. Inclui **32 testes de regressão negativos**, que comprovam que constraints e triggers rejeitam operações inválidas (RN08, RN06/RN07, RN13, RN22 inclusive na transição para desfazimento, garantia sem concessão, domínios, unicidade, exclusão de histórico), além de verificações positivas dos cenários e de consistência final.
-
-A massa não foi gerada em escala: cada registro existe para um cenário de negócio específico e é conferido pelos testes automáticos do próprio script, seguindo o ciclo do manual: gerar → testar → validar → corrigir.
-
-Script: **[`sql/dados/massa-dados.sql`](sql/dados/massa-dados.sql)**.
-
+( parte do Jocerlan — PARTE 32: 26. Massa de dados )
 
 ( parte do Aquiles — PARTE 33: 27. Consultas gerenciais )
 
-<a id="secao-28"></a>
-
-## 28. Consultas de auditoria
-
-Dois grupos de consultas, cada uma com o que verifica, por que importa e o resultado esperado na massa:
-- **Verificação de conformidade (14):** confirmam que as regras protegidas pelo banco continuam íntegras — entrada vigente única por veículo (RN13), histórico completo de comercialização do HB20 vendido, devolvido e revendido (RN13), condições simultâneas de conclusão (RN22), laudo do mesmo veículo da avaliação (RN08), entre outras. O esperado é zero violações; servem como relatório de conformidade, por exemplo após uma restauração de backup.
-- **Qualidade de dados (8):** procuram situações que o banco **não impede**, mas que merecem ação do gestor — consignação com prazo vencido, venda parada em formalização, financiamento aprovado e não recebido, preço anunciado abaixo do custo ou repasse, ocorrência de garantia aberta há muito tempo, possíveis pessoas duplicadas, veículo sem placa nem chassi e troca de venda cancelada não devolvida. Na massa completa, quatro apontam casos reais: venda 6 parada e seu financiamento a receber, ocorrência do Honda City em análise e os 27 veículos anunciados sem placa/chassi (o anúncio não fornece esses identificadores; devem ser conferidos na inspeção física).
-
-Script: **[`sql/auditoria/auditoria.sql`](sql/auditoria/auditoria.sql)**.
+( parte do Jocerlan — PARTE 34: 28. Consultas de auditoria )
 
 ( parte do Aquiles — PARTE 35: 29. Potencial de BI e IA )
 
