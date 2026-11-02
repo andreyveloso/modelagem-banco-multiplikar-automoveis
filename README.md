@@ -167,7 +167,57 @@ O uso de planilhas sem integração pode levar a retrabalho, divergências entre
 | PROB10 | Falta de integração entre condições contratuais acordadas e registros operacionais. | Divergência entre valores negociados, taxas discriminadas e contratos formalizados. | Associar os dados contratuais às operações de compra, venda e consignação. | RF08, RF10–RF14 |
 | PROB11 | Dependência de planilhas sem integração entre registros. | Retrabalho de consolidação manual, risco de divergências e lentidão nas consultas. | Centralizar as informações em banco de dados relacional integrado. | RF01–RF18 |
 
-( parte do Aquiles — PARTE 7: 5. Processos de negócio )
+<a id="secao-5"></a>
+
+## 5. Processos de negócio
+
+### P01 — Cadastro e atendimento
+
+- **Objetivo:** identificar o interessado e sua necessidade.
+- **Participantes:** interessado e funcionário.
+- **Gatilho:** contato ou visita à loja.
+- **Etapas:** localizar/cadastrar pessoa; registrar atendimento; identificar interesse em compra, venda ou troca; apresentar alternativas; registrar andamento.
+- **Decisões/exceções:** pode não haver negociação; cadastro existente é reutilizado para evitar duplicidades (cadastro único em PESSOA).
+- **Informações:** pessoa, contato, informação sobre CNH quando pertinente, interesse, data, responsável e situação.
+- **Resultado:** atendimento documentado, mesmo sem venda.
+- **Escopo descrito:** etapas detalhadas do funil de leads não foram incluídas no modelo.
+- **Origem:** Briefing da loja (p. 4–5 e 7).
+
+### P02 — Avaliação e compra própria
+
+- **Objetivo:** decidir a aquisição e registrar o veículo aceito.
+- **Participantes:** proprietário, funcionário e especialista.
+- **Gatilho:** oferta de veículo à loja.
+- **Etapas:** identificar partes e veículo; avaliar condições e laudo quando aplicável; verificar interesse; negociar; formalizar compra; registrar ENTRADA.
+- **Decisões/exceções:** reprovação ou falta de interesse encerra a proposta; aprovação técnica não obriga compra.
+- **Informações:** características, quilometragem, condições, decisão, responsável, valor e contrato.
+- **Resultado:** veículo adquirido/disponibilizado ou proposta encerrada sem estoque.
+- **Hipótese:** cadastro preliminar preserva análise mesmo sem aquisição.
+- **Origem:** Briefing da loja (p. 2–4) e esclarecimentos operacionais do levantamento.
+
+### P03 — Consignação
+
+- **Objetivo:** registrar veículo de terceiro disponibilizado para comercialização.
+- **Participantes:** proprietário, funcionário e especialista.
+- **Gatilho:** proposta de consignação.
+- **Etapas:** identificar; avaliar; verificar interesse; negociar preço e repasse; formalizar contrato com reconhecimento de firma; registrar ENTRADA.
+- **Decisões/exceções:** prazo normalmente indeterminado; prazo excepcional é registrado.
+- **Informações:** proprietário, entrada, preço, repasse, contrato, formalização e prazo eventual.
+- **Resultado:** veículo disponível, mantendo vínculo com proprietário até a conclusão da venda.
+- **Escopo descrito:** procedimento de retirada do veículo sem venda não foi detalhado.
+- **Origem:** Briefing da loja (p. 3 e 7).
+
+### P04 — Venda e veículos recebidos em troca
+
+- **Objetivo:** formalizar uma negociação com um veículo principal.
+- **Participantes:** comprador, funcionário e especialista.
+- **Gatilho:** escolha do automóvel e proposta.
+- **Etapas:** conferir disponibilidade; negociar valores; avaliar cada veículo oferecido; selecionar aceitos; registrar venda e contrato; vincular cada entrada recebida.
+- **Decisões/exceções:** veículo reprovado ou sem interesse não integra a troca; proposta pode ser reformulada. Veículos oferecidos pertencem ao comprador, sem terceiros.
+- **Informações:** comprador, responsável, veículo principal, ajustes, veículos recebidos e valores aceitos.
+- **Resultado:** uma venda, um contrato e zero ou várias entradas vinculadas.
+- **Origem:** Briefing da loja (p. 4 e 7–8) e esclarecimentos operacionais do levantamento.
+
 
 ### P05 — Informações de pagamento e financiamento
 
@@ -268,7 +318,55 @@ Tabelas e controles estritamente técnicos de infraestrutura (como logs detalhad
 
 ( parte da Ana Beatriz — PARTE 12: 9. Restrições e políticas organizacionais )
 
-( parte do Aquiles — PARTE 13: 10. Fluxogramas )
+<a id="secao-10"></a>
+
+## 10. Fluxogramas
+
+Os fluxogramas representam os processos descritos na seção 5. Cada diagrama identifica os requisitos e as regras correspondentes. Os arquivos `.drawio` são editáveis no diagrams.net; os PNGs podem ser visualizados no GitHub ou inseridos em uma impressão.
+
+![Visão geral dos nove fluxogramas](docs/fluxogramas/fluxogramas-visao-geral.png)
+
+[Abrir visão geral ampliada](docs/fluxogramas/fluxogramas-visao-geral.png)
+
+### 10.1. Cadastro e atendimento
+
+**Referências:** P01; RF01–RF03; RN01–RN03.
+
+![Cadastro e atendimento](docs/fluxogramas/01-atendimento.png)
+
+[Abrir PNG](docs/fluxogramas/01-atendimento.png) · [Editar no draw.io](docs/fluxogramas/01-atendimento.drawio)
+
+A decisão de manter um cadastro único para cada pessoa física ou jurídica foi definida para evitar dados repetidos na base.
+
+### 10.2. Entrada e avaliação de veículo próprio
+
+**Referências:** P02; RF04–RF07; RN04–RN10.
+
+![Entrada e avaliação de veículo próprio](docs/fluxogramas/02-entrada-avaliacao.png)
+
+[Abrir PNG](docs/fluxogramas/02-entrada-avaliacao.png) · [Editar no draw.io](docs/fluxogramas/02-entrada-avaliacao.drawio)
+
+
+
+### 10.3. Consignação
+
+**Referências:** P03; RF05–RF08; RN06–RN12.
+
+![Consignação](docs/fluxogramas/03-consignacao.png)
+
+[Abrir PNG](docs/fluxogramas/03-consignacao.png) · [Editar no draw.io](docs/fluxogramas/03-consignacao.drawio)
+
+
+
+### 10.4. Venda com vários veículos de entrada
+
+**Referências:** P04; RF09–RF11; RN13–RN18.
+
+![Venda com vários veículos de entrada](docs/fluxogramas/04-venda-troca.png)
+
+[Abrir PNG](docs/fluxogramas/04-venda-troca.png) · [Editar no draw.io](docs/fluxogramas/04-venda-troca.drawio)
+
+Cada veículo de entrada pertence ao comprador. Sem veículos aceitos, a venda só prossegue se as demais condições forem acordadas.
 
 ### 10.5. Informações de pagamento e financiamento
 
@@ -865,7 +963,13 @@ Script: **[`sql/dados/massa-dados.sql`](sql/dados/massa-dados.sql)**.
 
 ---
 
-( parte do Aquiles — PARTE 33: 27. Consultas gerenciais )
+<a id="secao-27"></a>
+
+## 27. Consultas gerenciais
+
+14 consultas SQL, cada uma com a pergunta de negócio e a decisão que apoia comentadas no próprio script: modelos mais vendidos por período, clientes que mais compram (com CPF, telefone e e-mail mascarados — LGPD), faturamento mensal das vendas concluídas, veículos parados há mais tempo no estoque, consignações com prazo próximo ou vencido, vendas com troca, posição financeira das vendas, margem por veículo conforme a modalidade (na consignação, venda − repasse − despesas; ex.: Honda City = R$ 5.850), atendimentos convertidos em venda por vendedor, ocorrências de garantia por veículo, vendas aptas para conclusão (RN22) e para entrega (scanner), composição do estoque por modalidade, histórico de reavaliações e vendas canceladas com detalhes de restituição.
+
+Script: **[`sql/consultas/gerenciais.sql`](sql/consultas/gerenciais.sql)**.
 
 <a id="secao-28"></a>
 
@@ -879,7 +983,13 @@ Script: **[`sql/auditoria/auditoria.sql`](sql/auditoria/auditoria.sql)**.
 
 ---
 
-( parte do Aquiles — PARTE 35: 29. Potencial de BI e IA )
+<a id="secao-29"></a>
+
+## 29. Potencial de BI e IA
+
+Conforme a etapa 21 do manual, não se implementa uma solução completa de BI ou IA: demonstra-se o potencial dos dados estruturados. São dois exemplos de Business Intelligence (giro de estoque, custo por ciclo e margem por veículo; desempenho de vendedores e funil de conversão) e dois de Inteligência Artificial (previsão de preço e tempo de giro na entrada; risco de garantia ou distrato), cada um no formato problema → dados necessários → análise → possível benefício. O documento traz ainda uma matriz de indicadores (KPIs) com fórmula, consulta SQL correspondente e decisão apoiada, e uma análise do que o modelo já sustenta e das lacunas (comissões, impostos, vínculo direto atendimento → venda e recebimentos individuais).
+
+Conteúdo completo: **[`docs/bi-ia.md`](docs/bi-ia.md)**.
 
 <a id="secao-30"></a>
 
