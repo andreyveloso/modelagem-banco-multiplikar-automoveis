@@ -304,7 +304,6 @@ Troca, consignação e financiamento podem coexistir. No desfazimento, a entrada
 
 [Abrir PNG](docs/fluxogramas/08-despesas-relatorios.png) · [Editar no draw.io](docs/fluxogramas/08-despesas-relatorios.drawio)
 
-
 ### 10.9. Propostas, caixa e acompanhamento do lead (Entrega Final)
 
 **Referências:** extensão de P01 e P04; RN34–RN44; seção 30.1.
@@ -580,8 +579,6 @@ Registra análise técnica e interesse comercial para fundamentar a aceitação.
 
 ( parte do Brenno — PARTE 22: 16. DER )
 
-— PARTE 23** · 17. Justificativas técnicas · linhas 968–1048
-
 <a id="secao-17"></a>
 
 ## 17. Justificativas técnicas
@@ -663,11 +660,87 @@ Apresentamos a seguir o resumo executivo das principais decisões conceituais ad
 | Resolvido na Entrega Final | Transição de veículo devolvido | O veículo devolvido gera nova ENTRADA ligada à anterior (`id_entrada_anterior`), com nova avaliação, iniciando em `EM_REGULARIZACAO` até a regularização (RN13). | Seções 19–31 |
 | Ponto para etapa lógica | Categorização contábil de custos | Estruturar na modelagem física o plano de categorias de despesas (oficina, taxas de despachante, preparação e limpeza). | Aprofundamento futuro |
 
-> ■ **FIM — PARTE 23**
+<a id="secao-18"></a>
+
+## 18. Conclusão
+
+### 18.1. Considerações Finais do Grupo
+
+A elaboração desta primeira entrega permitiu ao nosso grupo aplicar na prática os conceitos fundamentais de modelagem de dados ensinados pelo professor Clóvis. Ao analisar os processos reais da Multiplikar Automóveis, compreendemos que modelar um banco de dados não é simplesmente desenhar caixas e losangos, mas entender a fundo como a empresa opera, quais são seus problemas reais e quais regras precisam ser garantidas pelo sistema.
+
+Conseguimos resolver desafios importantes levantados no briefing, tais como: permitir que múltiplos carros sejam dados em troca na mesma venda, unificar o cadastro de pessoas para evitar redundâncias, diferenciar a aprovação do crédito do efetivo recebimento do dinheiro pela loja e estruturar o controle de garantia pós-venda. O modelo conceitual desenvolvido fornece uma base sólida e sem contradições para a evolução do sistema.
+
+### 18.2. Checklist de Validação da Primeira Entrega
+
+Conforme orientado no checklist final do manual (página 21 e 22), verificamos todos os itens antes da publicação:
+
+| Área Avaliada | Itens Verificados e Cumpridos | Onde Conferir |
+|---|---|---|
+| **Contexto** | Empresa caracterizada, escolha justificada, problemas e necessidades descritos. | Seções 2, 3 e 4 |
+| **Processos** | 8 processos mapeados detalhadamente e 8 fluxogramas desenhados com visão geral. | Seções 5 e 10 |
+| **Requisitos** | 18 requisitos funcionais (RF01 a RF18) e 8 não funcionais (RNF01 a RNF08) organizados. | Seções 6 e 7 |
+| **Regras e Políticas** | 33 regras de negócio (RN01 a RN33) e 13 restrições organizacionais (RO01 a RO13). | Seções 8 e 9 |
+| **Dados e Entidades** | 10 entidades definidas, atributos conceituais classificados e dicionário de dados completo. | Seções 11, 12 e 15 |
+| **Relacionamentos** | 19 relacionamentos nomeados por verbos e análise de relacionamentos N:N. | Seção 13 |
+| **Cardinalidades** | Mínimos e máximos calculados pelo Método Vá e Volte com justificativas. | Seção 14 |
+| **Diagrama (DER)** | Diagrama em notação de Chen com todas as entidades, atributos e relações coerentes. | Seção 16 e `docs/der/` |
+| **Justificativas** | Decisões de modelagem e abstração fundamentadas técnica e operacionalmente. | Seção 17 |
+| **Documentação** | Repositório estruturado, arquivos editáveis `.drawio` e exportações em PNG/SVG. | Raiz e pasta `docs/` |
+| **Equipe e Diário** | Identificação dos 9 integrantes, divisão das contribuições e registro do Diário de Bordo. | Seção 1 |
+
+### 18.3. Próximos Passos do Projeto
+
+*(Registro histórico da Primeira Entrega — os passos abaixo foram executados na Entrega Final, Seções 19–31.)*
+
+Para as etapas seguintes da disciplina, utilizaremos este modelo conceitual como ponto de partida para:
+1. Transformar as entidades e relacionamentos no **Modelo Lógico Relacional** (tabelas, chaves primárias e chaves estrangeiras);
+2. Aplicar as regras de **Normalização** (1FN, 2FN e 3FN) para eliminar possíveis redundâncias e anomalias de atualização;
+3. Desenvolver o **Modelo Físico** com scripts SQL de criação de tabelas (DDL), tipos de dados específicos do SGBD e restrições de integridade (`PRIMARY KEY`, `FOREIGN KEY`, `CHECK`);
 
 ---
 
-> ▶ **INÍCIO — PARTE 31** · 25. Implementação SQL (MySQL 8.4) · linhas 1206–1265
+( parte da Ana Beatriz — PARTE 25: 19. Revisão da 1ª entrega e registro de alterações )
+
+( parte do Brenno — PARTE 26: 20. Modelo Lógico Relacional )
+
+( parte do David — PARTE 27: 21. Normalização (1FN, 2FN, 3FN) )
+
+<a id="secao-22"></a>
+
+## 22. Dicionário de Dados atualizado
+
+O dicionário conceitual preliminar (Seção 15) foi substituído por um dicionário físico completo, cobrindo as 28 tabelas e 11 views com tabela, atributo, descrição, tipo, tamanho, PK, FK, NULL, UNIQUE, DEFAULT e regra/restrição associada — conferido contra o catálogo do MySQL após executar os 14 scripts.
+
+Conteúdo completo: **[`docs/dicionario-dados.md`](docs/dicionario-dados.md)**.
+
+---
+
+<a id="secao-23"></a>
+
+## 23. Requisitos não funcionais revisados
+
+A devolutiva apontou que RNF06 e RNF07 (Seção 7) usavam apenas texto subjetivo ("desempenho adequado"). Foram reescritos com critérios mensuráveis dimensionados para a operação real da loja (6 funcionários):
+- **RNF06 (desempenho):** até 6 usuários simultâneos (pico de 15 conexões), volumetria projetada de 5 anos, tempos de resposta por classe de operação (≤0,5s médio / ≤1,0s p95 para consultas de balcão; ≤1,0s p95 para escrita/validação RN22; ≤3,0s p95 para relatórios).
+- **RNF07 (recuperação):** RPO <= 15 minutos e RTO <= 2 horas, com backup lógico periódico e retenção do log binário do MySQL para recuperação a um ponto no tempo, quando configurados. A reconstrução da base e a suíte de testes foram executadas; o procedimento de backup de produção está proposto em docs/requisitos-nfr.md.
+- **RNF03 (rastreabilidade):** parcial — o banco impede apagar ou adulterar o histórico de entradas e vendas; a trilha de alterações com autor e valores anteriores fica proposta.
+
+Os tempos do RNF06 são metas verificáveis, com roteiro de medição por volume sintético e `EXPLAIN ANALYZE`.
+
+Conteúdo completo, incluindo o quadro consolidado RNF01–RNF08 e o dimensionamento detalhado: **[`docs/requisitos-nfr.md`](docs/requisitos-nfr.md)**.
+
+**Segurança do banco e certificados digitais.** Como o banco está protegido (sem porta aberta para a internet, senhas SCRAM-SHA-256, papéis de menor privilégio, escrita só por funções, API com chave), os certificados TLS 1.3 de cada endereço (Google Trust Services e Let's Encrypt) e como conferi-los: **[`docs/seguranca.md`](docs/seguranca.md)**, com a evidência em [`docs/evidencias/verificacao-seguranca.txt`](docs/evidencias/verificacao-seguranca.txt).
+
+---
+
+<a id="secao-24"></a>
+
+## 24. Escopo financeiro e limitações conhecidas
+
+Responde aos três pontos financeiros pendentes da devolutiva: (a) no núcleo, a tabela `despesa` cobre exclusivamente custos individualizados por veículo, com despesas administrativas gerais fora dela e justificativa técnica; a extensão da Entrega Final registra obrigações administrativas a pagar em `obrigacao_financeira` (origem `ADMINISTRATIVA`, sem vínculo com veículo, venda ou entrada), que entram na previsão de caixa mas não na margem por veículo; (b) quatro limitações conhecidas de tratar formas de pagamento como atributo multivalorado, com proposta de evolução (`OBRIGACAO_RECEBER`/`RECEBIMENTO`); (c) as quatro categorias de obrigação financeira ainda não quitada (saldo do comprador, financiamento aprovado a receber, repasse ao consignante, restituições em distrato) e como cada uma é calculada e protegida por constraint.
+
+Conteúdo completo: **[`docs/escopo-financeiro.md`](docs/escopo-financeiro.md)**.
+
+---
 
 <a id="secao-25"></a>
 
@@ -729,88 +802,6 @@ O modelo executável usa MySQL 8.4, InnoDB e utf8mb4. A cadeia de 14 scripts reg
 
 ---
 
-
-
-<a id="secao-18"></a>
-
-## 18. Conclusão
-
-### 18.1. Considerações Finais do Grupo
-
-A elaboração desta primeira entrega permitiu ao nosso grupo aplicar na prática os conceitos fundamentais de modelagem de dados ensinados pelo professor Clóvis. Ao analisar os processos reais da Multiplikar Automóveis, compreendemos que modelar um banco de dados não é simplesmente desenhar caixas e losangos, mas entender a fundo como a empresa opera, quais são seus problemas reais e quais regras precisam ser garantidas pelo sistema.
-
-Conseguimos resolver desafios importantes levantados no briefing, tais como: permitir que múltiplos carros sejam dados em troca na mesma venda, unificar o cadastro de pessoas para evitar redundâncias, diferenciar a aprovação do crédito do efetivo recebimento do dinheiro pela loja e estruturar o controle de garantia pós-venda. O modelo conceitual desenvolvido fornece uma base sólida e sem contradições para a evolução do sistema.
-
-### 18.2. Checklist de Validação da Primeira Entrega
-
-Conforme orientado no checklist final do manual (página 21 e 22), verificamos todos os itens antes da publicação:
-
-| Área Avaliada | Itens Verificados e Cumpridos | Onde Conferir |
-|---|---|---|
-| **Contexto** | Empresa caracterizada, escolha justificada, problemas e necessidades descritos. | Seções 2, 3 e 4 |
-| **Processos** | 8 processos mapeados detalhadamente e 8 fluxogramas desenhados com visão geral. | Seções 5 e 10 |
-| **Requisitos** | 18 requisitos funcionais (RF01 a RF18) e 8 não funcionais (RNF01 a RNF08) organizados. | Seções 6 e 7 |
-| **Regras e Políticas** | 33 regras de negócio (RN01 a RN33) e 13 restrições organizacionais (RO01 a RO13). | Seções 8 e 9 |
-| **Dados e Entidades** | 10 entidades definidas, atributos conceituais classificados e dicionário de dados completo. | Seções 11, 12 e 15 |
-| **Relacionamentos** | 19 relacionamentos nomeados por verbos e análise de relacionamentos N:N. | Seção 13 |
-| **Cardinalidades** | Mínimos e máximos calculados pelo Método Vá e Volte com justificativas. | Seção 14 |
-| **Diagrama (DER)** | Diagrama em notação de Chen com todas as entidades, atributos e relações coerentes. | Seção 16 e `docs/der/` |
-| **Justificativas** | Decisões de modelagem e abstração fundamentadas técnica e operacionalmente. | Seção 17 |
-| **Documentação** | Repositório estruturado, arquivos editáveis `.drawio` e exportações em PNG/SVG. | Raiz e pasta `docs/` |
-| **Equipe e Diário** | Identificação dos 9 integrantes, divisão das contribuições e registro do Diário de Bordo. | Seção 1 |
-
-### 18.3. Próximos Passos do Projeto
-
-*(Registro histórico da Primeira Entrega — os passos abaixo foram executados na Entrega Final, Seções 19–31.)*
-
-Para as etapas seguintes da disciplina, utilizaremos este modelo conceitual como ponto de partida para:
-1. Transformar as entidades e relacionamentos no **Modelo Lógico Relacional** (tabelas, chaves primárias e chaves estrangeiras);
-2. Aplicar as regras de **Normalização** (1FN, 2FN e 3FN) para eliminar possíveis redundâncias e anomalias de atualização;
-3. Desenvolver o **Modelo Físico** com scripts SQL de criação de tabelas (DDL), tipos de dados específicos do SGBD e restrições de integridade (`PRIMARY KEY`, `FOREIGN KEY`, `CHECK`);
-
----
-
-( parte da Ana Beatriz — PARTE 25: 19. Revisão da 1ª entrega e registro de alterações )
-
-( parte do Brenno — PARTE 26: 20. Modelo Lógico Relacional )
-
-( parte do David — PARTE 27: 21. Normalização (1FN, 2FN, 3FN) )
-
-<a id="secao-22"></a>
-
-## 22. Dicionário de Dados atualizado
-
-O dicionário conceitual preliminar (Seção 15) foi substituído por um dicionário físico completo, cobrindo as 28 tabelas e 11 views com tabela, atributo, descrição, tipo, tamanho, PK, FK, NULL, UNIQUE, DEFAULT e regra/restrição associada — conferido contra o catálogo do MySQL após executar os 14 scripts.
-
-Conteúdo completo: **[`docs/dicionario-dados.md`](docs/dicionario-dados.md)**.
-
-<a id="secao-23"></a>
-
-## 23. Requisitos não funcionais revisados
-
-A devolutiva apontou que RNF06 e RNF07 (Seção 7) usavam apenas texto subjetivo ("desempenho adequado"). Foram reescritos com critérios mensuráveis dimensionados para a operação real da loja (6 funcionários):
-- **RNF06 (desempenho):** até 6 usuários simultâneos (pico de 15 conexões), volumetria projetada de 5 anos, tempos de resposta por classe de operação (≤0,5s médio / ≤1,0s p95 para consultas de balcão; ≤1,0s p95 para escrita/validação RN22; ≤3,0s p95 para relatórios).
-- **RNF07 (recuperação):** RPO <= 15 minutos e RTO <= 2 horas, com backup lógico periódico e retenção do log binário do MySQL para recuperação a um ponto no tempo, quando configurados. A reconstrução da base e a suíte de testes foram executadas; o procedimento de backup de produção está proposto em docs/requisitos-nfr.md.
-- **RNF03 (rastreabilidade):** parcial — o banco impede apagar ou adulterar o histórico de entradas e vendas; a trilha de alterações com autor e valores anteriores fica proposta.
-
-Os tempos do RNF06 são metas verificáveis, com roteiro de medição por volume sintético e `EXPLAIN ANALYZE`.
-
-Conteúdo completo, incluindo o quadro consolidado RNF01–RNF08 e o dimensionamento detalhado: **[`docs/requisitos-nfr.md`](docs/requisitos-nfr.md)**.
-
-**Segurança do banco e certificados digitais.** Como o banco está protegido (sem porta aberta para a internet, senhas SCRAM-SHA-256, papéis de menor privilégio, escrita só por funções, API com chave), os certificados TLS 1.3 de cada endereço (Google Trust Services e Let's Encrypt) e como conferi-los: **[`docs/seguranca.md`](docs/seguranca.md)**, com a evidência em [`docs/evidencias/verificacao-seguranca.txt`](docs/evidencias/verificacao-seguranca.txt).
-
----
-
-<a id="secao-24"></a>
-
-## 24. Escopo financeiro e limitações conhecidas
-
-Responde aos três pontos financeiros pendentes da devolutiva: (a) no núcleo, a tabela `despesa` cobre exclusivamente custos individualizados por veículo, com despesas administrativas gerais fora dela e justificativa técnica; a extensão da Entrega Final registra obrigações administrativas a pagar em `obrigacao_financeira` (origem `ADMINISTRATIVA`, sem vínculo com veículo, venda ou entrada), que entram na previsão de caixa mas não na margem por veículo; (b) quatro limitações conhecidas de tratar formas de pagamento como atributo multivalorado, com proposta de evolução (`OBRIGACAO_RECEBER`/`RECEBIMENTO`); (c) as quatro categorias de obrigação financeira ainda não quitada (saldo do comprador, financiamento aprovado a receber, repasse ao consignante, restituições em distrato) e como cada uma é calculada e protegida por constraint.
-
-Conteúdo completo: **[`docs/escopo-financeiro.md`](docs/escopo-financeiro.md)**.
-
-( parte do Erin — PARTE 31: 25. Implementação SQL (MySQL 8.4) )
-
 <a id="secao-26"></a>
 
 ## 26. Massa de dados
@@ -821,6 +812,7 @@ A massa não foi gerada em escala: cada registro existe para um cenário de neg�
 
 Script: **[`sql/dados/massa-dados.sql`](sql/dados/massa-dados.sql)**.
 
+---
 
 ( parte do Aquiles — PARTE 33: 27. Consultas gerenciais )
 
@@ -833,6 +825,8 @@ Dois grupos de consultas, cada uma com o que verifica, por que importa e o resul
 - **Qualidade de dados (8):** procuram situações que o banco **não impede**, mas que merecem ação do gestor — consignação com prazo vencido, venda parada em formalização, financiamento aprovado e não recebido, preço anunciado abaixo do custo ou repasse, ocorrência de garantia aberta há muito tempo, possíveis pessoas duplicadas, veículo sem placa nem chassi e troca de venda cancelada não devolvida. Na massa completa, quatro apontam casos reais: venda 6 parada e seu financiamento a receber, ocorrência do Honda City em análise e os 27 veículos anunciados sem placa/chassi (o anúncio não fornece esses identificadores; devem ser conferidos na inspeção física).
 
 Script: **[`sql/auditoria/auditoria.sql`](sql/auditoria/auditoria.sql)**.
+
+---
 
 ( parte do Aquiles — PARTE 35: 29. Potencial de BI e IA )
 
@@ -879,6 +873,8 @@ A devolutiva pede que mostremos o que o sistema atual não resolve. Além dos oi
 | **Segurança e propriedade dos dados** | CPF, renda, contatos e histórico de clientes ficam no servidor do fornecedor; a exportação completa e a continuidade dependem do contrato | Os dados ficam sob controle da loja, que é a controladora pela LGPD: acesso por perfil, histórico que não pode ser apagado, consentimento registrado para dados de renda e backup com RPO de 15 minutos e RTO de 2 horas (RNF07) |
 
 Também há contrapartidas, e as registramos: com um sistema próprio, a loja passa a responder por backup, atualização e segurança do servidor, tarefas que hoje são do fornecedor. Os valores de mensalidade do RevendaMais não constam do briefing; a comparação de custo fica qualitativa até a loja informar quanto paga. Por isso o caminho proposto é gradual: o banco próprio começa pelo que o RevendaMais não cobre (histórico de ciclos, custo real por veículo, propostas comparadas por caixa e CRM explicável) e assume os demais módulos conforme se prova na operação.
+
+---
 
 <a id="secao-31"></a>
 
