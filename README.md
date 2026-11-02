@@ -165,7 +165,52 @@ O uso de planilhas sem integração pode levar a retrabalho, divergências entre
 
 ( parte do Aquiles — PARTE 7: 5. Processos de negócio )
 
-( parte do Nicolas — PARTE 8: P05 — Informações de pagamento e financiamento )
+### P05 — Informações de pagamento e financiamento
+
+- **Objetivo:** identificar formas utilizadas e cumprimento financeiro da venda.
+- **Participantes:** comprador, funcionário e banco quando houver financiamento.
+- **Gatilho:** definição das condições comerciais.
+- **Etapas:** registrar formas em VENDA; atualizar total recebido e data; registrar único financiamento quando houver; diferenciar aprovação de recebimento pela loja.
+- **Decisões/exceções:** aprovado mas não recebido mantém pendência; não se acompanha parcela do cliente.
+- **Informações:** conjunto de formas, total monetário recebido, data mais recente, situação financeira, banco, valor e situação do financiamento.
+- **Resultado:** posição financeira resumida, associada à venda.
+- **Limite:** não há histórico individual de recebimentos nem valores por forma.
+- **Origem:** Briefing da loja (p. 4 e 7) e orientações práticas para a modelagem da primeira entrega.
+
+### P06 — Documentação, conclusão e entrega
+
+- **Objetivo:** cumprir condições financeiras, documentais e técnicas e registrar a entrega.
+- **Participantes:** comprador, funcionário e responsáveis técnicos.
+- **Gatilho:** venda em formalização.
+- **Etapas:** conferir pagamento; conferir CNH, laudo, CRLV, ATPV e comprovante de residência; reconhecer firmas aplicáveis; analisar laudo; registrar conclusão; realizar scanner/preparação; registrar entrega.
+- **Decisões/exceções:** pendências impedem o marco correspondente. Os critérios de autorização diante de apontamentos técnicos permanecem a validar.
+- **Informações:** documentos conferidos, situação documental, reconhecimento, laudo, scanner, conclusão, entrega e garantia.
+- **Resultado:** venda concluída e entrega registrada, iniciando a garantia concedida.
+- **Observação:** o reconhecimento de firma é exigido apenas nos documentos pertinentes de transferência (como ATPV e contratos de compra/consignação), dispensando-se tal formalidade para documentos comprobatórios simples (como comprovante de residência e CNH).
+- **Origem:** Briefing da loja (p. 7) e esclarecimentos operacionais do levantamento.
+
+### P07 — Garantia e devolução
+
+- **Objetivo:** registrar problema, análise e solução, inclusive eventual desfazimento.
+- **Participantes:** cliente, funcionário, mecânico e, quando aplicável, consignante ou banco.
+- **Gatilho:** comunicação de problema ou acordo de desfazimento.
+- **Etapas:** localizar venda; abrir ocorrência; verificar garantia e atendimento externo; diagnosticar; analisar responsabilidade; negociar solução.
+- **Decisões/exceções:** quando houver desfazimento, registrar o retorno do veículo vendido e as restituições. Na troca, devolver os veículos recebidos. Na consignação, devolver a parte da loja e avisar o proprietário. Com financiamento, tratar com banco e registrar orientação.
+- **Informações:** problema, diagnóstico, mecânico, solução, cancelamento, devoluções e observações.
+- **Resultado:** solução registrada ou desfazimento em acompanhamento.
+- **Limite:** exceções não descritas são registradas nas observações; não são criados procedimentos bancários ou módulos adicionais.
+- **Origem:** Briefing da loja (p. 4 e 7) e esclarecimentos operacionais do levantamento.
+
+### P08 — Despesas e relatórios
+
+- **Objetivo:** organizar custos por veículo e consultas gerenciais do escopo.
+- **Participantes:** funcionários e responsáveis administrativos.
+- **Gatilho:** ocorrência de despesa ou solicitação de consulta.
+- **Etapas:** identificar veículo; registrar despesa; consultar atendimentos, entradas, vendas, posições financeiras e custos.
+- **Decisões/exceções:** despesas gerais, rateios e folha salarial ficam fora do modelo.
+- **Informações:** data, categoria, descrição e valor por veículo.
+- **Resultado:** relatórios sustentados pelos dados modelados.
+- **Origem:** Briefing da loja (p. 7).
 
 <a id="secao-6"></a>
 
@@ -221,7 +266,44 @@ Tabelas e controles estritamente técnicos de infraestrutura (como logs detalhad
 
 ( parte do Aquiles — PARTE 13: 10. Fluxogramas )
 
-( parte do Nicolas — PARTE 14: 10.5. Informações de pagamento e financiamento )
+### 10.5. Informações de pagamento e financiamento
+
+**Referências:** P05; RF12–RF13; RN19–RN21.
+
+![Informações de pagamento e financiamento](docs/fluxogramas/05-informacoes-pagamento.png)
+
+[Abrir PNG](docs/fluxogramas/05-informacoes-pagamento.png) · [Editar no draw.io](docs/fluxogramas/05-informacoes-pagamento.drawio)
+
+formas_pagamento é somente multivalorado, sem componentes. Os valores são totais escalares em VENDA. Não há controle de parcelas nem detalhamento por recebimento.
+
+### 10.6. Documentação, conclusão e entrega
+
+**Referências:** P06; RF14; RN22–RN25.
+
+![Documentação, conclusão e entrega](docs/fluxogramas/06-conclusao-entrega.png)
+
+[Abrir PNG](docs/fluxogramas/06-conclusao-entrega.png) · [Editar no draw.io](docs/fluxogramas/06-conclusao-entrega.drawio)
+
+As atividades podem ocorrer em outra ordem; o fluxo representa suas condições. São conferidos CNH, laudo cautelar, CRLV, ATPV, comprovante de residência e contrato. A firma deve ser reconhecida na ATPV e no contrato, salvo dispensa justificada.
+
+### 10.7. Garantia e devolução
+
+**Referências:** P07; RF15–RF16; RN25–RN31.
+
+![Garantia e devolução](docs/fluxogramas/07-garantia-devolucao.png)
+
+[Abrir PNG](docs/fluxogramas/07-garantia-devolucao.png) · [Editar no draw.io](docs/fluxogramas/07-garantia-devolucao.drawio)
+
+Troca, consignação e financiamento podem coexistir. No desfazimento, a entrada original é encerrada com motivo `DESFAZIMENTO`. Depois de nova avaliação, registra-se uma ENTRADA sucessora ligada por `id_entrada_anterior`, em `EM_REGULARIZACAO`. Ao concluir a regularização, registram-se `data_regularizacao` e observações, e a entrada volta a `ATIVA` (RN13). Pendências são anotadas.
+
+### 10.8. Despesas e relatórios
+
+**Referências:** P08; RF17–RF18; RN32–RN33.
+
+![Despesas e relatórios](docs/fluxogramas/08-despesas-relatorios.png)
+
+[Abrir PNG](docs/fluxogramas/08-despesas-relatorios.png) · [Editar no draw.io](docs/fluxogramas/08-despesas-relatorios.drawio)
+
 
 ### 10.9. Propostas, caixa e acompanhamento do lead (Entrega Final)
 
@@ -527,7 +609,13 @@ Conteúdo completo, incluindo o quadro consolidado RNF01–RNF08 e o dimensionam
 
 ---
 
-( parte do Nicolas — PARTE 30: 24. Escopo financeiro e limitações conhecidas )
+<a id="secao-24"></a>
+
+## 24. Escopo financeiro e limitações conhecidas
+
+Responde aos três pontos financeiros pendentes da devolutiva: (a) no núcleo, a tabela `despesa` cobre exclusivamente custos individualizados por veículo, com despesas administrativas gerais fora dela e justificativa técnica; a extensão da Entrega Final registra obrigações administrativas a pagar em `obrigacao_financeira` (origem `ADMINISTRATIVA`, sem vínculo com veículo, venda ou entrada), que entram na previsão de caixa mas não na margem por veículo; (b) quatro limitações conhecidas de tratar formas de pagamento como atributo multivalorado, com proposta de evolução (`OBRIGACAO_RECEBER`/`RECEBIMENTO`); (c) as quatro categorias de obrigação financeira ainda não quitada (saldo do comprador, financiamento aprovado a receber, repasse ao consignante, restituições em distrato) e como cada uma é calculada e protegida por constraint.
+
+Conteúdo completo: **[`docs/escopo-financeiro.md`](docs/escopo-financeiro.md)**.
 
 ( parte do Erin — PARTE 31: 25. Implementação SQL (MySQL 8.4) )
 
@@ -539,7 +627,49 @@ Conteúdo completo, incluindo o quadro consolidado RNF01–RNF08 e o dimensionam
 
 ( parte do Aquiles — PARTE 35: 29. Potencial de BI e IA )
 
-( parte do Nicolas — PARTE 36: 30. Inovação e valor agregado frente ao RevendaMais )
+<a id="secao-30"></a>
+
+## 30. Inovação e valor agregado frente ao RevendaMais
+
+A empresa já usa o sistema comercial RevendaMais. Este documento demonstra, com especificidade técnica, 8 problemas operacionais que permanecem sem solução no uso atual do RevendaMais e como o banco de dados proposto resolve cada um (ex.: múltiplos veículos de troca na mesma venda, trava simultânea de conclusão RN22, distrato não destrutivo com encadeamento de ciclos, apuração de custo real por veículo), com matriz comparativa final.
+
+Conteúdo completo: **[`docs/inovacao-valor.md`](docs/inovacao-valor.md)**.
+
+### 30.1. Extensão implementada: propostas por CPF, fluxo de caixa e CRM
+
+A seção 29 mostra o potencial dos dados; esta extensão coloca parte dele em funcionamento. Ela parte de uma pergunta que o RevendaMais não responde: **duas propostas com o mesmo preço deixam a loja na mesma situação?** Não. A extensão mostra cada proposta por três ângulos ao mesmo tempo: o que custa ao cliente, quanto rende à loja e quando o dinheiro entra no caixa.
+
+No caso de demonstração, o mesmo cliente (busca por CPF) recebe três alternativas para o Kwid consignado:
+
+| Alternativa | Caixa no dia | Caixa depois | Em troca | Margem da loja |
+|---|---|---|---|---|
+| A — Pix integral | R$ 55.000 | — | — | R$ 5.000 |
+| B — 20% Pix + 80% financiado | R$ 11.000 | R$ 44.000 em D+15 | — | R$ 5.000 |
+| C — Pix + Gol na troca | R$ 25.000 | — | R$ 30.000 | R$ 5.000 |
+
+A margem do veículo é igual nas três, mas o caixa não: como o Kwid é consignado, a loja deve R$ 50.000 ao proprietário em dinheiro. Na alternativa C ela recebe só R$ 25.000 em espécie e fica com o Gol em estoque, ou seja, **a venda lucrativa consome caixa**.
+
+A alternativa B ainda depende da tabela de **retorno** escolhida no banco, a comissão que a instituição paga à loja quando libera o financiamento. Na tabela R0 o cliente paga 48 parcelas de R$ 1.402,56 (R$ 67.322,88 no total) e a loja não recebe retorno. Na R4 a parcela sobe para R$ 1.490,50 (R$ 71.544,00 no total) e a loja recebe R$ 1.760,00, elevando sua margem na B para R$ 6.760. O cliente paga R$ 4.221,12 a mais para a loja ganhar R$ 1.760,00, e por isso o comparador mostra sempre o custo para o cliente ao lado do ganho da loja. O briefing não informa as tabelas de retorno da Multiplikar: taxas e percentuais são hipóteses, e o retorno é receita paga pelo banco, distinta da comissão de vendedores excluída pela RO13. A previsão semanal soma as obrigações já contratadas (como os R$ 80.000 que o banco ainda deve na venda 6) e as propostas abertas ponderadas pela temperatura do lead. No cenário "o banco atrasa 15 dias", ela aponta falta de caixa já na semana de 09/02/2026 (saldo de −R$ 50.950), junto com as obrigações que causam a falta.
+
+O CRM registra cada interação e classifica o lead por uma regra pontuada em que cada fator fica gravado com sua evidência. A classificação é só uma sugestão: um funcionário revisa e, se discordar, precisa justificar. Uma fila de próximas ações cruza CRM, caixa e estoque, explica cada sugestão com os números usados e ordena pelo valor em risco.
+
+A extensão segue aditiva: 14 tabelas, 7 views de negócio e uma view auxiliar, totalizando 11 views no schema, sem alterar o núcleo. As hipóteses financeiras e de classificação permanecem identificadas no banco. A cadeia MySQL 8.4.13 registra 435 PASS; a matriz em docs/evidencias/mysql/paridade-testes.md discrimina cada arquivo, regra e relacionamento.
+
+A classificação do lead é calculada por regra pontuada e explicável (REGRA-V1 e REGRA-V2; a V2 soma a capacidade de pagamento declarada pelo cliente). Cada revisão humana grava a temperatura final e a justificativa. A fila de ações usa esses dados para ordenar prioridades; nenhuma classificação substitui a decisão do funcionário.
+
+DER da extensão: **[`docs/der/der-extensao.svg`](docs/der/der-extensao.svg)** (14 entidades novas, R20 a R41). Regras RN34 a RN44, cardinalidades, normalização, LGPD e roteiro de demonstração: **[`docs/extensao-inovacao.md`](docs/extensao-inovacao.md)**.
+
+### 30.2. Por que um sistema próprio, e não só o RevendaMais
+
+A devolutiva pede que mostremos o que o sistema atual não resolve. Além dos oito problemas da seção 30 e da extensão da seção 30.1, há três razões para a loja ter um banco próprio, ainda que conviva com o RevendaMais no início:
+
+| Dimensão | Sistema de terceiros | Banco próprio proposto |
+|---|---|---|
+| **Regras do negócio** | A loja usa as regras que o fornecedor oferece; travas próprias da loja, como impedir duas entradas ativas do mesmo veículo ou uma venda concluída sem documentos, dependem do que o produto permite | As regras da loja ficam travadas no próprio banco (RN13, RN22, RN08 e as da extensão), com testes que provam cada uma (seção 19) |
+| **Custo** | Assinatura recorrente enquanto a loja usar o sistema; relatórios e integrações novas dependem do fornecedor | MySQL Community é distribuído gratuitamente; o custo passa a ser desenvolvimento, servidor e manutenção, e um relatório novo pode ser uma consulta SQL |
+| **Segurança e propriedade dos dados** | CPF, renda, contatos e histórico de clientes ficam no servidor do fornecedor; a exportação completa e a continuidade dependem do contrato | Os dados ficam sob controle da loja, que é a controladora pela LGPD: acesso por perfil, histórico que não pode ser apagado, consentimento registrado para dados de renda e backup com RPO de 15 minutos e RTO de 2 horas (RNF07) |
+
+Também há contrapartidas, e as registramos: com um sistema próprio, a loja passa a responder por backup, atualização e segurança do servidor, tarefas que hoje são do fornecedor. Os valores de mensalidade do RevendaMais não constam do briefing; a comparação de custo fica qualitativa até a loja informar quanto paga. Por isso o caminho proposto é gradual: o banco próprio começa pelo que o RevendaMais não cobre (histórico de ciclos, custo real por veículo, propostas comparadas por caixa e CRM explicável) e assume os demais módulos conforme se prova na operação.
 
 <a id="secao-31"></a>
 
