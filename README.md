@@ -372,7 +372,84 @@ Na troca, o valor aceito pertence à ENTRADA daquele veículo na negociação. A
 ( parte do Jocerlan — PARTE 19: 14. Cardinalidades )
 
 
-( parte do Caique — PARTE 20: 15. Dicionário de dados conceitual )
+<a id="secao-15"></a>
+
+## 15. Dicionário de dados conceitual
+
+### Convenções
+
+As colunas do dicionário especificam: *Obrigatório* (dado mandatório para a existência da entidade no modelo conceitual); *Condicional* (obrigatório mediante determinada condição ou etapa negocial); *Opcional* (dado complementar cuja ausência não inválida a transação). Identificadores e classificações são conceituais (sem tipos de dados físicos do SQL). Componentes de atributos compostos estão descritos de forma atômica na Seção 15.6.
+
+### E01 — PESSOA
+
+Identifica participantes em diferentes papéis, evitando duplicação cadastral.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identificação conceitual da pessoa. | Identificador | Obrigatório | RN01–RN02 |
+| nome | Nome completo ou denominação da pessoa jurídica. | Descritivo | Obrigatório (contratos e cadastro) | RO02 |
+| documento | Espécie (CPF ou CNPJ) e número do documento. | Composto | Obrigatório (identificação) | RN01; não duplicar documento confirmado |
+| telefone | Contato telefônico. | Descritivo | Obrigatório (coleta informada) | Dado pessoal |
+| email | Endereço eletrônico. | Descritivo | Obrigatório (contratos) | RO02 |
+| endereço | Logradouro, número, complemento quando houver, cidade e estado. | Composto | Obrigatório (contratos) | RO02; dados pessoais |
+| possui_cnh | Informação declarada sobre possuir CNH. | Descritivo | Condicional (atendimento de compra) | Não é número ou cópia da CNH |
+
+### E02 — FUNCIONARIO
+
+Registra dados próprios do vínculo de trabalho; nome e contato permanecem em PESSOA.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identificação conceitual do vínculo. | Identificador | Obrigatório | Uma PESSOA por vínculo |
+| cargo | Função exercida na empresa. | Descritivo | Obrigatório | Não equivale a perfil de acesso |
+| data_admissao | Início do vínculo. | Temporal | Obrigatório | Briefing da loja (campo sugerido) |
+| situação | Situação do vínculo funcional. | Estado | Obrigatório | Domínio a validar |
+
+### E03 — Veículo
+
+Identifica o automóvel ao longo de avaliações, entradas, vendas e despesas.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identificação conceitual do automóvel. | Identificador | Obrigatório | RN04 |
+| marca | Marca do veículo. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| modelo | Modelo comercial. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| ano_modelo | Um ano de referência, por exemplo 2024. | Descritivo | Obrigatório | Não utilizar intervalo de anos |
+| cor | Cor informada. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| placa | Placa do veículo, quando disponível. | Descritivo | Opcional inicialmente | RN04 |
+| chassi | Identificação do chassi, quando disponível. | Descritivo | Opcional inicialmente | RN04; exigência na formalização a validar |
+| combustivel | Tipo de combustível. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| cambio | Tipo de câmbio. | Descritivo | Obrigatório | Manual ou automático, conforme briefing |
+| categoria_comercial | Novo, seminovo ou usado. | Descritivo | Obrigatório | Briefing da loja (p. 3) |
+| situacao_atual | Posição operacional obtida das entradas e vendas vigentes. | Derivado / estado | Obrigatório | Fora do estoque, disponível, em formalização, vendido ou aguardando regularização; proposta |
+
+### E04 — ATENDIMENTO
+
+Preserva contatos e interesses, inclusive quando não resultam em venda.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica o contato. | Identificador | Obrigatório | RF03 |
+| data | Momento do atendimento. | Temporal | Obrigatório | Histórico de leads |
+| interesse | Natureza (compra, venda ou troca) e descrição da necessidade. | Composto | Obrigatório | P01 |
+| situação | Andamento do atendimento. | Estado | Obrigatório | Etapas a validar |
+| observações | Informações complementares pertinentes ao contato. | Descritivo | Opcional | Não substitui os dados da venda |
+
+### E05 — Avaliação
+
+Registra análise técnica e interesse comercial para fundamentar a aceitação.
+
+| Atributo | Descrição | Classificação | Obrigatoriedade | Regra/observação |
+|---|---|---|---|---|
+| identificador | Identifica a análise. | Identificador | Obrigatório | RF05 |
+| data | Momento da avaliação. | Temporal | Obrigatório | Distingue reavaliações |
+| finalidade | Compra própria, consignação ou troca. | Descritivo | Obrigatório | RN06, RN17 |
+| quilometragem | Quilometragem observada nessa análise. | Medida | Obrigatório | Preserva o momento da observação |
+| quantidade_proprietarios | Quantidade de proprietários informada na análise. | Medida | Opcional (se desconhecida) | Convenção de contagem a validar |
+| condições | Condições externas, internas, mecânicas, estruturais e documentais. | Composto | Obrigatório ao concluir | Cada dimensão deve ser identificável |
+| decisao_tecnica | Aprovada, reprovada ou pendente. | Estado | Obrigatório | RN06 |
+| interesse_comercial | Sim, não ou em análise quanto ao interesse da loja. | Estado | Obrigatório | RN07 |
+| justificativa | Fundamentação da decisão e dos apontamentos. | Descritivo | Obrigatório ao concluir | PROB02 |
 
 ( parte do David — PARTE 21: Entidades E06 a E10 e Detalhamento de Componentes )
 
@@ -425,7 +502,13 @@ Para as etapas seguintes da disciplina, utilizaremos este modelo conceitual como
 
 ( parte do David — PARTE 27: 21. Normalização (1FN, 2FN, 3FN) )
 
-( parte do Caique — PARTE 28: 22. Dicionário de Dados atualizado )
+<a id="secao-22"></a>
+
+## 22. Dicionário de Dados atualizado
+
+O dicionário conceitual preliminar (Seção 15) foi substituído por um dicionário físico completo, cobrindo as 28 tabelas e 11 views com tabela, atributo, descrição, tipo, tamanho, PK, FK, NULL, UNIQUE, DEFAULT e regra/restrição associada — conferido contra o catálogo do MySQL após executar os 14 scripts.
+
+Conteúdo completo: **[`docs/dicionario-dados.md`](docs/dicionario-dados.md)**.
 
 <a id="secao-23"></a>
 
