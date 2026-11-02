@@ -173,13 +173,13 @@
         <mxCell id="9G81aSQHqNgAC72q-23" value="Acompanhar pendência financeira" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="44.8" y="491.7" width="256.4" height="36" />
         </mxCell>
-        <mxCell id="9G81aSQHqNgAC72q-24" value="Conferir CNH, laudo, CRLV, ATPV e&#10;comprovante de residência" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+        <mxCell id="9G81aSQHqNgAC72q-24" value="Conferir CNH, laudo cautelar, CRLV,&#10;ATPV, comprovante de residência e contrato" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="216.9" y="418.5" width="272.2" height="53.3" />
         </mxCell>
         <mxCell id="9G81aSQHqNgAC72q-25" value="Fim" style="ellipse;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#15354c;fontColor=white;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="447" y="1408.2" width="76.1" height="49.9" />
         </mxCell>
-        <mxCell id="9G81aSQHqNgAC72q-26" value="Documentação completa e&#10;firmas aplicáveis&#10;reconhecidas?" style="rhombus;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#fff1ce;fontColor=#18384d;strokeColor=#bc923f;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+        <mxCell id="9G81aSQHqNgAC72q-26" value="6 documentos conferidos e firma&#10;reconhecida em ATPV e contrato&#10;(ou dispensa justificada)?" style="rhombus;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#fff1ce;fontColor=#18384d;strokeColor=#bc923f;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="381" y="547.7" width="416.1" height="142.6" />
         </mxCell>
         <mxCell id="9G81aSQHqNgAC72q-27" value="Regularizar documentação" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">

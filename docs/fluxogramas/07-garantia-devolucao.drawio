@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.17">
   <diagram id="07-garantia-devolucao" name="07-garantia-devolucao">
-    <mxGraphModel dx="0" dy="0" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="780" pageHeight="1697" math="0" shadow="0" background="#ffffff">
+    <mxGraphModel dx="0" dy="0" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="780" pageHeight="2350" math="0" shadow="0" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -155,13 +155,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Fl41sNLjVHWGaub5-20" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.32;exitY=1.01;exitPerimeter=0;entryX=0.87;entryY=0.13;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-37" target="Fl41sNLjVHWGaub5-29">
-          <mxGeometry as="geometry" relative="1">
-            <Array as="points">
-              <mxPoint x="223.9" y="1610.5" />
-              <mxPoint x="207.5" y="1620.8" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="Fl41sNLjVHWGaub5-20" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=-0.03;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-37" target="Fl41sNLjVHWGaub5-48">
+          <mxGeometry relative="1" as="geometry"></mxGeometry>
         </mxCell>
         <mxCell id="Fl41sNLjVHWGaub5-21" value="Início" style="ellipse;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#15354c;fontColor=white;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="134" y="89.6" width="97.3" height="49.9" />
@@ -243,6 +238,41 @@
         </mxCell>
         <mxCell id="Fl41sNLjVHWGaub5-47" value="P07; RF15–RF16; RN25–RN31" style="text;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="117" y="54.8" width="546" height="33" />
+        </mxCell>
+
+        <mxCell id="Fl41sNLjVHWGaub5-48" value="Encerrar a entrada original:&#10;situacao ENCERRADA, motivo DESFAZIMENTO" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="148" y="1690" width="340" height="60" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-49" value="Realizar nova avaliação do veículo" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="176" y="1785" width="284" height="53.3" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-50" value="Registrar nova ENTRADA ligada à anterior&#10;(id_entrada_anterior), em EM_REGULARIZACAO" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135.5" y="1875" width="365" height="60" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-51" value="Regularização concluída?" style="rhombus;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#fff1ce;fontColor=#18384d;strokeColor=#bc923f;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180.5" y="1975" width="275" height="85" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-52" value="Registrar data_regularizacao e observações;&#10;entrada volta a ATIVA (disponível)" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="140.5" y="2100" width="355" height="60" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-53" value="Manter em EM_REGULARIZACAO&#10;e aguardar conclusão" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#edf4f9;fontColor=#18384d;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="1987.5" width="250" height="60" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-54" value="Sim" style="text;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;strokeColor=none;fillColor=#ffffff;spacing=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="325" y="2066" width="40" height="19.2" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-55" value="Não" style="text;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;strokeColor=none;fillColor=#ffffff;spacing=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="440" y="1995" width="40" height="19.2" />
+        </mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-56" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=-0.03;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-48" target="Fl41sNLjVHWGaub5-49"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-57" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=-0.03;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-49" target="Fl41sNLjVHWGaub5-50"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-58" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=-0.03;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-50" target="Fl41sNLjVHWGaub5-51"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-59" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=-0.03;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-51" target="Fl41sNLjVHWGaub5-52"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-60" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=1;exitY=0.5;exitPerimeter=0;entryX=0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-51" target="Fl41sNLjVHWGaub5-53"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-61" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=0;exitPerimeter=0;entryX=0.5;entryY=0;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-53" target="Fl41sNLjVHWGaub5-51"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="645" y="1958" /><mxPoint x="318" y="1958" /></Array></mxGeometry></mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-62" value="" style="edgeStyle=none;noEdgeStyle=1;rounded=0;html=0;endArrow=classic;endFill=1;strokeColor=#506c82;strokeWidth=1.2;exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=-0.03;entryPerimeter=0;" edge="1" parent="1" source="Fl41sNLjVHWGaub5-52" target="Fl41sNLjVHWGaub5-63"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
+        <mxCell id="Fl41sNLjVHWGaub5-63" value="Fim" style="ellipse;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=15;fillColor=#15354c;fontColor=white;strokeColor=#99b1c3;strokeWidth=1.4;spacing=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="280" y="2195" width="76.1" height="49.9" />
         </mxCell>
       </root>
     </mxGraphModel>
