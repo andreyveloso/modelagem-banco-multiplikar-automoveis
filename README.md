@@ -811,11 +811,28 @@ Conteúdo completo: **[`docs/escopo-financeiro.md`](docs/escopo-financeiro.md)**
 
 ( parte do Erin — PARTE 31: 25. Implementação SQL (MySQL 8.4) )
 
-( parte do Jocerlan — PARTE 32: 26. Massa de dados )
+<a id="secao-26"></a>
+
+## 26. Massa de dados
+
+Massa de dados coerente, com datas em ordem cronológica (atendimento → laudo → avaliação → entrada → venda), cobrindo: venda normal, venda com duas trocas, consignação com financiamento recebido, consignação ativa com prazo, cancelamento com devolução da troca e revenda do mesmo veículo (RN13 na prática), revenda com financiamento recusado e quitada por Pix, financiamento aprovado ainda a receber e ocorrências de garantia. 12 pessoas, 9 veículos, 10 entradas, 6 vendas. Inclui **32 testes de regressão negativos**, que comprovam que constraints e triggers rejeitam operações inválidas (RN08, RN06/RN07, RN13, RN22 inclusive na transição para desfazimento, garantia sem concessão, domínios, unicidade, exclusão de histórico), além de verificações positivas dos cenários e de consistência final.
+
+A massa não foi gerada em escala: cada registro existe para um cenário de negócio específico e é conferido pelos testes automáticos do próprio script, seguindo o ciclo do manual: gerar → testar → validar → corrigir.
+
+Script: **[`sql/dados/massa-dados.sql`](sql/dados/massa-dados.sql)**.
+
 
 ( parte do Aquiles — PARTE 33: 27. Consultas gerenciais )
 
-( parte do Jocerlan — PARTE 34: 28. Consultas de auditoria )
+<a id="secao-28"></a>
+
+## 28. Consultas de auditoria
+
+Dois grupos de consultas, cada uma com o que verifica, por que importa e o resultado esperado na massa:
+- **Verificação de conformidade (14):** confirmam que as regras protegidas pelo banco continuam íntegras — entrada vigente única por veículo (RN13), histórico completo de comercialização do HB20 vendido, devolvido e revendido (RN13), condições simultâneas de conclusão (RN22), laudo do mesmo veículo da avaliação (RN08), entre outras. O esperado é zero violações; servem como relatório de conformidade, por exemplo após uma restauração de backup.
+- **Qualidade de dados (8):** procuram situações que o banco **não impede**, mas que merecem ação do gestor — consignação com prazo vencido, venda parada em formalização, financiamento aprovado e não recebido, preço anunciado abaixo do custo ou repasse, ocorrência de garantia aberta há muito tempo, possíveis pessoas duplicadas, veículo sem placa nem chassi e troca de venda cancelada não devolvida. Na massa completa, quatro apontam casos reais: venda 6 parada e seu financiamento a receber, ocorrência do Honda City em análise e os 27 veículos anunciados sem placa/chassi (o anúncio não fornece esses identificadores; devem ser conferidos na inspeção física).
+
+Script: **[`sql/auditoria/auditoria.sql`](sql/auditoria/auditoria.sql)**.
 
 ( parte do Aquiles — PARTE 35: 29. Potencial de BI e IA )
 
