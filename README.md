@@ -3,9 +3,9 @@
 **Projeto Integrador - Modelagem de Dados**  
 **Entrega 1: modelo conceitual (nota 7,5) · Entrega Final: modelo lógico, normalização, implementação SQL e análise de dados**
 
-> A Entrega Final é a versão revisada e ampliada da Primeira Entrega, como orienta o `docs/fontes/MANUAL DA ENTREGA FINAL.pdf`. As Seções 1–18 trazem o levantamento e o modelo conceitual, corrigidos onde a devolutiva apontou problemas; as Seções 19–31 trazem o que foi acrescentado nesta entrega.
+> A Entrega Final é a versão revisada e ampliada da Primeira Entrega, como orienta o `docs/fontes/MANUAL DA ENTREGA FINAL.pdf`. As Seções 1–18 trazem o levantamento e o modelo conceitual, revisados a partir da devolutiva, com pendências de integridade registradas abaixo; as Seções 19–31 trazem o que foi acrescentado nesta entrega.
 >
-> **Por onde começar:** [o que a devolutiva apontou e como comprovamos a correção](#secao-19) · [como executar o banco, passo a passo](#secao-25) · [por que um sistema próprio frente ao RevendaMais](#secao-30) · [conferência pelas perguntas do manual](#secao-31)
+> **Por onde começar:** [revisão da devolutiva e evidências disponíveis](#secao-19) · [como executar o banco, passo a passo](#secao-25) · [por que um sistema próprio frente ao RevendaMais](#secao-30) · [conferência pelas perguntas do manual](#secao-31)
 
 ## Sumário
 
@@ -1356,6 +1356,13 @@ Também há contrapartidas, e as registramos: com um sistema próprio, a loja pa
 <a id="secao-31"></a>
 
 ## 31. Conclusão da Entrega Final
+
+### Limites da validação e pendências de integridade
+
+Os 435 PASS registrados comprovam os cenários executados pela equipe, sem demonstrar cobertura de todas as alterações possíveis. A revisão estática identificou cinco caminhos que ainda precisam de correção e testes específicos: (1) alteração de veículo ou data de uma avaliação já vinculada a laudo; (2) alteração de veículo ou situação de laudo utilizado em venda; (3) cancelamento de consignação sem data de aviso ao consignante; (4) transferência por UPDATE de condições ou trocas de rascunho para proposta apresentada; e (5) inserção direta de entrada sucessora ativa sem validar integralmente predecessor e regularização. Essas pendências não foram corrigidas nesta revisão documental e não foram reproduzidas em nova execução MySQL.
+
+As regras RN08, RN13, RN22, RN30 e RN34–RN36 permanecem requisitos do negócio; sua documentação não deve ser interpretada como garantia de proteção integral no SQL atual. As consultas de auditoria ajudam a detectar inconsistências, mas não substituem restrições preventivas. Alguns comentários SQL ainda usam os nomes antigos `preservar_historico` e `validar_integridade_comercial`; os mecanismos atuais são os gatilhos nomeados em `schema.sql` e nos scripts da extensão.
+
 
 A Entrega Final transformou o modelo conceitual em banco relacional normalizado, implementado em MySQL 8.4. Os scripts, a massa e os testes formam a cadeia executável do projeto.
 
