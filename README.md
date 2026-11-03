@@ -97,7 +97,6 @@ O registro contínuo das atividades, evolução do modelo e acompanhamento das t
 
 Os diários de bordo dos integrantes são entregues separadamente, por meio da pasta específica disponibilizada pelo professor, conforme o procedimento estabelecido para a atividade. Por esse motivo, não integram os arquivos deste repositório, e a confirmação da entrega depende dessa pasta externa.
 
-
 <a id="secao-2"></a>
 
 ## 2. Caracterização da empresa
@@ -218,7 +217,6 @@ O uso de planilhas sem integração pode levar a retrabalho, divergências entre
 - **Resultado:** uma venda, um contrato e zero ou várias entradas vinculadas.
 - **Origem:** Briefing da loja (p. 4 e 7–8) e esclarecimentos operacionais do levantamento.
 
-
 ### P05 — Informações de pagamento e financiamento
 
 - **Objetivo:** identificar formas utilizadas e cumprimento financeiro da venda.
@@ -314,9 +312,108 @@ Os requisitos não funcionais definem os parâmetros essenciais de segurança, i
 
 Tabelas e controles estritamente técnicos de infraestrutura (como logs detalhados de auditoria e segurança) serão detalhados nas etapas de modelo lógico e físico.
 
-( parte da Ana Beatriz — PARTE 11: 8. Regras de negócio )
+<a id="secao-8"></a>
 
-( parte da Ana Beatriz — PARTE 12: 9. Restrições e políticas organizacionais )
+## 8. Regras de negócio
+
+8.1. Pessoas, veículos e entrada
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN01 | Clientes, proprietários e fornecedores são identificados por CPF ou CNPJ. | Briefing da loja (p. 7) — Atendimento de pessoas físicas e jurídicas |
+| RN02 | Uma pessoa pode exercer vários papéis com um único cadastro. | Decisão de modelagem da equipe — Cadastro unificado para evitar duplicidades |
+| RN03 | Cada atendimento tem um interessado e um funcionário; ambos podem participar de vários atendimentos. | Briefing da loja (p. 4–6) — Rotina comercial de atendimento e histórico de contatos |
+| RN04 | Cada veículo tem identidade própria; placa e chassi podem não estar disponíveis no cadastro inicial. | Briefing da loja (p. 3) — Prospecção preliminar antes da checagem física |
+| RN05 | Cadastro preliminar não significa aceitação no estoque. | Regra prática da equipe — Separação entre consulta inicial e estoque físico |
+| RN06 | Entrada aceita exige avaliação aprovada do mesmo veículo. | Briefing da loja — Política de vistoria técnica e mecânica obrigatória |
+| RN07 | A aceitação também exige interesse comercial da loja. | Esclarecimento da loja — Validação de viabilidade e giro comercial de revenda |
+| RN08 | O laudo cautelar consultado em uma avaliação deve pertencer obrigatoriamente ao mesmo veículo avaliado (Avaliação.veículo == LAUDO.veículo). Uma avaliação consulta no máximo um laudo (0,1) e o laudo pode subsidiar reavaliações do mesmo veículo (0,N). | Briefing da loja (p. 4) e regra de integridade — Vínculo estrito com o mesmo veículo e suporte a reavaliações |
+| RN09 | A modalidade da entrada é compra própria, consignação ou troca. | Briefing da loja — As três vias operacionais de abastecimento de estoque |
+| RN10 | Cada entrada identifica um veículo e uma contraparte. | Regra contábil e jurídica — Identificação formal do bem e de quem o entregou à loja |
+| RN11 | Na consignação, o veículo fica vinculado ao proprietário até a conclusão da venda. | Briefing da loja (p. 3) — Titularidade legal do bem permanece com o consignante |
+| RN12 | Consignação é formalizada com reconhecimento de firma e normalmente sem prazo; exceções registram o término. | Briefing da loja (p. 7) — Segurança jurídica formal e vigência por prazo indeterminado |
+
+ 8.2. Venda e troca
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN13 | Bloqueio de vendas simultâneas e unicidade de comercialização: cada entrada aceita só pode ser comercializada em no máximo uma venda ativa/concluída (cardinalidade operacional 0,1). O sistema impede vendas simultâneas do mesmo veículo. Caso a venda seja desfeita e o veículo retorne ao pátio, a nova comercialização encerra a entrada anterior ou, se mantida a mesma entrada por acúmulo histórico temporal (0,N), no máximo uma venda pode estar ativa. **Atualização (Entrega Final):** a alternativa de reaproveitar a mesma entrada foi descartada; o desfazimento encerra a entrada anterior e abre novo ciclo (`entrada.id_entrada_anterior`), e cada entrada é comercializada em no máximo uma venda (`venda.id_entrada_principal UNIQUE`). | Briefing da loja (p. 3, 6) e regra de integridade — Bloqueio de vendas concorrentes para o mesmo veículo no pátio |
+| RN14 | Cada venda tem um comprador, um responsável e um veículo principal. | Briefing da loja (p. 4–5) e decisão da equipe — Identificação obrigatória do comprador, vendedor e veículo vendido |
+| RN15 | Descontos, acréscimos e taxas são discriminados na operação e no contrato. | Briefing da loja (p. 7) — Discriminação transparente de valores, descontos, acréscimos e taxas no contrato |
+| RN16 | Uma venda recebe zero, um ou vários veículos como entrada. | Esclarecimento prático da loja (p. 5–7) — Permissão comercial para receber múltiplos veículos como parte do pagamento |
+| RN17 | Cada veículo oferecido passa por nova avaliação e depende de aprovação e interesse da loja. | Briefing da loja e esclarecimento operacional — Avaliação técnica individual e aprovação comercial para cada carro de troca |
+| RN18 | A troca pertence ao mesmo contrato; cada veículo tem valor discriminado e pertence ao comprador, sem terceiros. | Briefing da loja e esclarecimento operacional — Todos os carros de troca constam no mesmo contrato e pertencem ao comprador |
+ 
+ 8.3. Pagamento, documentação e entrega
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN19 | Pagamento não é entidade; formas_pagamento é somente multivalorado, com valores simples e sem componentes. | Diretriz do projeto e delimitação de escopo — Formas de pagamento registradas como atributo multivalorado simples, sem tabela financeira complexa |
+| RN20 | Formas podem ser combinadas; total recebido, data mais recente e situação financeira são atributos separados de VENDA. | Briefing da loja e decisão de modelagem — Registro direto em VENDA do total recebido, data mais recente e situação financeira |
+| RN21 | Há no máximo um financiamento por venda; aprovação difere de recebimento pela loja; não se acompanham parcelas pagas pelo cliente. | Briefing da loja e esclarecimento operacional — No máximo um financiamento por venda, diferenciando aprovação de crédito e repasse à loja |
+| RN22 | Conclusão exige cumprimento do pagamento acordado, financiamento recebido quando houver, documentos necessários e reconhecimento aplicável, além de laudo cautelar realizado. | Esclarecimento da rotina da loja — Conclusão da venda exige quitação, crédito do financiamento, documentos conferidos e laudo cautelar |
+| RN23 | Scanner antecede a entrega. | Briefing da loja (p. 7) — Rastreamento eletrônico por scanner veicular obrigatoriamente realizado antes da entrega |
+| RN24 | Recebimento, conclusão comercial e entrega são registrados separadamente. | Decisão de modelagem apoiada na rotina da loja — Registro em momentos distintos para pagamento, conclusão documental e entrega física |
+
+Documentos exigidos para formalização da venda: **CNH, laudo cautelar, CRLV, ATPV e comprovante de residência com nome e endereço** (por exemplo, conta de consumo). O reconhecimento de firma aplica-se aos instrumentos cabíveis de transferência e contrato.
+
+O valor aceito dos veículos de troca compõe o cumprimento econômico da venda, mas não é somado ao total de dinheiro recebido.
+
+8.4. Garantia e desfazimento
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN25 | A garantia concedida tem prazo informado de dois meses e começa na entrega ao cliente. | Briefing da loja e esclarecimento operacional — Prazo de garantia de 2 meses iniciado exatamente na data de entrega ao cliente |
+| RN26 | A política declarada exige atendimento pela loja; a empresa informa considerar a garantia sem efeito se o cliente encaminhar o veículo a mecânico externo. | Esclarecimento da gerência da loja — Manutenção de garantia condicionada ao reparo exclusivo na oficina parceira da loja |
+| RN27 | A ocorrência registra diagnóstico e análise de responsabilidade ou mau uso. | Briefing da loja (p. 4) e proposta técnica — Registro de diagnóstico mecânico e apuração de mau uso na ocorrência de garantia |
+| RN28 | Cancelamento preserva a negociação e registra motivo, devoluções e resultado. | Decisão da equipe para auditoria — Registro histórico do cancelamento preservando o contrato original da venda e os motivos do distrato |
+| RN29 | No desfazimento com troca, a loja recebe o veículo vendido e devolve os recebidos. | Esclarecimento operacional da loja — Devolução recíproca dos bens: o comprador devolve o carro comprado e a loja devolve os veículos recebidos na troca |
+| RN30 | Na consignação, a loja devolve sua parte e avisa o proprietário para devolver o restante ao cliente. | Esclarecimento operacional da loja — No cancelamento de consignado, a loja restitui sua comissão e notifica o proprietário para estorno do saldo |
+| RN31 | No financiamento, a loja trata com o banco e registra a orientação/solução; não se define procedimento bancário adicional. | Esclarecimento da loja e delimitação de escopo — Cancelamento de financiamento tratado como orientação administrativa registrada, sem módulo bancário complexo |
+
+A regra RN26 documenta a política da empresa de que qualquer reparo de garantia deve ser avaliado e feito na própria oficina da loja.
+
+Troca, consignação e financiamento podem coexistir em uma mesma negociação. O registro de cancelamento documenta o histórico do desfazimento e as etapas de restituição executadas.
+
+ 8.5. Despesas e integridade
+
+| ID | Regra | Origem |
+|---|---|---|
+| RN32 | Cada despesa do escopo pertence a um veículo. | Decisão de modelagem da equipe (p. 7, item 13) — Associação direta de despesas ao veículo para apuração do custo real por unidade |
+| RN33 | Relatórios ficam limitados aos dados representados. | Delimitação de escopo da equipe — Relatórios gerenciais consolidados a partir dos dados conceituais de veículos, entradas, vendas e despesas |
+
+Restrições complementares:
+
+- ENTRADA por troca tem exatamente uma VENDA de origem; compra própria e consignação não têm esse vínculo.
+- O veículo principal não pode ser um dos veículos recebidos na mesma venda.
+- Avaliação, entrada e laudo vinculados referem-se ao veículo correto.
+- A contraparte de cada entrada por troca é o comprador da venda de origem.
+- Valor aceito da troca fica na ENTRADA, sem cópia independente em VENDA.
+- No máximo uma entrada operacional vigente por veículo nesta proposta; entradas históricas não autorizam venda simultânea duplicada.
+- Retorno físico não significa automaticamente disponibilidade: a situação deve refletir a regularização do desfazimento.
+- Aprovação de crédito não altera automaticamente o total recebido.
+
+<a id="secao-9"></a>
+
+## 9. Restrições e políticas organizacionais
+
+| ID | Restrição/política | Situação e Fundamentação |
+|---|---|---|
+| RO01 | Operação comercial apoiada no sistema RevendaMais com controles complementares; modelagem acadêmica de um banco integrado próprio. | Fato do Briefing (p. 7, item 12) e premissa acadêmica do projeto. |
+| RO02 | Coleta de nome, CPF/CNPJ, telefone, e-mail, endereço, cidade e estado nos contratos. | Fato confirmado no Briefing da loja (p. 7). |
+| RO03 | Consignação com reconhecimento de firma e prazo normalmente indeterminado. | Fato confirmado no Briefing da loja (p. 7). |
+| RO04 | Documentos: CNH, laudo, CRLV, ATPV e comprovante de residência com nome/endereço. | Esclarecimento operacional obtido no levantamento com a loja. |
+| RO05 | Conclusão condicionada a pagamento, documentação reconhecida quando aplicável e laudo. | Esclarecimento operacional obtido no levantamento com a loja. |
+| RO06 | Scanner antes da entrega; repasse registrado no contrato. | Fato confirmado no Briefing da loja (p. 7). |
+| RO07 | Garantia a partir da entrega, com condições declaradas pela empresa. | Fato do Briefing confirmado por esclarecimento operacional da loja. |
+| RO08 | Um financiamento por venda e ausência de controle de parcelas. | Fato do Briefing e esclarecimento operacional da loja. |
+| RO09 | Veículos de entrada pertencem ao comprador, sem terceiros. | Esclarecimento operacional obtido no levantamento com a loja. |
+| RO10 | Aprovação de aquisição, descontos, entrega e cancelamento depende dos responsáveis definidos pela empresa. | Política operacional da loja a detalhar nas próximas etapas. |
+| RO11 | Perfis de acesso e permissões de alteração são propostas a validar. | Hipótese de trabalho da equipe a ser validada na implementação. |
+| RO12 | Pagamento como informação de VENDA, com atributo de formas somente multivalorado. | Delimitação de escopo e diretriz do projeto. |
+| RO13 | Reserva, indicação e comissão excluídas. | Delimitação de escopo da equipe para esta primeira etapa. |
+
+Instituições citadas: Itaú, BV, Bradesco Financiamentos, Daycoval, Santander Financiamentos, Banco PAN, C6 Bank, Banco Safra e Banco Volkswagen. A lista não foi declarada exclusiva ou permanente. *(Briefing da loja, p. 7)*
 
 <a id="secao-10"></a>
 
@@ -677,10 +774,6 @@ Registra análise técnica e interesse comercial para fundamentar a aceitação.
 | interesse_comercial | Sim, não ou em análise quanto ao interesse da loja. | Estado | Obrigatório | RN07 |
 | justificativa | Fundamentação da decisão e dos apontamentos. | Descritivo | Obrigatório ao concluir | PROB02 |
 
-( parte do David — PARTE 21: Entidades E06 a E10 e Detalhamento de Componentes )
-
-<a id="secao-16"></a>
-
 ### Entidades E06 a E10 e Detalhamento de Componentes
 
 ### E06 — LAUDO
@@ -848,6 +941,15 @@ Em conformidade com as diretrizes do Manual da Primeira Entrega (Etapa 17) e a n
 | **VENDA** | `garantia` | `concessao_garantia`<br>`data_inicio_garantia`<br>`data_fim_garantia`<br>`termos_politica` | Indicador de concessão da garantia contratual.<br>Data inicial da garantia (marco idêntico à data de entrega).<br>Data limite da vigência (dois meses após a entrega).<br>Condições e política declarada de exclusividade de reparo na loja. |
 | **VENDA** | `cancelamento` | `data_cancelamento`<br>`motivo_cancelamento`<br>`data_retorno_veiculo`<br>`valor_restituido_loja`<br>`data_aviso_consignante`<br>`orientacao_bancaria`<br>`observacoes_cancelamento` | Data de formalização do desfazimento do negócio.<br>Motivo declarado para o distrato.<br>Data em que o veículo vendido retornou fisicamente à loja.<br>Quantia financeira devolvida pela loja ao comprador.<br>Data da notificação ao consignante (se veículo consignado).<br>Registro da orientação e tratativa com o banco financiador.<br>Observações obrigatórias do cancelamento (pendências e restituições). |
 
+<a id="secao-16"></a>
+
+## 16. DER
+
+O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 19 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
+
+![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
+
+[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
 
 ### 16.1. Convenções de Notação Adotadas
 
@@ -983,7 +1085,46 @@ Para as etapas seguintes da disciplina, utilizaremos este modelo conceitual como
 
 ---
 
-( parte da Ana Beatriz — PARTE 25: 19. Revisão da 1ª entrega e registro de alterações )
+<a id="secao-19"></a>
+
+## 19. Revisão da 1ª entrega e registro de alterações
+
+A Primeira Entrega recebeu nota **7,5** na devolutiva do professor Clóvis Ferraro ("atingido, com ressalvas técnicas"). Os pontos elogiados foram a separação entre `VEICULO`, `AVALIACAO`, `LAUDO` e `ENTRADA`, o cadastro único em `PESSOA` e a preocupação em justificar tecnicamente as decisões. Os pontos que exigiram correção na Entrega Final — e como cada um foi resolvido — estão detalhados, item a item, com citação do artefato técnico correspondente, em **[`docs/alteracoes.md`](docs/alteracoes.md)**.
+
+Cada ponto da devolutiva, o que fizemos e **como comprovamos** que a correção funciona. Os testes citados rodam a cada execução da massa e aparecem como linhas `PASS` nos logs de [`docs/evidencias/`](docs/evidencias/); o detalhamento completo está em [`docs/alteracoes.md`](docs/alteracoes.md).
+
+| Apontado na devolutiva | O que fizemos | Como comprovamos | Onde |
+|---|---|---|---|
+| **RNF06** sem tempo de resposta, volume ou usuários | Metas numéricas: até 1.000 ms nas consultas de balcão e até 3.000 ms nas gerenciais e de auditoria, com índices B-Tree de apoio | Critério de aceite verificável com `EXPLAIN ANALYZE` (uso de índice e `Execution Time`) | Seção 23 / `docs/requisitos-nfr.md` §3 |
+| **RNF07** sem perda máxima e tempo de recuperação | RPO de até 15 minutos e RTO de até 2 horas, com backup lógico e arquivamento frequente do log binário do MySQL | Roteiro de recuperação especificado; procedimentos propostos para produção, sem medição em servidor remoto | Seção 23 / docs/requisitos-nfr.md §4 |
+| **RN13**: como preservar o histórico quando a venda é cancelada | A entrada anterior é encerrada e um novo ciclo é aberto, ligado a ela pelo relacionamento R19 (*sucede*); entradas e vendas históricas não podem ser apagadas | Três tentativas de apagar histórico rejeitadas (`PASS rejeicao: nunca apagado`); a venda 4 desfeita continua consultável (`PASS positivo: ... venda 4 historica valida`) | Seção 20 / `docs/modelo-logico.md` §3 / `docs/evidencias/mysql/02-massa-dados.txt` |
+| **Histórico** de veículo vendido, devolvido e vendido de novo | Cada ciclo comercial é uma entrada própria, encadeada à anterior | Cenário completo na massa: venda, desfazimento, devolução e novo ciclo do mesmo veículo (`PASS massa: ... RN13, RN22, troca e garantia conferidos`) | `sql/dados/massa-dados.sql` / `docs/evidencias/mysql/02-massa-dados.txt` |
+| **Duas entradas ativas** para o mesmo veículo | coluna gerada veiculo_vigente com índice único `uq_entrada_veiculo_vigente` | Tentativa de abrir segundo ciclo vigente rejeitada (`PASS rejeicao segundo ciclo vigente do mesmo veiculo: uq_entrada_veiculo_vigente`); auditoria RN13 sem violações | Seção 20 / `docs/evidencias/mysql/05-testes-restricoes.txt` / `docs/evidencias/mysql/04-auditoria.txt` |
+| **RN22**: verificar ao mesmo tempo todas as condições de conclusão | View de pendências e *trigger MySQL* que conferem juntas as condições financeiras, documentais e técnicas | Nove tentativas de concluir ou alterar venda fora da regra rejeitadas (`PASS rejeição: RN22`) | Seção 20 / `docs/modelo-logico.md` §5 / `docs/evidencias/mysql/02-massa-dados.txt` |
+| **Avaliação e laudo** do mesmo veículo | Tabela de junção `avaliacao_laudo` e trigger de integridade cruzada | Duas tentativas de ligar laudo de outro veículo rejeitadas (`PASS rejeicao: RN08`); auditoria RN08 sem violações | Seção 21 / `docs/normalizacao.md` §3 / `docs/evidencias/mysql/02-massa-dados.txt` |
+| **Formas de pagamento** como atributo multivalorado: limitações | Limitações documentadas; na extensão, cada condição de pagamento tem valor e prazo próprios (`proposta_condicao`) e cada recebimento ou pagamento futuro vira uma `obrigacao_financeira` | Testes de composição exata da proposta e das obrigações (34 `PASS` em propostas, caixa e retorno bancário) | Seção 24 / `docs/escopo-financeiro.md` / seção 30.1 / `docs/evidencias/mysql/07-ext02.txt` a `12-ext07.txt` |
+| **Despesas** por veículo ou gerais; obrigações ainda não quitadas | Núcleo com despesas por veículo (decisão justificada); despesas administrativas e contas a pagar e a receber em `obrigacao_financeira`, com origem `ADMINISTRATIVA` (RN32) e situação `PREVISTA`, `ABERTA`, `ATRASADA`, `QUITADA` ou `CANCELADA` | Obrigação da venda 6 aparece como `ATRASADA` na previsão de caixa; transições inválidas de situação rejeitadas (`PASS rejeicao: Transicao de situacao da obrigacao financeira invalida`) | Seção 24 / seção 30.1 / `docs/evidencias/mysql/07-ext02.txt` a `12-ext07.txt` |
+| **Inovação** frente a um sistema comercial já em uso | Oito problemas que seguem sem solução, comparados um a um; extensão funcionando; análise de sistema próprio frente a terceiros | Roteiro de demonstração executado com resultados reais (seção 30.1) | Seção 30 / `docs/inovacao-valor.md` / `docs/extensao-inovacao.md` |
+| **Testar com situações reais** antes do modelo lógico (parecer formativo) | Massa com venda à vista, troca, consignação, desfazimento, devolução, financiamento aprovado e recusado | 35 verificações `PASS` no núcleo, incluindo `PASS positivo: venda 5 NAO_APROVADO quitada por Pix` | Seção 26 / `docs/evidencias/mysql/02-massa-dados.txt` |
+| **Documento consolidado e diário de bordo** | Este README é o documento consolidado; os diários de bordo são entregues separadamente, pela pasta específica disponibilizada pelo professor, e por isso não estão no repositório | — | Seção 1.3 |
+
+A 1ª entrega **não foi descartada**: o DER conceitual (Seções 11–16) continua sendo a base, com as correções acima incorporadas ao modelo lógico sem alterar o que já estava correto.
+
+### 19.1. Histórico e evolução do projeto
+
+O projeto evoluiu em quatro etapas, cada uma construída sobre a anterior:
+
+| Etapa | O que foi produzido | Onde está |
+|---|---|---|
+| 1. Levantamento e modelo conceitual | Caracterização da empresa, processos P01–P08, requisitos, regras de negócio, entidades, relacionamentos, cardinalidades e DER (nota 7,5) | Seções 1–18, `docs/der/`, `docs/fluxogramas/` |
+| 2. Revisão pela devolutiva | Correção de RN13, RN22, RN08, RNF06/RNF07, escopo financeiro e inovação; novo relacionamento R19 no DER | Seção 19, `docs/alteracoes.md` |
+| 3. Modelo lógico, físico e testes | Conversão para 14 tabelas, normalização, dicionário físico, scripts MySQL, massa com testes automáticos, consultas gerenciais e de auditoria | Seções 20–29, sql/, docs/evidencias/ |
+| 4. Extensão de inovação | Propostas por CPF, fluxo de caixa e CRM como módulo aditivo, sem alterar o núcleo | Seção 30.1, `sql/extensao/`, `docs/extensao-inovacao.md` |
+| 5. Revisão final | DER próprio da extensão, testes de restrições no formato da aula 10, testes de ponta a ponta dos nove fluxogramas e das cardinalidades R01 a R41, prova de cada ponto da devolutiva e conferência pelas perguntas do manual | `docs/der/der-extensao.svg`, `sql/testes/`, seções 19, 25.1 a 25.3 e 31 |
+
+A evolução de cada arquivo, com autor e data, está no histórico de commits do repositório: [github.com/andreyveloso/modelagem-banco-multiplikar-automoveis/commits](https://github.com/andreyveloso/modelagem-banco-multiplikar-automoveis/commits). A divisão de responsabilidades está na seção 1.2, e o acompanhamento aula a aula, no diário de bordo (seção 1.3).
+
+---
 
 <a id="secao-20"></a>
 
@@ -1024,14 +1165,6 @@ A normalização é demonstrada com três exemplos reais do projeto (não genér
 Conteúdo completo, incluindo a verificação de normalização das 14 tabelas: **[`docs/normalizacao.md`](docs/normalizacao.md)**.
 
 ---
-
-## 16. DER
-
-O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 19 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
-
-![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
-
-[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
 
 <a id="secao-22"></a>
 
@@ -1150,6 +1283,8 @@ Script: **[`sql/dados/massa-dados.sql`](sql/dados/massa-dados.sql)**.
 
 Script: **[`sql/consultas/gerenciais.sql`](sql/consultas/gerenciais.sql)**.
 
+---
+
 <a id="secao-28"></a>
 
 ## 28. Consultas de auditoria
@@ -1169,6 +1304,8 @@ Script: **[`sql/auditoria/auditoria.sql`](sql/auditoria/auditoria.sql)**.
 Conforme a etapa 21 do manual, não se implementa uma solução completa de BI ou IA: demonstra-se o potencial dos dados estruturados. São dois exemplos de Business Intelligence (giro de estoque, custo por ciclo e margem por veículo; desempenho de vendedores e funil de conversão) e dois de Inteligência Artificial (previsão de preço e tempo de giro na entrada; risco de garantia ou distrato), cada um no formato problema → dados necessários → análise → possível benefício. O documento traz ainda uma matriz de indicadores (KPIs) com fórmula, consulta SQL correspondente e decisão apoiada, e uma análise do que o modelo já sustenta e das lacunas (comissões, impostos, vínculo direto atendimento → venda e recebimentos individuais).
 
 Conteúdo completo: **[`docs/bi-ia.md`](docs/bi-ia.md)**.
+
+---
 
 <a id="secao-30"></a>
 
