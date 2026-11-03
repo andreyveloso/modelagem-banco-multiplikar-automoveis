@@ -1,5 +1,8 @@
 # Extensão de inovação: propostas por CPF, fluxo de caixa e CRM explicável
 
+> **Cobertura das regras:** RN34–RN36 descrevem o comportamento exigido. A implementação atual valida a composição ao apresentar a proposta e restringe alterações nas linhas filhas pelo pai de origem. Ainda há uma pendência: os gatilhos `proposta_condicao_bu` e `proposta_troca_bu` verificam `OLD.id_proposta`, sem validar integralmente o destino `NEW.id_proposta`. Uma transferência por UPDATE de rascunho para proposta apresentada pode contornar a imutabilidade. O UPDATE de troca também precisa revalidar a elegibilidade da avaliação. Não se considera a proteção dessas regras completa; a correção e os testes específicos permanecem pendentes. Esta revisão é apenas documental.
+
+
 Este documento descreve as regras e a arquitetura da extensão aditiva implementada em MySQL 8.4. A cadeia local registra 435 PASS; a matriz por arquivo, regra e relacionamento está em docs/evidencias/mysql/paridade-testes.md.
 1. **Propostas comerciais por CPF e simulação de financiamento** (estendendo a transição entre `P01`, `P04` e `P05`);
 2. **Obrigações financeiras e previsão semanal de fluxo de caixa por cenários** (estendendo `P05` e `P08`);
