@@ -111,7 +111,7 @@ Na Venda 3 da massa de dados, o Honda City (`id_veiculo = 3`, `id_entrada = 3`) 
 ### 3.4. Obrigações de Restituição em Distratos e Registro de Despesas
 1. Restituições no desfazimento de venda (**RN28**–`RN31`):
    - Enquanto a venda está em `'EM_DESFAZIMENTO'`, há pendências de devolução entre loja, comprador, consignante e banco.
-   - O banco (`ck_venda_cancelamento` e `venda_bu`) bloqueia a passagem para `'CANCELADA'` até registrar: devolução do veículo vendido (`data_retorno_veiculo`), valor restituído pela loja (`valor_restituido_loja`), devolução dos carros da troca (`entrada.situacao = 'DEVOLVIDA'` e `entrada.data_devolucao IS NOT NULL`), aviso ao consignante (`data_aviso_consignante`) e orientação bancária (`orientacao_bancaria`).
+   - O banco (`ck_venda_cancelamento` e `venda_bu`) bloqueia a passagem para `'CANCELADA'` até registrar: devolução do veículo vendido (`data_retorno_veiculo`), valor restituído pela loja (`valor_restituido_loja`), devolução dos carros da troca (`entrada.situacao = 'DEVOLVIDA'` e `entrada.data_devolucao IS NOT NULL`), orientação bancária (`orientacao_bancaria`).
 2. Despesas de preparação, diagnóstico e garantia (`despesa`):
    - Conforme a Seção 15 do `README.md` (`E10`), `despesa.data` guarda a data do fato gerador do custo no veículo, sem controle de faturas de fornecedores em aberto, seguindo o recorte da Seção 1.
 
@@ -128,3 +128,8 @@ Na Venda 3 da massa de dados, o Honda City (`id_veiculo = 3`, `id_entrada = 3`) 
 | Repasse bancário de financiamento | Colunas de financiamento em `venda` | `situacao_financiamento = 'APROVADO_A_RECEBER'` e `data_recebimento_financiamento IS NULL` | `ck_venda_financiamento` e `vw_venda_validacao.financiamento_ok` (**RN21**, `RN22`) |
 | Repasse ao consignante | Colunas de consignação em `entrada` | `modalidade = 'CONSIGNACAO'` com `valor_repasse_acordado` e `prazo_repasse` | `ck_entrada_consignacao` e `ck_entrada_valores` (`valor_repasse_acordado <= valor_acordado`, **RN11**–`RN12`) |
 | Restituições em venda desfeita | Colunas de cancelamento em `venda` e `entrada` | Venda em `'EM_DESFAZIMENTO'` até cumprir retorno, `valor_restituido_loja` e devolução das trocas | `ck_venda_cancelamento`, `ck_entrada_devolucao` e trigger `venda_bu` (**RN28**–`RN31`) |
+
+
+## Pendência de implementação da RN30
+
+Na consignação, avisar o proprietário continua sendo regra do negócio. O campo `venda.data_aviso_consignante` permite registrar esse marco, mas o gatilho `venda_bu` atual não exige seu preenchimento para finalizar o cancelamento. Portanto, não se considera essa exigência integralmente protegida pelo banco. A correção do SQL e o teste negativo de cancelamento sem aviso permanecem pendentes; esta revisão altera somente a documentação. Consulte também os limites da validação no README §31.
