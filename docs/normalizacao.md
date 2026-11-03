@@ -143,8 +143,7 @@ A junção com a tabela de vínculo recupera as consultas; um `LEFT JOIN` preser
 avaliações ainda sem laudo. As FKs impedem referências órfãs. Os triggers
 `avaliacao_laudo_bi` e `avaliacao_laudo_bu` comparam `AVALIACAO.id_veiculo` e `LAUDO.id_veiculo`
 durante a gravação do vínculo, e o trigger `laudo_bu` repete a verificação quando o laudo é alterado.
-Portanto, a decomposição mantém a relação opcional e a integridade sem replicar
-o veículo em uma terceira tabela. A decomposição elimina a redundância; a igualdade de veículo exigida pela RN08 é garantida pelos triggers MySQL `avaliacao_laudo_bi`, `avaliacao_laudo_bu` e `laudo_bu`, verificados na gravação.
+A decomposição preserva a relação opcional sem replicar o veículo em uma terceira tabela. Os gatilhos citados protegem a gravação do vínculo e determinadas alterações do laudo. A proteção da RN08 ainda é parcial: `avaliacao_bu` não revalida o laudo vinculado quando a avaliação muda de veículo ou data. Esse caminho exige correção no SQL e teste específico; normalização, isoladamente, não garante a igualdade dos veículos.
 
 ## Verificação do restante do modelo
 
@@ -180,7 +179,7 @@ datas de início/fim de garantia são calculados em views.
 Se fosse tratado como fato independente, introduziria redundância e não seria
 correto afirmar 3FN estrita de todas as colunas físicas. Aqui a relação de fatos
 não depende dele: o MySQL calcula valor_total como coluna gerada (virtual, calculada na leitura) e rejeita atribuição manual. A expressão
-evita divergência entre valor armazenado e componentes da negociação.
+evita divergência entre valor calculado e componentes da negociação.
 
 Normalização não substitui as regras entre operações. RN13 (ciclos), RN22 (conclusão)
 e igualdade dos veículos de avaliação/laudo exigem índices ou restrições adicionais,
