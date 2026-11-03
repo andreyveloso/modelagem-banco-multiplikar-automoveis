@@ -848,26 +848,6 @@ Em conformidade com as diretrizes do Manual da Primeira Entrega (Etapa 17) e a n
 | **VENDA** | `garantia` | `concessao_garantia`<br>`data_inicio_garantia`<br>`data_fim_garantia`<br>`termos_politica` | Indicador de concessão da garantia contratual.<br>Data inicial da garantia (marco idêntico à data de entrega).<br>Data limite da vigência (dois meses após a entrega).<br>Condições e política declarada de exclusividade de reparo na loja. |
 | **VENDA** | `cancelamento` | `data_cancelamento`<br>`motivo_cancelamento`<br>`data_retorno_veiculo`<br>`valor_restituido_loja`<br>`data_aviso_consignante`<br>`orientacao_bancaria`<br>`observacoes_cancelamento` | Data de formalização do desfazimento do negócio.<br>Motivo declarado para o distrato.<br>Data em que o veículo vendido retornou fisicamente à loja.<br>Quantia financeira devolvida pela loja ao comprador.<br>Data da notificação ao consignante (se veículo consignado).<br>Registro da orientação e tratativa com o banco financiador.<br>Observações obrigatórias do cancelamento (pendências e restituições). |
 
-<a id="secao-21"></a>
-
-## 21. Normalização (1FN, 2FN, 3FN)
-
-A normalização é demonstrada com três exemplos reais do projeto (não genéricos), cada um no formato estrutura antes → dependência funcional → problema → correção:
-- **1FN:** formas de pagamento da venda (de atributo multivalorado para `forma_pagamento` + `venda_forma_pagamento`);
-- **2FN:** conferência documental por venda (de chave composta com dependência parcial para `venda_documento`);
-- **3FN:** avaliação, laudo e veículo (eliminação da dependência transitiva via `avaliacao_laudo`, resolvendo também a integridade avaliação-laudo exigida pela devolutiva).
-
-Conteúdo completo, incluindo a verificação de normalização das 14 tabelas: **[`docs/normalizacao.md`](docs/normalizacao.md)**.
-
----
-
-## 16. DER
-
-O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 19 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
-
-![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
-
-[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
 
 ### 16.1. Convenções de Notação Adotadas
 
@@ -1032,7 +1012,26 @@ Script executável: **[`sql/ddl/schema.sql`](sql/ddl/schema.sql)**.
 
 ---
 
-( parte do David — PARTE 27: 21. Normalização (1FN, 2FN, 3FN) )
+<a id="secao-21"></a>
+
+## 21. Normalização (1FN, 2FN, 3FN)
+
+A normalização é demonstrada com três exemplos reais do projeto (não genéricos), cada um no formato estrutura antes → dependência funcional → problema → correção:
+- **1FN:** formas de pagamento da venda (de atributo multivalorado para `forma_pagamento` + `venda_forma_pagamento`);
+- **2FN:** conferência documental por venda (de chave composta com dependência parcial para `venda_documento`);
+- **3FN:** avaliação, laudo e veículo (eliminação da dependência transitiva via `avaliacao_laudo`, resolvendo também a integridade avaliação-laudo exigida pela devolutiva).
+
+Conteúdo completo, incluindo a verificação de normalização das 14 tabelas: **[`docs/normalizacao.md`](docs/normalizacao.md)**.
+
+---
+
+## 16. DER
+
+O Diagrama Entidade-Relacionamento (DER) consolidado reúne as 10 entidades conceituais, todos os seus atributos e os 19 relacionamentos levantados nas etapas anteriores. Construímos o diagrama na notação clássica de Peter Chen utilizando a ferramenta diagrams.net (Draw.io), garantindo que todos os elementos exigidos pelo professor estejam claramente legíveis.
+
+![Diagrama Entidade-Relacionamento da Multiplikar](docs/der/der.svg)
+
+[Abrir DER em SVG ampliado](docs/der/der.svg) · [Visualizar imagem PNG](docs/der/der.png) · [Arquivo editável no Draw.io](docs/der/der-multiplikar.drawio)
 
 <a id="secao-22"></a>
 
