@@ -140,11 +140,11 @@ pode se repetir. Nessa relação, a única dependência não trivial é
 determinante intermediário `id_laudo`.
 
 A junção com a tabela de vínculo recupera as consultas; um `LEFT JOIN` preserva
-avaliações ainda sem laudo. As FKs impedem referências órfãs. Uma restrição adicional,
-`integridade_comercial`, compara `AVALIACAO.id_veiculo` e `LAUDO.id_veiculo`
-durante a gravação. O trigger também é disparado por alterações das duas entidades e do vínculo.
+avaliações ainda sem laudo. As FKs impedem referências órfãs. Os triggers
+`avaliacao_laudo_bi` e `avaliacao_laudo_bu` comparam `AVALIACAO.id_veiculo` e `LAUDO.id_veiculo`
+durante a gravação do vínculo, e o trigger `laudo_bu` repete a verificação quando o laudo é alterado.
 Portanto, a decomposição mantém a relação opcional e a integridade sem replicar
-o veículo em uma terceira tabela. A decomposição elimina a redundância; a igualdade de veículo exigida pela RN08 é garantida pelo trigger MySQL integridade_comercial, verificado pelo trigger MySQL na gravação.
+o veículo em uma terceira tabela. A decomposição elimina a redundância; a igualdade de veículo exigida pela RN08 é garantida pelos triggers MySQL `avaliacao_laudo_bi`, `avaliacao_laudo_bu` e `laudo_bu`, verificados na gravação.
 
 ## Verificação do restante do modelo
 
@@ -175,11 +175,11 @@ As relações de fatos acima estão em 3FN segundo as dependências do levantame
 `situacao_atual`, `situacao_financeira`, `situacao_documental`, total das trocas e
 datas de início/fim de garantia são calculados em views.
 
-`VENDA.valor_total` é uma materialização física **controlada**:
-`GENERATED ALWAYS AS (valor_base - desconto + acrescimo + taxas) STORED`.
+`VENDA.valor_total` é uma coluna derivada **controlada** pelo próprio banco:
+`GENERATED ALWAYS AS (valor_base - desconto + acrescimo + taxas) VIRTUAL`.
 Se fosse tratado como fato independente, introduziria redundância e não seria
 correto afirmar 3FN estrita de todas as colunas físicas. Aqui a relação de fatos
-não depende dele: o MySQL calcula valor_total como coluna gerada armazenada e rejeita atribuição manual. A expressão
+não depende dele: o MySQL calcula valor_total como coluna gerada (virtual, calculada na leitura) e rejeita atribuição manual. A expressão
 evita divergência entre valor armazenado e componentes da negociação.
 
 Normalização não substitui as regras entre operações. RN13 (ciclos), RN22 (conclusão)
